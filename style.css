@@ -1,0 +1,30 @@
+html {
+    min-width: 100vm;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    color: #ddd;
+    background-color: #333;
+}
+
+.monster {
+    background-color: red;
+    width: 4rem;
+    margin: 0.5rem;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.props {
+    margin: 0.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border: 1px solid red;
+    
+}
