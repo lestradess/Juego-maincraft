@@ -11,20 +11,100 @@ body {
 
 .monster {
     background-color: red;
+    border-radius: 1rem;
     width: 4rem;
     margin: 0.5rem;
 }
 
 section {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    justify-content: center;  
+}
+h2{
+    color:black;
+}
+h3{
+    margin-top: 0.1rem;
+    margin-bottom: 0.1rem;
 }
 
 .props {
     margin: 0.2rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    color: black;
+    border-radius: 1rem;
+    height: 8rem;
+}
+
+.escudo {
+    border: 1px solid greenyellow;
+    background-color: greenyellow;
+    border-radius: 1rem;
+}
+
+.ataque {
+    border: 1px solid aqua;
+    background-color: aqua;
+
+}
+
+.tesoro {
+    border: 1px solid orange;
+    background-color: orange;
+    border-radius: 1rem;
+}
+
+.icons {
+    width: 3rem;
+}
+
+.vida {
     border: 1px solid red;
+    background-color: red;
+    border-radius: 1rem;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    align-items:center;
     
+}
+.border{
+    border: 1px solid red;
+    border-radius: 1rem;
+}
+.border2 {
+    border: 1px solid green;
+    border-radius: 1rem;
+}
+.border3 {
+    border: 1px solid orange;
+    border-radius: 1rem;
+}
+.contenedorverti{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.contenedorhori{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 1rem;
+}
+.grancontenedor{
+    display: flex;
+    flex-direction: column;
+    justify-items: stretch;
+    align-items: stretch;
+}
+.tam{
+    width: 30%;
 }
