@@ -1,5 +1,6 @@
 html {
     min-width: 100vm;
+    background-color: #333;
 }
 
 body {
@@ -11,7 +12,7 @@ body {
 
 .monster {
     background-color: red;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     width: 3.5rem;
 }
 
@@ -23,7 +24,7 @@ section {
 
 h2 {
     color: black;
-    padding:0;
+    padding: 0;
     padding-left: 1rem;
     padding-right: 1rem;
     margin: 0;
@@ -42,13 +43,13 @@ h3 {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     color: black;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     height: 8rem;
 }
 
 .escudo {
     background-color: greenyellow;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
 }
 
 .ataque {
@@ -59,19 +60,21 @@ h3 {
 
 .tesoro {
     background-color: orange;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
 }
 
 .icons {
     width: 2rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .vida {
     border: 1px solid red;
     background-color: red;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
 }
 
 .bloque {
@@ -84,6 +87,7 @@ h3 {
     justify-content: space-evenly;
     align-items: center;
 }
+
 /* no centrado */
 .contenedorverti02 {
     display: flex;
@@ -96,33 +100,55 @@ h3 {
     flex-direction: row;
     justify-content: space-between;
     align-items: stretch;
-    margin-top:0.5rem;
+    margin-top: 0.5rem;
 }
 
 .tam30 {
     width: 30%;
 }
-.tam50{
+
+.tam50 {
     width: 40%;
 }
-tam25{
+
+.tam25 {
     width: 25%;
 }
-.margen05iz{
+
+.margen32 {
     margin-left: 3.2px;
-}
-.margen05de{
     margin-right: 3.2px;
 }
-.margenTop{
+
+.margenTop {
     margin-top: 0.5rem;
-    
+
 }
-.margenBot{
+
+.margenBot {
     margin-bottom: 0.5rem;
 }
-.borderNe{
+
+.borderNe {
     border: 1px solid black;
     border-radius: 2rem;
 }
 
+
+.margen05de {
+    margin-right: 3.2px;
+}
+
+.margenTop {
+    margin-top: 0.5rem;
+
+}
+
+.margenBot {
+    margin-bottom: 0.5rem;
+}
+
+.borderNe {
+    border: 1px solid black;
+    border-radius: 2rem;
+}

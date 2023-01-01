@@ -16,14 +16,60 @@ const btnLanzar = document.getElementById("btnLanzar");
 const btnCantidad = document.getElementById("btnCantidad");
 const btnLados = document.getElementById("btnLados");
 const resultado = document.getElementById("resultado");
-const btnCantMas = document.getElementById("btnCantMas");
-const btnCantMenos = document.getElementById("btnCantMenos");
+const btnDer = document.getElementById("btnIzq");
+const btnIzq = document.getElementById("btnDer");
 const btnLadoMas = document.getElementById("btnLadoMas");
 const btnLadoMenos = document.getElementById("btnLadoMenos");
-
+const item = document.getElementById("item");
+const arbol = "images/tree.svg";
+const animal = "images/animal.svg";
+const piedra = "images/stone.svg";
+let posicion = 1;
 //resultado.innerText = "Hola"
 
 
 //enemy01.style.background = "black";
 // enemy01.src = "images/x.svg";
 // enemy01.src.fill = "red";
+btnIzq.onclick = () => {
+    
+    switch (posicion) {
+        case 1:
+            item.src= piedra;
+            posicion = 3;
+            console.log(posicion);
+            break;
+        case 2:
+            item.src = animal;
+            posicion = 1;
+            console.log(posicion);
+            break;
+        case 3:
+            item.src = arbol;
+            posicion = 2;
+            console.log(posicion);
+            break;
+    }
+
+}
+btnDer.onclick = () => {
+    switch (posicion) {
+        case 1:
+            item.src = piedra;
+            posicion = 2;
+            console.log(posicion);
+            break;
+        case 2:
+            item.src = animal;
+            posicion = 3;
+            console.log(posicion);
+            break;
+        case 3:
+            item.src = arbol;
+            posicion = 1;
+            console.log(posicion);
+            break;
+    }
+}
+
+btnIzq.on
