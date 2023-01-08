@@ -10,102 +10,361 @@
         <title>Lestradamus</title>
     </head>
 
-    <body class="contenedorhori">
+    <body class="contenedorHori" style="background-color:#333">
         <div>
         </div>
         <div>
             <div>
-                <div class="contenedorverti">
-                    <h2 style="color:red">Enemigos activos</h2>
-                </div>
-                <div class="contenedorverti02 bloque">
-                    <div class="contenedorhori ">
-                        <img src="images/skull.svg" alt="Monster" class="monster margen05iz" style="background-color:greenyellow" id="enemy01">
-                        <img src="images/skull.svg" alt="Monster" class="monster" style="background-color:greenyellow" id="enemy02">
-                        <img src="images/skull.svg" alt="Monster" class="monster" style="background-color:greenyellow" id="enemy03">
-                        <img src="images/skull.svg" alt="Monster" class="monster margen05de" style="background-color:greenyellow" id="enemy04">
-                    </div>
-                    <div class="contenedorhori">
-                        <img src="images/skull.svg" alt="Monster" class="monster margen05iz" style="background-color:yellow" id="enemy05">
-                        <img src="images/skull.svg" alt="Monster" class="monster" style="background-color:yellow" id="enemy06">
-                        <img src="images/skull.svg" alt="Monster" class="monster" style="background-color:orange" id="enemy07">
-                        <img src="images/skull.svg" alt="Monster" class="monster margen05de" style="background-color:orange" id="enemy08">
-                    </div>
-                    <div class="contenedorhori">
-                        <img src="images/skull.svg" alt="Monster" class="monster margen05iz" style="background-color:pink" id="enemy09">
-                        <img src="images/skull.svg" alt="Monster" class="monster" style="background-color:violet" id="enemy10">
-                        <img src="images/skull.svg" alt="Monster" class="monster" style="background-color:magenta" id="enemy11">
-                        <img src="images/skull.svg" alt="Monster" class="monster margen05de" id="enemy12">
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="contendorverti bloque">
-                <div class="contenedorhori">
-                    <div type="button" class="contenedorverti escudo margen32 btn btn-primary" id=" btnCrear">
-                        <h3>Crear enemigo</h3>
-                        <img src="images/skull.svg" alt="dado" class="icons ">
-                    </div>
-                    <div type="button" class="contenedorverti vida margen32btn btn btn-danger" id=" btnMatar">
-                        <h3>Matar enemigo</h3>
-                        <img src="images/skull.svg" alt="dado" class="icons">
-                    </div>
-                </div>
-                <div class="contenedorhori">
-                    <div class="props ataque contenedorverti">
-                        <img src="images/sword.svg" alt="espada" class="icons">
-                        <h3>Ataque</h3>
-                        <h2>0</h2>
-                    </div>
-                    <div class="props escudo contenedorverti">
-                        <img src="images/shield-half-filled.svg" alt="escudo" class="icons">
-                        <h3>Escudo</h3>
-                        <h2>0</h2>
-                    </div>
-                    <div class="props vida contenedorverti">
-                        <img src="images/heart.svg" alt="corazon" class="icons">
-                        <h3>Vida</h3>
-                        <h2>0</h2>
-                    </div>
-                    <div class="props tesoro contenedorverti">
-                        <img src="images/coin.svg" alt="moneda" class="icons">
-                        <h3>Tesoro</h3>
-                        <h3>0</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="contendorverti bloque">
-                <div class="contenedorverti escudo">
-                    <h2>Posicionar items</h2>
-                    <div>
-                        <img src="images/animal.svg" alt="Animal">
-                        <img src="images/tree.svg" alt="Arbol">
-                        <img src="images/stone.svg" alt="Piedra">
-                    </div>
-                </div>
-                <div class="contenedorhori">
-                    <div class="props contenedorverti ataque tam30" id="btnCantidad">
-                        <h3>Item</h3>
-                        <div class="contenedorhori">
-                            <img src="images/animal.svg" alt="Animal" class="margen32" id="item">
-                            <h2 class="margen32">0</h2>
+                <div class="contenedorEnemigo margenBotton">
+                    <div class="contenedorVerti">
+                        <div class="contenedorHori margenBotton">
+                            <!-- Bloque enemigos activos -->
+                            <div class="contenedorVerti">
+                                <div class="contenedorVerti">
+                                    <h2 style="color:red">Enemigos activos</h2>
+                                </div>
+                                <div class="contenedorVerti">
+                                    <div class="contenedorHori margenBotton">
+                                        <img src="images/skull.svg" alt="Monster" class="icons" style="background-color:greenyellow" id="enemy01">
+                                        <img src="images/skull.svg" alt="Monster" class="icons" style="background-color:greenyellow" id="enemy02">
+                                        <img src="images/skull.svg" alt="Monster" class="icons" style="background-color:greenyellow" id="enemy03">
+                                        <img src="images/skull.svg" alt="Monster" class="icons" style="background-color:greenyellow" id="enemy04">
+                                    </div>
+                                    <div class="contenedorHori margenBotton">
+                                        <img src="images/skull.svg" alt="Monster" class="icons" style="background-color:yellow" id="enemy05">
+                                        <img src="images/skull.svg" alt="Monster" class="icons" style="background-color:yellow" id="enemy06">
+                                        <img src="images/skull.svg" alt="Monster" class="icons" style="background-color:orange" id="enemy07">
+                                        <img src="images/skull.svg" alt="Monster" class="icons" style="background-color:orange" id="enemy08">
+                                    </div>
+                                    <div class="contenedorHori margenBotton">
+                                        <img src="images/skull.svg" alt="Monster" class="icons" style="background-color:pink" id="enemy09">
+                                        <img src="images/skull.svg" alt="Monster" class="icons" style="background-color:violet" id="enemy10">
+                                        <img src="images/skull.svg" alt="Monster" class="icons" style="background-color:magenta" id="enemy11">
+                                        <img src="images/skull.svg" alt="Monster" class="icons" style="background-color:red" id="enemy12">
+                                    </div>
+                                    <div class="contendorDatosEnemigo">
+                                        <div class="contenedorHori">
+                                            <div class="azul contenedorVerti" ;">
+                                                <img src="images/sword.svg" alt="espada" class="icons azulIco" style="background-color:#0d6efd">
+                                                <h3 style="color:#0d6efd">00</h3>
+                                            </div>
+                                            <div class="verde contenedorVerti">
+                                                <img src="images/shield-half-filled.svg" alt="verde" class="icons verdeIco">
+                                                <h3 style="color:greenyellow">00</h3>
+                                            </div>
+                                            <div class="rojo contenedorVerti">
+                                                <img src="images/heart.svg" alt="corazon" class="icons rojoIco">
+                                                <h3 style="color:red">00</h3>
+                                            </div>
+                                            <div class="naranja contenedorVerti">
+                                                <img src="images/coin.svg" alt="moneda" class="icons naranjaIco">
+                                                <h3 style="color:orange">00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Bloque boton crear y matar enemigo -->
+                            <div class="contenedorVerti">
+                                <button type="button" class="btn btn-primary btnMio margenBotton" id=" btnCrear">
+                                    <h3>Crear</h3>
+                                    <h3>Enemigo</h3>
+                                </button>
+                                <button type="button" class="btn btn-danger btnMio margenBotton" id=" btnMatar">
+                                    <h3>Matar</h3>
+                                    <h3>Enemigo</h3>
+                                </button>
+                                <button type="button" class="btn btn-warning btnMio" id=" btnMatar">
+                                    <h3>Posicionar</h3>
+                                    <h3>Enemigos</h3>
+                                </button>
+                                
+                            </div>
                         </div>
                         
-                        <div class="contenedorhori">
-                            <img src="images/arrow-big-left.svg" alt="mas" type="button" class="btn btn-primary" id="btnDer">
-                            <img src="images/arrow-big-right.svg" alt="menos" type="button" class="btn btn-primary" id="btnIzq">
+                        <div class="contendorverti margenBotton">
+                            <div class="contenedorHori">
+                                <div class="rojo contenedorVerti margenBotton">
+                                    <button class="btn btn-danger">
+                                        <img src="images/skull.svg" alt="calabera" class="icons">
+                                    </button>
+                                    <h2 style="color:red">000</h2>
+                                </div>
+                                <div class="rojo contenedorVerti margenBotton">
+                                    <button class="btn btn-danger">
+                                        <img src="images/skull.svg" alt="calabera" class="icons">
+                                    </button>
+                                    <h2 style="color:red">000</h2>
+                                </div>
+                                <div class="rojo contenedorVerti margenBotton">
+                                    <button class="btn btn-danger">
+                                        <img src="images/skull.svg" alt="calabera" class="icons">
+                                    </button>
+                                    <h2 style="color:red">000</h2>
+                                </div>
+                                <div class="rojo contenedorVerti margenBotton">
+                                    <button class="btn btn-danger">
+                                        <img src="images/skull.svg" alt="calabera" class="icons">
+                                    </button>
+                                    <h2 style="color:red">000</h2>
+                                </div>
+                            </div>
+                            <div class="contenedorHori">
+                                <div class="rojo contenedorVerti margenBotton">
+                                    <button class="btn btn-danger">
+                                        <img src="images/skull.svg" alt="calabera" class="icons">
+                                    </button>
+                                    <h2 style="color:red">000</h2>
+                                </div>
+                                <div class="rojo contenedorVerti margenBotton">
+                                    <button class="btn btn-danger">
+                                        <img src="images/skull.svg" alt="calabera" class="icons">
+                                    </button>
+                                    <h2 style="color:red">000</h2>
+                                </div>
+                                <div class="rojo contenedorVerti margenBotton">
+                                    <button class="btn btn-danger">
+                                        <img src="images/skull.svg" alt="calabera" class="icons">
+                                    </button>
+                                    <h2 style="color:red">000</h2>
+                                </div>
+                                <div class="rojo contenedorVerti margenBotton">
+                                    <button class="btn btn-danger">
+                                        <img src="images/skull.svg" alt="calabera" class="icons">
+                                    </button>
+                                    <h2 style="color:red">000</h2>
+                                </div>
+                            </div>
+                            <div class="contenedorHori">
+                                <div class="rojo contenedorVerti">
+                                    <button class="btn btn-danger">
+                                        <img src="images/skull.svg" alt="calabera" class="icons">
+                                    </button>
+                                    <h2 style="color:red">000</h2>
+                                </div>
+                                <div class="rojo contenedorVerti">
+                                    <button class="btn btn-danger">
+                                        <img src="images/skull.svg" alt="calabera" class="icons">
+                                    </button>
+                                    <h2 style="color:red">000</h2>
+                                </div>
+                                <div class="rojo contenedorVerti">
+                                    <button class="btn btn-danger">
+                                        <img src="images/skull.svg" alt="calabera" class="icons">
+                                    </button>
+                                    <h2 style="color:red">000</h2>
+                                </div>
+                                <div class="rojo contenedorVerti">
+                                    <button class="btn btn-danger">
+                                        <img src="images/skull.svg" alt="calabera" class="icons">
+                                    </button>
+                                    <h2 style="color:red">000</h2>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="props contenedorverti tesoro tam30 btn btn-warning" id="btnLados">
-                        <h3>Pulsa</h3>
-                        <h3>Para</h3>
-                        <h3>Posición</h3>
+                </div>
+            </div>
+            <!-- Contenedor items -->
+            <div class="contendorverti margenBotton">
+                <h2 style="color:#198754">Posicionar árboles</h2>
+                <div class="contenedorHori">
+                    <div class="verdeOs contenedorVerti margenBotton">
+                        <button class="btn btn-success">
+                            <img src="images/tree.svg" alt="arbol" class="icons">
+                        </button>
+                        <h2 style="color:#198754">000</h2>
                     </div>
-                    <div class="props contenedorverti vida tam30">
-                        <h3>Posición</h3>
-                        <h3>en mapa</h3>
-                        <h2 id="resultado">0</h2>
+                    <div class="verdeOs contenedorVerti margenBotton">
+                        <button class="btn btn-success">
+                            <img src="images/tree.svg" alt="arbol" class="icons">
+                        </button>
+                        <h2 style="color:#198754">000</h2>
+                    </div>
+                    <div class="verdeOs contenedorVerti margenBotton">
+                        <button class="btn btn-success">
+                            <img src="images/tree.svg" alt="arbol" class="icons">
+                        </button>
+                        <h2 style="color:#198754">000</h2>
+                    </div>
+                    <div class="verdeOs contenedorVerti margenBotton">
+                        <button class="btn btn-success">
+                            <img src="images/tree.svg" alt="arbol" class="icons">
+                        </button>
+                        <h2 style="color:#198754">000</h2>
+                    </div>
+                    <div class="verdeOs contenedorVerti margenBotton">
+                        <button class="btn btn-success">
+                            <img src="images/tree.svg" alt="arbol" class="icons">
+                        </button>
+                        <h2 style="color:#198754">000</h2>
+                    </div>
+                </div>
+                <div class="contenedorHori">
+                    <div class="verdeOs contenedorVerti margenBotton">
+                        <button class="btn btn-success">
+                            <img src="images/tree.svg" alt="arbol" class="icons">
+                        </button>
+                        <h2 style="color:#198754">000</h2>
+                    </div>
+                    <div class="verdeOs contenedorVerti margenBotton">
+                        <button class="btn btn-success">
+                            <img src="images/tree.svg" alt="arbol" class="icons">
+                        </button>
+                        <h2 style="color:#198754">000</h2>
+                    </div>
+                    <div class="verdeOs contenedorVerti margenBotton">
+                        <button class="btn btn-success">
+                            <img src="images/tree.svg" alt="arbol" class="icons">
+                        </button>
+                        <h2 style="color:#198754">000</h2>
+                    </div>
+                    <div class="verdeOs contenedorVerti margenBotton">
+                        <button class="btn btn-success">
+                            <img src="images/tree.svg" alt="arbol" class="icons">
+                        </button>
+                        <h2 style="color:#198754">000</h2>
+                    </div>
+                    <div class="verdeOs contenedorVerti margenBotton">
+                        <button class="btn btn-success">
+                            <img src="images/tree.svg" alt="arbol" class="icons">
+                        </button>
+                        <h2 style="color:#198754">000</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="contendorverti margenBotton">
+                <h2 style="color:orange">Posicionar animales</h2>
+                <div class="contenedorHori">
+                    <div class="naranja contenedorVerti margenBotton">
+                        <button class="btn btn-warning">
+                            <img src="images/animal.svg" alt="animal" class="icons">
+                        </button>
+                        <h2 style="color:orange">000</h2>
+                    </div>
+                    <div class="naranja contenedorVerti margenBotton">
+                        <button class="btn btn-warning">
+                            <img src="images/animal.svg" alt="animal" class="icons">
+                        </button>
+                        <h2 style="color:orange">000</h2>
+                    </div>
+                    <div class="naranja contenedorVerti margenBotton">
+                        <button class="btn btn-warning">
+                            <img src="images/animal.svg" alt="animal" class="icons">
+                        </button>
+                        <h2 style="color:orange">000</h2>
+                    </div>
+                    <div class="naranja contenedorVerti margenBotton">
+                        <button class="btn btn-warning">
+                            <img src="images/animal.svg" alt="animal" class="icons">
+                        </button>
+                        <h2 style="color:orange">000</h2>
+                    </div>
+                    <div class="naranja contenedorVerti margenBotton">
+                        <button class="btn btn-warning">
+                            <img src="images/animal.svg" alt="animal" class="icons">
+                        </button>
+                        <h2 style="color:orange">000</h2>
+                    </div>
+                </div>
+                <div class="contenedorHori">
+                    <div class="naranja contenedorVerti margenBotton">
+                        <button class="btn btn-warning">
+                            <img src="images/animal.svg" alt="animal" class="icons">
+                        </button>
+                        <h2 style="color:orange">000</h2>
+                    </div>
+                    <div class="naranja contenedorVerti margenBotton">
+                        <button class="btn btn-warning">
+                            <img src="images/animal.svg" alt="animal" class="icons">
+                        </button>
+                        <h2 style="color:orange">000</h2>
+                    </div>
+                    <div class="naranja contenedorVerti margenBotton">
+                        <button class="btn btn-warning">
+                            <img src="images/animal.svg" alt="animal" class="icons">
+                        </button>
+                        <h2 style="color:orange">000</h2>
+                    </div>
+                    <div class="naranja contenedorVerti margenBotton">
+                        <button class="btn btn-warning">
+                            <img src="images/animal.svg" alt="animal" class="icons">
+                        </button>
+                        <h2 style="color:orange">000</h2>
+                    </div>
+                    <div class="naranja contenedorVerti margenBotton">
+                        <button class="btn btn-warning">
+                            <img src="images/animal.svg" alt="animal" class="icons">
+                        </button>
+                        <h2 style="color:orange">000</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="contendorverti margenBotton">
+                <h2 style="color:#0d6efd">Posicionar rocas</h2>
+                <div class="contenedorHori">
+                    <div class="azul contenedorVerti margenBotton">
+                        <button class="btn btn-primary">
+                            <img src="images/stone.svg" alt="roca" class="icons">
+                        </button>
+                        <h2 style="color:#0d6efd">000</h2>
+                    </div>
+                    <div class="azul contenedorVerti margenBotton">
+                        <button class="btn btn-primary">
+                            <img src="images/stone.svg" alt="roca" class="icons">
+                        </button>
+                        <h2 style="color:#0d6efd">000</h2>
+                    </div>
+                    <div class="azul contenedorVerti margenBotton">
+                        <button class="btn btn-primary">
+                            <img src="images/stone.svg" alt="roca" class="icons">
+                        </button>
+                        <h2 style="color:#0d6efd">000</h2>
+                    </div>
+                    <div class="azul contenedorVerti margenBotton">
+                        <button class="btn btn-primary">
+                            <img src="images/stone.svg" alt="roca" class="icons">
+                        </button>
+                        <h2 style="color:#0d6efd">000</h2>
+                    </div>
+                    <div class="azul contenedorVerti margenBotton">
+                        <button class="btn btn-primary">
+                            <img src="images/stone.svg" alt="roca" class="icons">
+                        </button>
+                        <h2 style="color:#0d6efd">000</h2>
+                    </div>
+                </div>
+                <div class="contenedorHori">
+                    <div class="azul contenedorVerti margenBotton">
+                        <button class="btn btn-primary">
+                            <img src="images/stone.svg" alt="roca" class="icons">
+                        </button>
+                        <h2 style="color:#0d6efd">000</h2>
+                    </div>
+                    <div class="azul contenedorVerti margenBotton">
+                        <button class="btn btn-primary">
+                            <img src="images/stone.svg" alt="roca" class="icons">
+                        </button>
+                        <h2 style="color:#0d6efd">000</h2>
+                    </div>
+                    <div class="azul contenedorVerti margenBotton">
+                        <button class="btn btn-primary">
+                            <img src="images/stone.svg" alt="roca" class="icons">
+                        </button>
+                        <h2 style="color:#0d6efd">000</h2>
+                    </div>
+                    <div class="azul contenedorVerti margenBotton">
+                        <button class="btn btn-primary">
+                            <img src="images/stone.svg" alt="roca" class="icons">
+                        </button>
+                        <h2 style="color:#0d6efd">000</h2>
+                    </div>
+                    <div class="azul contenedorVerti margenBotton">
+                        <button class="btn btn-primary">
+                            <img src="images/stone.svg" alt="roca" class="icons">
+                        </button>
+                        <h2 style="color:#0d6efd">000</h2>
                     </div>
                 </div>
             </div>

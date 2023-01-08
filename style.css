@@ -6,14 +6,6 @@ html {
 body {
     padding: 0;
     margin: 0;
-    color: #ddd;
-    background-color: #333;
-}
-
-.monster {
-    background-color: red;
-    border-radius: 0.5rem;
-    width: 3.5rem;
 }
 
 section {
@@ -23,132 +15,98 @@ section {
 }
 
 h2 {
-    color: black;
-    padding: 0;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    text-align: center;
+
+    margin: 0;
+}
+h3 {
+    text-align: center;
     margin: 0;
 }
 
-h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    color: black;
-}
 
-
-
-.props {
-    margin: 0.2rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    color: black;
+.contenedorEnemigo {
+    padding: 1rem;
+    height: 33%;
+    border: 1px solid red;
     border-radius: 0.5rem;
-    height: 8rem;
+    margin-bottom: 0.5rem;
 }
 
-.escudo {
-    background-color: greenyellow;
+.contenedorDatosEnemigo {
+    border: 1px solid red;
     border-radius: 0.5rem;
-}
-
-.ataque {
-    border: 1px solid aqua;
-    background-color: aqua;
-
-}
-
-.tesoro {
-    background-color: orange;
-    border-radius: 0.5rem;
+    padding: 1rem;
 }
 
 .icons {
-    width: 2rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
-.vida {
-    border: 1px solid red;
-    background-color: red;
     border-radius: 0.5rem;
+    min-width: 3.5rem;
 }
 
-.bloque {
-    padding: 0.5rem;
-}
-
-.contenedorverti {
+.contenedorVerti {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: space-between;
 }
 
-/* no centrado */
-.contenedorverti02 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-.contenedorhori {
+.contenedorHori {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: stretch;
-    margin-top: 0.5rem;
 }
 
-.tam30 {
-    width: 30%;
+.btnMio {
+    height: 50%;
+    margin-left: 1rem;
 }
 
-.tam50 {
-    width: 40%;
+.margenBotton {
+    margin-bottom: 1rem;
 }
 
-.tam25 {
-    width: 25%;
+.verde {
+    border: 1px solid greenyellow;
+    border-radius: 0.5rem;
+    
 }
-
-.margen32 {
-    margin-left: 3.2px;
-    margin-right: 3.2px;
-}
-
-.margenTop {
-    margin-top: 0.5rem;
+.verdeOs {
+    border: 1px solid #198754;
+    border-radius: 0.5rem;
 
 }
 
-.margenBot {
-    margin-bottom: 0.5rem;
-}
-
-.borderNe {
-    border: 1px solid black;
-    border-radius: 2rem;
-}
-
-
-.margen05de {
-    margin-right: 3.2px;
-}
-
-.margenTop {
-    margin-top: 0.5rem;
+.azul {
+    border: 1px solid #0d6efd;
+    border-radius: 0.5rem;
 
 }
 
-.margenBot {
-    margin-bottom: 0.5rem;
+.naranja {
+    border: 1px solid orange;
+    border-radius: 0.5rem;
+    
 }
 
-.borderNe {
-    border: 1px solid black;
-    border-radius: 2rem;
+.rojo {
+    border: 1px solid red;
+    border-radius: 0.5rem;
+
+}
+
+.verdeIco {
+    background-color: greenyellow;
+}
+
+.azulIco {
+    background-color: #0d6efd;
+}
+
+.naranjaIco {
+    background-color: orange;
+}
+
+.rojoIco {
+    background-color: red;
 }
