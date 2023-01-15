@@ -32,17 +32,17 @@ document.addEventListener("DOMContentLoaded", function () {
         createEnemy(eligeEnemigo(aleatorio(1, 100)));
     }
     //Enemigo muerto
-    function killEnemy(){
+    function killEnemy () {
         if (posEnemigo > -1) {
             enemyList[ posEnemigo ] = 0;
             killEnemyImg(posEnemigo);
-            const vacio = [0,0,0,0]
-            inserProps(0,0,0,0);
-        }  
+            const vacio = [ 0, 0, 0, 0 ]
+            inserProps(0, 0, 0, 0);
+        }
     }
-    function killEnemyImg(){
-        document.querySelector(`#enemy${posEnemigo+1}`).src="images/eliminado.svg";
-        document.querySelector(`#enemy${ posEnemigo+1}`).style.backgroundColor='#470aab';
+    function killEnemyImg () {
+        document.querySelector(`#enemy${ posEnemigo + 1 }`).src = "images/eliminado.svg";
+        document.querySelector(`#enemy${ posEnemigo + 1 }`).style.backgroundColor = '#470aab';
     }
     //Nos da un número aleatorio entre un mínimo y un máximo incluidos
     function aleatorio (min, max) {
@@ -75,11 +75,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     inserProps(selectProps(enemigoLevel));
                     break;
                 }
-                if (enemigoLevel == 7){
+                if (enemigoLevel == 7) {
                     console.log("Has acabado con todos los enemigos");
                     break;
                 }
-            }  
+            }
         }
         console.log(`ListadoActual ${ enemyList }`);
     }
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
         defensa.textContent = props[ 1 ];
         vida.textContent = props[ 2 ];
         tesoro.textContent = props[ 3 ];
-        PorAquI:  ****************************************************
+        //PorAquI:  ****************************************************
         //btnCreate.textContent = Escapó;
     }
     //Nos dice si el enemigo elegido está vivo
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (posEnemigo > -1) {
             // enemyList[ posEnemigo ] = 0;
             currentEnemy = posEnemigo;
-            console.log(`Pos enemy: ${currentEnemy}`);
+            console.log(`Pos enemy: ${ currentEnemy }`);
             return true;
         }
         return false;
