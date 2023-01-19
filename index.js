@@ -1,11 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
     const btnCreate = document.querySelector('#btnCreate');
     const btnKill = document.querySelector("#btnKill");
+    const btnPosEnemy = document.querySelector("#btnPosEnemy");
     const ataque = document.querySelector("#ataque");
     const defensa = document.querySelector("#defensa");
     const vida = document.querySelector("#vida");
     const createTxt01 = document.querySelector("#createTxt01");
     const createTxt02 = document.querySelector("#createTxt02");
+    const posE1 = document.querySelector("#posE1");
+    const posE2 = document.querySelector("#posE2");
+    const posE3 = document.querySelector("#posE3");
+    const posE4 = document.querySelector("#posE4");
+    const posE5 = document.querySelector("#posE5");
+    const posE6 = document.querySelector("#posE6");
+    const posE7 = document.querySelector("#posE7");
+    const posE8 = document.querySelector("#posE8");
+    const posE9 = document.querySelector("#posE9");
+    const posE10 = document.querySelector("#posE10");
+    const posE11 = document.querySelector("#posE11");
+    const posE12 = document.querySelector("#posE12");
     //Enemigos vivos
     let hayVivos = 12;
     let posEnemigo = -1;
@@ -17,23 +30,26 @@ document.addEventListener("DOMContentLoaded", function () {
         338, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 363, 367, 374, 378, 383, 387, 394, 398, 403, 407,
         414, 418, 422, 423, 427, 434, 438, 439, 442, 447, 454, 459, 462, 467, 474, 479, 482, 487, 494, 499, 502, 507, 508, 509, 510, 511,
         512, 513, 514, 519, 522, 527, 534, 539, 541, 542, 543, 544, 545, 546, 547, 554, 555, 556, 557, 558, 559, 560, 561, 580 ];
-    const espaciosOcupados = [ 1, 20, 269, 270, 271, 272, 289, 290, 291, 292, 309, 310, 311, 312, 329, 330, 331, 332, 581, 600 ];
-    let caminosOcupados = [];
-    let bosqueVacio = [];
-
+    //tablero de 30 x 20 = 600 casillas
+    const espaciosOcupadosSiempre = [ 1, 2, 21, 22, 19, 20, 39, 40, 269, 270, 271, 272, 289, 290, 291, 292, 309, 310, 311, 312, 329,
+        330, 331, 332, 561, 562, 582, 579, 580, 581, 599, 600 ];
+    let celdasOcupadas = espaciosOcupadosSiempre;
+    let celdasEnemigos = [];
+    let numEnemigosPosicion = 12;
+    let rondaPosEnemy = 0;
     //Listerners**************************
 
     btnCreate.addEventListener("click", newEnemy);
     btnKill.addEventListener("click", killEnemy);
-    btnPosition.addEventListener("click", positionEnemy);
+    btnPosEnemy.addEventListener("click", positionEnemy);
     btnKill.style.display = "none";
-    
+
 
 
 
     //Funciones***********************
     function newEnemy () {
-        if(posEnemigo != -1){
+        if (posEnemigo != -1) {
             document.querySelector(`#enemy${ posEnemigo + 1 }`).src = "images/skull.svg";
         }
         createEnemy(eligeEnemigo(aleatorio(1, 100)));
@@ -45,17 +61,17 @@ document.addEventListener("DOMContentLoaded", function () {
     function killEnemy () {
         enemyList[ posEnemigo ] = 0;
         console.log(`ListadoActual ${ enemyList }`);
-        killEnemyImg();   
+        killEnemyImg();
         inserProps(0, 0, 0, 0);
         btnKill.style.display = "none";
+        eliminarPosicionEnemigo();
         hayVivos--;
-        if (hayVivos<=0){
+        if (hayVivos <= 0) {
             nuevaPartida();
         }
     }
     function killEnemyImg () {
         document.querySelector(`#enemy${ posEnemigo + 1 }`).style.backgroundColor = '#333';
-
     }
     // Elección de enemigo y mostrar datos ****************************************************
     function markEnemy () {
@@ -97,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
             enemigoLevel--;
             console.log(`while01 Level: ${ enemigoLevel }`);
             if (estaVivo(enemigoLevel)) return enemigoLevel;
-            
+
         }
 
         while (enemigoLevel <= 6) {
@@ -107,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         console.log("Ya no hay enemigos vivos")
     }
-    function estaVivo (enemigoLevel) {   
+    function estaVivo (enemigoLevel) {
         //buscamos si en el array hay algun enemigo de ese level 
         // -1 es no, si lo hay nos devuelve la posicion
         posEnemigo = enemyList.findIndex(e => e == enemigoLevel);
@@ -140,17 +156,65 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function nuevaPartida(){
+    function nuevaPartida () {
         createTxt01.textContent = "Partida Terminada";
         createTxt02.textContent = "Pulsa Para Una Nueva";
         btnCreate.style.backgroundColor = "green";
-        btnCreate.addEventListener("click", ()=>{
+        btnCreate.addEventListener("click", () => {
             location.reload();
         });
     }
 
     //POSICIONANDO ENEMIGOS*****************************************************
-    function positionEnemy(){
-        
+    function reposicionarEnemigos () {
+        if (rondaPosEnemy === 0) {
+            rondaPosEnemy++;
+            return;
+        }
+        rondaPosEnemy++;
+        for (let i = 0; i < celdasEnemigos.length; i++) {
+            let celda = celdasOcupadas.findIndex(e => e == celdasEnemigos[ i ])
+            celdasOcupadas.splice(celda, 1);
+        }
+        while (celdasEnemigos.length > 0) {
+            celdasEnemigos.shift();
+        };
+    }
+
+    function positionEnemy () {
+        reposicionarEnemigos();
+        let pos;
+        for (let i = 1; i <= numEnemigosPosicion; i++) {
+            pos = document.querySelector(`#posE${ i }`);
+            pos.textContent = ocupacion(aleatorio(3, 598));
+        }
+        console.log(`CE ${ celdasEnemigos }`);
+    }
+
+    // devuelve una celda no ocupada
+    function ocupacion (n) {
+        while (buscaEnCeldas(n)) {
+            n = aleatorio(3, 598);
+        }
+        celdasOcupadas.push(n);
+        celdasEnemigos.push(n);
+        return n;
+    }
+    //devuelve true si está ocupada
+    function buscaEnCeldas (n) {
+        celda = celdasOcupadas.findIndex(e => e === n)
+        if (celda > -1) {
+            return true;
+        }
+        return false;
+    }
+    function eliminarPosicionEnemigo () {
+        document.querySelector(`#posE${ numEnemigosPosicion }`).remove();
+        numEnemigosPosicion--;
+        let pos;
+        for (let i = 1; i <= numEnemigosPosicion; i++) {
+            pos = document.querySelector(`#posE${ i }`);
+            pos.textContent = '';
+        }
     }
 });
