@@ -4,12 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const ataque = document.querySelector("#ataque");
     const defensa = document.querySelector("#defensa");
     const vida = document.querySelector("#vida");
-    const tesoro = document.querySelector("#tesoro");
-    //Enemigo Actual
-    let currentEnemy = 0;
-    //Posición enemigo actual
+    const createTxt01 = document.querySelector("#createTxt01");
+    const createTxt02 = document.querySelector("#createTxt02");
+    //Enemigos vivos
+    let hayVivos = 12;
     let posEnemigo = -1;
-
     let enemyList = [ 1, 1, 1, 1, 2, 2, 3, 3, 4, 5, 6, 7 ];
 
     const caminos = [ 21, 40, 41, 42, 43, 44, 45, 46, 47, 54, 55, 56, 57, 58, 59, 60, 62, 67, 74, 79, 82, 87, 88, 89, 90, 91, 92, 93, 94, 99,
@@ -26,23 +25,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
     btnCreate.addEventListener("click", newEnemy);
     btnKill.addEventListener("click", killEnemy);
+    btnPosition.addEventListener("click", positionEnemy);
+    btnKill.style.display = "none";
+    
+
+
 
     //Funciones***********************
     function newEnemy () {
+        if(posEnemigo != -1){
+            document.querySelector(`#enemy${ posEnemigo + 1 }`).src = "images/skull.svg";
+        }
         createEnemy(eligeEnemigo(aleatorio(1, 100)));
+        console.log(`ListadoActual ${ enemyList }`);
+        markEnemy();
+        btnKill.style.display = "block";
     }
-    //Enemigo muerto
+    //Enemigo muerto *******************************************
     function killEnemy () {
-        if (posEnemigo > -1) {
-            enemyList[ posEnemigo ] = 0;
-            killEnemyImg(posEnemigo);
-            const vacio = [ 0, 0, 0, 0 ]
-            inserProps(0, 0, 0, 0);
+        enemyList[ posEnemigo ] = 0;
+        console.log(`ListadoActual ${ enemyList }`);
+        killEnemyImg();   
+        inserProps(0, 0, 0, 0);
+        btnKill.style.display = "none";
+        hayVivos--;
+        if (hayVivos<=0){
+            nuevaPartida();
         }
     }
     function killEnemyImg () {
-        document.querySelector(`#enemy${ posEnemigo + 1 }`).src = "images/eliminado.svg";
-        document.querySelector(`#enemy${ posEnemigo + 1 }`).style.backgroundColor = '#470aab';
+        document.querySelector(`#enemy${ posEnemigo + 1 }`).style.backgroundColor = '#333';
+
+    }
+    // Elección de enemigo y mostrar datos ****************************************************
+    function markEnemy () {
+        document.querySelector(`#enemy${ posEnemigo + 1 }`).src = "images/skull_2.svg";
     }
     //Nos da un número aleatorio entre un mínimo y un máximo incluidos
     function aleatorio (min, max) {
@@ -58,88 +75,82 @@ document.addEventListener("DOMContentLoaded", function () {
         if (e <= 99) return 6;
         return 7;
     }
-
     // Creación del enemigo
     function createEnemy (enemigoLevel) {
-
-        if (existeEnemigoVivo(enemigoLevel)) {
-            inserProps(selectProps(enemigoLevel));
-        } else {
-            console.log(`Ha pasado a condición enemigo muerto ${ enemigoLevel }`);
-            enemigoLevel = 1;
-            while (enemyList.findIndex(e => e == enemigoLevel) < 0) {
-                enemigoLevel++;
-                if (enemigoLevel > 7) break;
-                console.log(`En while ${ enemigoLevel }`)
-                if (existeEnemigoVivo(enemigoLevel)) {
-                    inserProps(selectProps(enemigoLevel));
-                    break;
-                }
-                if (enemigoLevel == 7) {
-                    console.log("Has acabado con todos los enemigos");
-                    break;
-                }
-            }
-        }
-        console.log(`ListadoActual ${ enemyList }`);
+        inserProps(selectProps(enemigoVivo(enemigoLevel)));
     }
-    //Modifica las propiedades del enemigo
+    //Modifica las propiedades del enemigo y marca el enemigo activo
     function inserProps (prop) {
         let props = [];
         props = prop;
-        console.log(`Jefe actual ${ props }`);
         ataque.textContent = props[ 0 ];
         defensa.textContent = props[ 1 ];
         vida.textContent = props[ 2 ];
         tesoro.textContent = props[ 3 ];
-        //PorAquI:  ****************************************************
-        //btnCreate.textContent = Escapó;
     }
     //Nos dice si el enemigo elegido está vivo
-    function existeEnemigoVivo (enemigo) {
-        posEnemigo = enemyList.findIndex(e => e == enemigo);
+    function enemigoVivo (enemigoLevel) {
+
+        if (estaVivo(enemigoLevel)) return enemigoLevel;
+
+        while (enemigoLevel >= 2) {
+            enemigoLevel--;
+            console.log(`while01 Level: ${ enemigoLevel }`);
+            if (estaVivo(enemigoLevel)) return enemigoLevel;
+            
+        }
+
+        while (enemigoLevel <= 6) {
+            enemigoLevel++;
+            console.log(`while02 Level: ${ enemigoLevel }`);
+            if (estaVivo(enemigoLevel)) return enemigoLevel;
+        }
+        console.log("Ya no hay enemigos vivos")
+    }
+    function estaVivo (enemigoLevel) {   
+        //buscamos si en el array hay algun enemigo de ese level 
+        // -1 es no, si lo hay nos devuelve la posicion
+        posEnemigo = enemyList.findIndex(e => e == enemigoLevel);
         if (posEnemigo > -1) {
-            // enemyList[ posEnemigo ] = 0;
-            currentEnemy = posEnemigo;
-            console.log(`Pos enemy: ${ currentEnemy }`);
+            console.log(`vivo  pos: ${ posEnemigo + 1 } level: ${ enemigoLevel }`)
             return true;
         }
+        console.log(`muerto?  pos: ${ posEnemigo } level: ${ enemigoLevel }`)
         return false;
     }
 
     //Retorna las caracteristicas de los enemigos
-    function selectProps (e) {
-        switch (e) {
+    function selectProps (enemigoLevel) {
+        switch (enemigoLevel) {
             case 1:
                 //    ataque, defensa,     vida,  tesoro
                 return [ 5, aleatorio(5, 10), 5, aleatorio(5, 10), "LV01" ];
-
             case 2:
                 return [ 7, aleatorio(7, 12), 7, aleatorio(7, 12), " LV02" ];
-
             case 3:
                 return [ 9, aleatorio(9, 14), 9, aleatorio(9, 14), " LV03" ];
-
             case 4:
                 return [ 10, aleatorio(10, 16), 5, aleatorio(10, 16), " LV04" ];
-
             case 5:
                 return [ 11, aleatorio(11, 18), 5, aleatorio(11, 18), " LV05" ];
-
             case 6:
                 return [ 12, aleatorio(12, 20), 5, aleatorio(12, 20), " LV06" ];
-
             default:
                 return [ 20, 20, 20, 20, " Jefe Final" ];
-
         }
-
     }
 
-    //resultado.innerText = "Hola"
-    //enemy01.style.background = "black";
-    // enemy01.src = "images/x.svg";
-    // enemy01.src.fill = "red";
-    //btnIzq.onclick = () => {}
+    function nuevaPartida(){
+        createTxt01.textContent = "Partida Terminada";
+        createTxt02.textContent = "Pulsa Para Una Nueva";
+        btnCreate.style.backgroundColor = "green";
+        btnCreate.addEventListener("click", ()=>{
+            location.reload();
+        });
+    }
 
+    //POSICIONANDO ENEMIGOS*****************************************************
+    function positionEnemy(){
+        
+    }
 });
