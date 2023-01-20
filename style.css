@@ -30,11 +30,13 @@ button{
     padding: 16px;
     width: 100%;
 }
-
+.general{
+    width: 95%;
+    margin: 10px;
+}
 
 .contenedorEnemigo {
     padding: 1rem;
-    
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
 }
@@ -47,7 +49,7 @@ button{
 
 .icons {
     border-radius: 0.5rem;
-    min-width: 3rem;
+    width: 100%; */
 }
 
 .contenedorVerti {
@@ -82,19 +84,16 @@ button{
 
 .verde {
     border: 1px solid greenyellow;
-    border-radius: 0.5rem;
-    
+    border-radius: 0.5rem;   
 }
 .verdeOs {
     border: 1px solid #198754;
     border-radius: 0.5rem;
-
 }
 
 .azul {
     border: 1px solid #0d6efd;
     border-radius: 0.5rem;
-
 }
 
 .naranja {
