@@ -7,22 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const vida = document.querySelector("#vida");
     const createTxt01 = document.querySelector("#createTxt01");
     const createTxt02 = document.querySelector("#createTxt02");
-    const posE1 = document.querySelector("#posE1");
-    const posE2 = document.querySelector("#posE2");
-    const posE3 = document.querySelector("#posE3");
-    const posE4 = document.querySelector("#posE4");
-    const posE5 = document.querySelector("#posE5");
-    const posE6 = document.querySelector("#posE6");
-    const posE7 = document.querySelector("#posE7");
-    const posE8 = document.querySelector("#posE8");
-    const posE9 = document.querySelector("#posE9");
-    const posE10 = document.querySelector("#posE10");
-    const posE11 = document.querySelector("#posE11");
-    const posE12 = document.querySelector("#posE12");
-    //Enemigos vivos
-    let hayVivos = 12;
-    let posEnemigo = -1;
-    let enemyList = [ 1, 1, 1, 1, 2, 2, 3, 3, 4, 5, 6, 7 ];
+    const btnArboles = document.querySelector("#btnArboles");
+    const btnAnimales = document.querySelector("#btnAnimales");
+    const btnRocas = document.querySelector("#btnRocas");
 
     const caminos = [ 21, 40, 41, 42, 43, 44, 45, 46, 47, 54, 55, 56, 57, 58, 59, 60, 62, 67, 74, 79, 82, 87, 88, 89, 90, 91, 92, 93, 94, 99,
         102, 107, 114, 119, 122, 127, 134, 139, 142, 147, 154, 159, 162, 163, 167, 174, 178, 179, 183, 187, 194, 198, 203, 207, 214, 218,
@@ -34,20 +21,48 @@ document.addEventListener("DOMContentLoaded", function () {
     const espaciosOcupadosSiempre = [ 1, 2, 21, 22, 19, 20, 39, 40, 269, 270, 271, 272, 289, 290, 291, 292, 309, 310, 311, 312, 329,
         330, 331, 332, 561, 562, 582, 579, 580, 581, 599, 600 ];
     let celdasOcupadas = espaciosOcupadosSiempre;
+
+    //Variables de enemigos
+    let hayVivos = 12;
+    let posEnemigo = -1;
+    let enemyList = [ 1, 1, 1, 1, 2, 2, 3, 3, 4, 5, 6, 7 ];
     let celdasEnemigos = [];
     let numEnemigosPosicion = 12;
     let rondaPosEnemy = 0;
+    // Variables árboles
+    let celdasArboles = [];
+    let numArbolesPosicion = 12;
+    // Variables animales
+    let celdasAnimales = [];
+    let numAnimalesPosicion = 12;
+    // Variables rocas
+    let celdasRocas = [];
+    let numRocasPosicion = 12;
+
+
     //Listerners**************************
-
-    btnCreate.addEventListener("click", newEnemy);
-    btnKill.addEventListener("click", killEnemy);
-    btnPosEnemy.addEventListener("click", positionEnemy);
-    btnKill.style.display = "none";
-
-
-
-
+    eventListeners();
+    function eventListeners () {
+        document.addEventListener('DOMContentLoaded', prepararInicio);
+        btnCreate.addEventListener("click", newEnemy);
+        btnKill.addEventListener("click", killEnemy);
+        btnPosEnemy.addEventListener("click", positionEnemy);
+        btnKill.style.display = "none";
+        btnArboles.addEventListener("click", () => {
+            posicionarElementos('#arbol');
+        });
+        btnAnimales.addEventListener("click", () => {
+            posicionarElementos('#animal');
+        });
+        btnRocas.addEventListener("click", () => {
+            posicionarElementos('#roca');
+        });
+    }
     //Funciones***********************
+    function prepararInicio () {
+        //TODO: 
+
+    }
     function newEnemy () {
         if (posEnemigo != -1) {
             document.querySelector(`#enemy${ posEnemigo + 1 }`).src = "images/skull.svg";
@@ -134,7 +149,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(`muerto?  pos: ${ posEnemigo } level: ${ enemigoLevel }`)
         return false;
     }
-
     //Retorna las caracteristicas de los enemigos
     function selectProps (enemigoLevel) {
         switch (enemigoLevel) {
@@ -146,16 +160,15 @@ document.addEventListener("DOMContentLoaded", function () {
             case 3:
                 return [ 9, aleatorio(9, 14), 9, aleatorio(9, 14), " LV03" ];
             case 4:
-                return [ 10, aleatorio(10, 16), 5, aleatorio(10, 16), " LV04" ];
+                return [ 10, aleatorio(10, 16), 10, aleatorio(10, 16), " LV04" ];
             case 5:
-                return [ 11, aleatorio(11, 18), 5, aleatorio(11, 18), " LV05" ];
+                return [ 11, aleatorio(11, 18), 11, aleatorio(11, 18), " LV05" ];
             case 6:
-                return [ 12, aleatorio(12, 20), 5, aleatorio(12, 20), " LV06" ];
+                return [ 12, aleatorio(12, 20), 12, aleatorio(12, 20), " LV06" ];
             default:
                 return [ 20, 20, 20, 20, " Jefe Final" ];
         }
     }
-
     function nuevaPartida () {
         createTxt01.textContent = "Partida Terminada";
         createTxt02.textContent = "Pulsa Para Una Nueva";
@@ -164,7 +177,6 @@ document.addEventListener("DOMContentLoaded", function () {
             location.reload();
         });
     }
-
     //POSICIONANDO ENEMIGOS*****************************************************
     function reposicionarEnemigos () {
         if (rondaPosEnemy === 0) {
@@ -172,15 +184,17 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
         rondaPosEnemy++;
-        for (let i = 0; i < celdasEnemigos.length; i++) {
-            let celda = celdasOcupadas.findIndex(e => e == celdasEnemigos[ i ])
-            celdasOcupadas.splice(celda, 1);
-        }
+        //borramos las celdas del array general (Descomentar si queremos que el enemigo no deje tierra impisable)
+        // for (let i = 0; i < celdasEnemigos.length; i++) {
+        //     let celda = celdasOcupadas.findIndex(e => e == celdasEnemigos[ i ])
+        //     celdasOcupadas.splice(celda, 1);
+        // }
+        console.log(celdasOcupadas.length);
+        //Borramos las celdas del array de enemigos
         while (celdasEnemigos.length > 0) {
             celdasEnemigos.shift();
         };
     }
-
     function positionEnemy () {
         reposicionarEnemigos();
         let pos;
@@ -190,14 +204,34 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         console.log(`CE ${ celdasEnemigos }`);
     }
-
     // devuelve una celda no ocupada
-    function ocupacion (n) {
+    function ocupacion (n, obj) {
         while (buscaEnCeldas(n)) {
             n = aleatorio(3, 598);
         }
         celdasOcupadas.push(n);
-        celdasEnemigos.push(n);
+        switch (obj) {
+            case '#arbol':
+                crearArboles();
+                celdasArboles.push(n);
+                btnArboles.remove();
+                break;
+            case '#animal':
+                crearAnimales();
+                celdasAnimales.push(n);
+                btnAnimales.remove();
+                break;
+            case '#roca':
+                crearRocas();
+                celdasRocas.push(n);
+                btnRocas.remove();
+                break;
+
+            default:
+                celdasEnemigos.push(n);
+                break;
+        }
+
         return n;
     }
     //devuelve true si está ocupada
@@ -208,6 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         return false;
     }
+
     function eliminarPosicionEnemigo () {
         document.querySelector(`#posE${ numEnemigosPosicion }`).remove();
         numEnemigosPosicion--;
@@ -216,5 +251,31 @@ document.addEventListener("DOMContentLoaded", function () {
             pos = document.querySelector(`#posE${ i }`);
             pos.textContent = '';
         }
+    }
+    function posicionarElementos (obj) {
+        let pos;
+        for (let i = 1; i <= numEnemigosPosicion; i++) {
+            pos = document.querySelector(obj + i);
+            pos.textContent = ocupacion(aleatorio(3, 598), obj);
+        }
+        console.log(`AR ${ celdasArboles }`);
+        console.log(`AN ${ celdasAnimales }`);
+        console.log(`RO ${ celdasRocas }`);
+    }
+    function crearArboles () {
+        for (let i = 0; i >= 3; i++) {
+
+            for (let z = 0; z >= 3; z++) {
+                const element = array[ z ];
+
+            }
+
+        }
+    }
+    function crearAnimales () {
+
+    }
+    function crearRocas () {
+
     }
 });

@@ -5,402 +5,462 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="ico" href="favicon.ico" />
         <link rel="stylesheet" href="style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <title>Lestradamus</title>
     </head>
-
-    <body class="contenedorHori" style="background-color:#333;">
-        <div class=" col p-2 general">
-            <!-- Sección enemigos activos -->
-            <section class="row enemigos">
-                <div class="col">
-                    <h2 style="color:red">Enemigos activos</h2>
-                    <div class="contenedorHori margenBotton">
-                        <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:greenyellow" id="enemy1">
-                        <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:greenyellow" id="enemy2">
-                        <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:greenyellow" id="enemy3">
-                        <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:greenyellow" id="enemy4">
-                        <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:yellow" id="enemy5">
-                        <img src="images/skull.svg" alt="Monster" class="icons" style="background-color:yellow" id="enemy6">
-                    </div>
-                    <div class="contenedorHori margenBotton">
-                        <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:orange" id="enemy7">
-                        <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:orange" id="enemy8">
-                        <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:pink" id="enemy9">
-                        <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:violet" id="enemy10">
-                        <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:magenta" id="enemy11">
-                        <img src="images/skull.svg" alt="Monster" class="icons" style="background-color:red" id="enemy12">
-                    </div>
-                </div>
-            </section>
-            <!-- Sección boton crear y matar enemigo e UI-->
-            <section class="contenedorVerti enemigoUI">
-                <!-- Botón crear enemigo -->
-                <div class="contenedorHori botonesCrearYMatar">
-                    <button type="button" class="btn btn-primary btnMio margenBotton" id="btnCreate">
-                        <h3 id="createTxt01">Crear</h3>
-                        <h3 id="createTxt02">Enemigo</h3>
-                    </button>
-                    <button type="button" style="margin-left: 0.25rem" class="btn btn-danger btnMio margenBotton" id="btnKill">
-                        <h3>Enemigo</h3>
-                        <h3>Muere</h3>
-                    </button>
-                </div>
-                <!-- Botones de crear y matar -->
-                <div class="contenedorHori margenBotton">
-                    <div class="col container-fluid text-center">
-                        <div class="row">
-                            <div class=" col">
-                                <img src="images/sword.svg" alt="espada" class="icons azulIco" style="background-color:#0d6efd">
-                                <h1 style="color:#0d6efd" id="ataque" class="azul mt-2"></h1>
+    <div class="accordion" id="accordionExample">
+        <!-- Enemigos -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Enemigos
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <section class=" row enemigos">
+                        <div class="col">
+                            <h2 style="color:red">Enemigos activos</h2>
+                            <div class="contenedorHori margenBotton">
+                                <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:greenyellow" id="enemy1">
+                                <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:greenyellow" id="enemy2">
+                                <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:greenyellow" id="enemy3">
+                                <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:greenyellow" id="enemy4">
+                                <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:yellow" id="enemy5">
+                                <img src="images/skull.svg" alt="Monster" class="icons" style="background-color:yellow" id="enemy6">
                             </div>
-                            <div class=" col ms-2">
-                                <img src="images/shield-half-filled.svg" alt="verde" class="icons verdeIco">
-                                <h1 style="color:greenyellow" class="verde mt-2" id="defensa"></h1>
-                            </div>
-                            <div class="col ms-2">
-                                <img src="images/heart.svg" alt="corazon" class="icons rojoIco">
-                                <h1 style="color:red" class="rojo mt-2" id="vida"></h1>
-                            </div>
-                            <div class="col ms-2">
-                                <img src="images/coin.svg" alt="moneda" class="icons naranjaIco">
-                                <h1 style="color:orange" class="naranja mt-2" id="tesoro"></h1>
+                            <div class="contenedorHori margenBotton">
+                                <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:orange" id="enemy7">
+                                <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:orange" id="enemy8">
+                                <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:pink" id="enemy9">
+                                <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:violet" id="enemy10">
+                                <img src="images/skull.svg" alt="Monster" class="icons me-2" style="background-color:magenta" id="enemy11">
+                                <img src="images/skull.svg" alt="Monster" class="icons" style="background-color:red" id="enemy12">
                             </div>
                         </div>
-                    </div>
+                    </section>
+                    <!-- Sección boton crear y matar enemigo e UI-->
+                    <section class="contenedorVerti enemigoUI">
+                        <!-- Botón crear enemigo -->
+                        <div class="contenedorHori botonesCrearYMatar">
+                            <button type="button" class="btn btn-primary btnMio margenBotton" id="btnCreate">
+                                <h3 id="createTxt01">Crear</h3>
+                                <h3 id="createTxt02">Enemigo</h3>
+                            </button>
+                            <button type="button" style="margin-left: 0.25rem" class="btn btn-danger btnMio margenBotton" id="btnKill">
+                                <h3>Enemigo</h3>
+                                <h3>Muere</h3>
+                            </button>
+                        </div>
+                        <!-- Botones de crear y matar -->
+                        <div class="contenedorHori margenBotton">
+                            <div class="col container-fluid text-center">
+                                <div class="row">
+                                    <div class=" col">
+                                        <img src="images/sword.svg" alt="espada" class="icons azulIco" style="background-color:#0d6efd">
+                                        <h1 style="color:#0d6efd" id="ataque" class="azul mt-2"></h1>
+                                    </div>
+                                    <div class=" col ms-2">
+                                        <img src="images/shield-half-filled.svg" alt="verde" class="icons verdeIco">
+                                        <h1 style="color:greenyellow" class="verde mt-2" id="defensa"></h1>
+                                    </div>
+                                    <div class="col ms-2">
+                                        <img src="images/heart.svg" alt="corazon" class="icons rojoIco">
+                                        <h1 style="color:red" class="rojo mt-2" id="vida"></h1>
+                                    </div>
+                                    <div class="col ms-2">
+                                        <img src="images/coin.svg" alt="moneda" class="icons naranjaIco">
+                                        <h1 style="color:orange" class="naranja mt-2" id="tesoro"></h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Sección posicionar enemigos -->
+                    <!-- Botón posicionar enemigos -->
+                    <button type="button" class="btn btn-warning  p-3 mb-4 p-4" id="btnPosEnemy">
+                        <h3>Posicionar Enemigos</h3>
+                    </button>
+                    <section class="contenedorVerti margenBotton">
+                        <!-- Primer bloque de posición de enemigos -->
+                        <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
+                            <div class="rojo col">
+                                <h3 style="color:red">1</h3>
+                                <h3 id="posE1" style="color:orange">000</h3>
+                            </div>
+                            <div class="rojo col ms-2">
+                                <h3 style="color:red">2</h3>
+                                <h3 id="posE2" style="color:orange">000</h3>
+                            </div>
+                            <div class="rojo col ms-2">
+                                <h2 style="color:red">3</h2>
+                                <h3 id="posE3" style="color:orange">000</h3>
+                            </div>
+                            <div class="rojo col ms-2">
+                                <h3 style="color:red">4</h3>
+                                <h3 id="posE4" style="color:orange">000</h3>
+                            </div>
+                        </div>
+                        <!-- Segundo bloque de posición de enemigos -->
+                        <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
+                            <div class="rojo col">
+                                <h3 style="color:red">5</h3>
+                                <h3 id="posE5" style="color:orange">000</h3>
+                            </div>
+                            <div class="rojo col ms-2">
+                                <h3 style="color:red">6</h3>
+                                <h3 id="posE6" style="color:orange">000</h3>
+                            </div>
+                            <div class="rojo col ms-2">
+                                <h2 style="color:red">7</h2>
+                                <h3 id="posE7" style="color:orange">000</h3>
+                            </div>
+                            <div class="rojo col ms-2">
+                                <h3 style="color:red">8</h3>
+                                <h3 id="posE8" style="color:orange">000</h3>
+                            </div>
+                        </div>
+                        <!-- Tercer bloque de posición de enemigos -->
+                        <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
+                            <div class="rojo col">
+                                <h3 style="color:red">9</h3>
+                                <h3 id="posE9" style="color:orange">000</h3>
+                            </div>
+                            <div class="rojo col ms-2">
+                                <h3 style="color:red">10</h3>
+                                <h3 id="posE10" style="color:orange">000</h3>
+                            </div>
+                            <div class="rojo col ms-2">
+                                <h2 style="color:red">11</h2>
+                                <h3 id="posE11" style="color:orange">000</h3>
+                            </div>
+                            <div class="rojo col ms-2">
+                                <h3 style="color:red">12</h3>
+                                <h3 id="posE12" style="color:orange">000</h3>
+                            </div>
+                        </div>
+                    </section>
                 </div>
-            </section>
-            <!-- Sección posicionar enemigos -->
-            <!-- Botón posicionar enemigos -->
-            <button type="button" class="btn btn-warning  p-3 mb-4 p-4" id="btnPosEnemy">
-                <h3>Posicionar Enemigos</h3>
-            </button>
-            <section class="contenedorVerti margenBotton">
-                <!-- Primer bloque de posición de enemigos -->
-                <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
-                    <div class="rojo col">
-                        <h3 style="color:red">1</h3>
-                        <h3 id="posE1" style="color:orange">000</h3>
-                    </div>
-                    <div class="rojo col ms-2">
-                        <h3 style="color:red">2</h3>
-                        <h3 id="posE2" style="color:orange">000</h3>
-                    </div>
-                    <div class="rojo col ms-2">
-                        <h2 style="color:red">3</h2>
-                        <h3 id="posE3" style="color:orange">000</h3>
-                    </div>
-                    <div class="rojo col ms-2">
-                        <h3 style="color:red">4</h3>
-                        <h3 id="posE4" style="color:orange">000</h3>
-                    </div>
-                </div>
-                <!-- Segundo bloque de posición de enemigos -->
-                <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
-                    <div class="rojo col">
-                        <h3 style="color:red">5</h3>
-                        <h3 id="posE5" style="color:orange">000</h3>
-                    </div>
-                    <div class="rojo col ms-2">
-                        <h3 style="color:red">6</h3>
-                        <h3 id="posE6" style="color:orange">000</h3>
-                    </div>
-                    <div class="rojo col ms-2">
-                        <h2 style="color:red">7</h2>
-                        <h3 id="posE7" style="color:orange">000</h3>
-                    </div>
-                    <div class="rojo col ms-2">
-                        <h3 style="color:red">8</h3>
-                        <h3 id="posE8" style="color:orange">000</h3>
-                    </div>
-                </div>
-                <!-- Tercer bloque de posición de enemigos -->
-                <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
-                    <div class="rojo col">
-                        <h3 style="color:red">9</h3>
-                        <h3 id="posE9" style="color:orange">000</h3>
-                    </div>
-                    <div class="rojo col ms-2">
-                        <h3 style="color:red">10</h3>
-                        <h3 id="posE10" style="color:orange">000</h3>
-                    </div>
-                    <div class="rojo col ms-2">
-                        <h2 style="color:red">11</h2>
-                        <h3 id="posE11" style="color:orange">000</h3>
-                    </div>
-                    <div class="rojo col ms-2">
-                        <h3 style="color:red">12</h3>
-                        <h3 id="posE12" style="color:orange">000</h3>
-                    </div>
-                </div>
-            </section>
-            <!-- Seccion Arboles -->
-            <!-- Botón posicionar árboles -->
-            <button type="button" class="btn btn-success p-3 mb-4 p-4" id="btnArboles">
-                <h3>Posicionar árboles</h3>
-            </button>
-            <section class="row mb-2 arboles">
-                <!-- Primer bloque de posicion árboles -->
-                <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
-                    <div class="col ms-2">
-                        <button class="btn btn-success">
-                            <img src="images/tree.svg" alt="arbol" class="icons">
-                        </button>
-                        <h1 class="verdeOs mt-2" style="color:#198754">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-success">
-                            <img src="images/tree.svg" alt="arbol" class="icons">
-                        </button>
-                        <h1 class="verdeOs mt-2" style="color:#198754">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-success">
-                            <img src="images/tree.svg" alt="arbol" class="icons">
-                        </button>
-                        <h1 class="verdeOs mt-2" style="color:#198754">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-success">
-                            <img src="images/tree.svg" alt="arbol" class="icons">
-                        </button>
-                        <h1 class="verdeOs mt-2" style="color:#198754">000</h1>
-                    </div>
-                </div>
-                <!-- Segundo bloque de posicion árboles -->
-                <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
-                    <div class="col ms-2">
-                        <button class="btn btn-success">
-                            <img src="images/tree.svg" alt="arbol" class="icons">
-                        </button>
-                        <h1 class="verdeOs mt-2" style="color:#198754">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-success">
-                            <img src="images/tree.svg" alt="arbol" class="icons">
-                        </button>
-                        <h1 class="verdeOs mt-2" style="color:#198754">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-success">
-                            <img src="images/tree.svg" alt="arbol" class="icons">
-                        </button>
-                        <h1 class="verdeOs mt-2" style="color:#198754">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-success">
-                            <img src="images/tree.svg" alt="arbol" class="icons">
-                        </button>
-                        <h1 class="verdeOs mt-2" style="color:#198754">000</h1>
-                    </div>
-                </div>
-                <!-- Tercer bloque de posicion árboles -->
-                <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
-                    <div class="col ms-2">
-                        <button class="btn btn-success">
-                            <img src="images/tree.svg" alt="arbol" class="icons">
-                        </button>
-                        <h1 class="verdeOs mt-2" style="color:#198754">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-success">
-                            <img src="images/tree.svg" alt="arbol" class="icons">
-                        </button>
-                        <h1 class="verdeOs mt-2" style="color:#198754">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-success">
-                            <img src="images/tree.svg" alt="arbol" class="icons">
-                        </button>
-                        <h1 class="verdeOs mt-2" style="color:#198754">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-success">
-                            <img src="images/tree.svg" alt="arbol" class="icons">
-                        </button>
-                        <h1 class="verdeOs mt-2" style="color:#198754">000</h1>
-                    </div>
-                </div>
-            </section>
-            <!-- Sección Animales -->
-            <!-- boton de posicion animales -->
-            <button type="button" class="btn btn-warning p-3 mb-4 p-4" id="btnArboles">
-                <h3>Posicionar animales</h3>
-            </button>
-            <section class="row mb-2 animales">
-                <!-- Primer bloque de posicion animales-->
-                <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
-                    <div class="col ms-2">
-                        <button class="btn btn-warning">
-                            <img src="images/animal.svg" alt="animal" class="icons">
-                        </button>
-                        <h1 class="naranja mt-2" style="color:orange">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-warning">
-                            <img src="images/animal.svg" alt="animal" class="icons">
-                        </button>
-                        <h1 class="naranja mt-2" style="color:orange">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-warning">
-                            <img src="images/animal.svg" alt="animal" class="icons">
-                        </button>
-                        <h1 class="naranja mt-2" style="color:orange">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-warning">
-                            <img src="images/animal.svg" alt="animal" class="icons">
-                        </button>
-                        <h1 class="naranja mt-2" style="color:orange">000</h1>
-                    </div>
-                </div>
-                <!-- Segundo bloque de posicion animales-->
-                <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
-                    <div class="col ms-2">
-                        <button class="btn btn-warning">
-                            <img src="images/animal.svg" alt="animal" class="icons">
-                        </button>
-                        <h1 class="naranja mt-2" style="color:orange">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-warning">
-                            <img src="images/animal.svg" alt="animal" class="icons">
-                        </button>
-                        <h1 class="naranja mt-2" style="color:orange">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-warning">
-                            <img src="images/animal.svg" alt="animal" class="icons">
-                        </button>
-                        <h1 class="naranja mt-2" style="color:orange">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-warning">
-                            <img src="images/animal.svg" alt="animal" class="icons">
-                        </button>
-                        <h1 class="naranja mt-2" style="color:orange">000</h1>
-                    </div>
-                </div>
-                <!-- Tercer bloque de posicion animales-->
-                <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
-                    <div class="col ms-2">
-                        <button class="btn btn-warning">
-                            <img src="images/animal.svg" alt="animal" class="icons">
-                        </button>
-                        <h1 class="naranja mt-2" style="color:orange">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-warning">
-                            <img src="images/animal.svg" alt="animal" class="icons">
-                        </button>
-                        <h1 class="naranja mt-2" style="color:orange">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-warning">
-                            <img src="images/animal.svg" alt="animal" class="icons">
-                        </button>
-                        <h1 class="naranja mt-2" style="color:orange">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-warning">
-                            <img src="images/animal.svg" alt="animal" class="icons">
-                        </button>
-                        <h1 class="naranja mt-2" style="color:orange">000</h1>
-                    </div>
-                </div>
-            </section>
-            <!-- Contenedor Rocas -->
-            <!-- boton de posicion rocas -->
-            <button type="button" class="btn btn-primary p-3 mb-4 p-4" id="btnArboles">
-                <h3>Posicionar rocas</h3>
-            </button>
-            <section class="row mb-2 rocas">
-                <!-- Primer bloque de posicion rocas -->
-                <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
-                    <div class="col ms-2">
-                        <button class="btn btn-primary">
-                            <img src="images/stone.svg" alt="roca" class="icons">
-                        </button>
-                        <h1 class="azul mt-2" style="color:#0d6efd">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-primary">
-                            <img src="images/stone.svg" alt="roca" class="icons">
-                        </button>
-                        <h1 class="azul mt-2" style="color:#0d6efd">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-primary">
-                            <img src="images/stone.svg" alt="roca" class="icons">
-                        </button>
-                        <h1 class="azul mt-2" style="color:#0d6efd">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-primary">
-                            <img src="images/stone.svg" alt="roca" class="icons">
-                        </button>
-                        <h1 class="azul mt-2" style="color:#0d6efd">000</h1>
-                    </div>
-                </div>
-                <!-- Segundo bloque de posicion rocas -->
-                <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
-                    <div class="col ms-2">
-                        <button class="btn btn-primary">
-                            <img src="images/stone.svg" alt="roca" class="icons">
-                        </button>
-                        <h1 class="azul mt-2" style="color:#0d6efd">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-primary">
-                            <img src="images/stone.svg" alt="roca" class="icons">
-                        </button>
-                        <h1 class="azul mt-2" style="color:#0d6efd">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-primary">
-                            <img src="images/stone.svg" alt="roca" class="icons">
-                        </button>
-                        <h1 class="azul mt-2" style="color:#0d6efd">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-primary">
-                            <img src="images/stone.svg" alt="roca" class="icons">
-                        </button>
-                        <h1 class="azul mt-2" style="color:#0d6efd">000</h1>
-                    </div>
-                </div>
-                <!-- Tercer bloque de posicion rocas -->
-                <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
-                    <div class="col ms-2">
-                        <button class="btn btn-primary">
-                            <img src="images/stone.svg" alt="roca" class="icons">
-                        </button>
-                        <h1 class="azul mt-2" style="color:#0d6efd">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-primary">
-                            <img src="images/stone.svg" alt="roca" class="icons">
-                        </button>
-                        <h1 class="azul mt-2" style="color:#0d6efd">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-primary">
-                            <img src="images/stone.svg" alt="roca" class="icons">
-                        </button>
-                        <h1 class="azul mt-2" style="color:#0d6efd">000</h1>
-                    </div>
-                    <div class="col ms-2">
-                        <button class="btn btn-primary">
-                            <img src="images/stone.svg" alt="roca" class="icons">
-                        </button>
-                        <h1 class="azul mt-2" style="color:#0d6efd">000</h1>
-                    </div>
-                </div>
-            </section>
+            </div>
         </div>
-        <script type="text/javascript" src="index.js"></script>
+        <!-- Árboles -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Arboles
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <!-- <strong>Este es el cuerpo del acordeón del segundo elemento.</strong> 
+                        Está oculto de manera predeterminada, hasta que el complemento de Collapse agregue las clases apropiadas que usamos para diseñar cada elemento. 
+                        Estas clases controlan la apariencia general, así como la visualización y ocultación a través de transiciones CSS. 
+                        Puedes modificar cualquiera de esto con CSS personalizado o sobrescribir nuestras variables predeterminadas. 
+                        También vale la pena señalar que casi cualquier HTML puede ir dentro de <code>.accordion-body</code>, aunque la transición limita el desbordamiento. -->
+                    <button type=" button" class="btn btn-success p-3 mb-4 p-4" id="btnArboles">
+                        <h3 id="scrollspyHeading1">Posicionar árboles</h3>
+                    </button>
+                    <section class="row mb-2 arboles">
+                        <!-- Primer bloque de posicion árboles -->
+                        <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
+                            <div class="col ms-2">
+                                <button class="btn btn-success">
+                                    <img src="images/tree.svg" alt="arbol" class="icons">
+                                </button>
+                                <h1 id="arbol1" class="verdeOs mt-2" style="color:#198754">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-success">
+                                    <img src="images/tree.svg" alt="arbol" class="icons">
+                                </button>
+                                <h1 id="arbol2" class="verdeOs mt-2" style="color:#198754">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-success">
+                                    <img src="images/tree.svg" alt="arbol" class="icons">
+                                </button>
+                                <h1 id="arbol3" class="verdeOs mt-2" style="color:#198754">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-success">
+                                    <img src="images/tree.svg" alt="arbol" class="icons">
+                                </button>
+                                <h1 id="arbol4" class="verdeOs mt-2" style="color:#198754">000</h1>
+                            </div>
+                        </div>
+                        <!-- Segundo bloque de posicion árboles -->
+                        <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
+                            <div class="col ms-2">
+                                <button class="btn btn-success">
+                                    <img src="images/tree.svg" alt="arbol" class="icons">
+                                </button>
+                                <h1 id="arbol5" class="verdeOs mt-2" style="color:#198754">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-success">
+                                    <img src="images/tree.svg" alt="arbol" class="icons">
+                                </button>
+                                <h1 id="arbol6" class="verdeOs mt-2" style="color:#198754">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-success">
+                                    <img src="images/tree.svg" alt="arbol" class="icons">
+                                </button>
+                                <h1 id="arbol7" class="verdeOs mt-2" style="color:#198754">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-success">
+                                    <img src="images/tree.svg" alt="arbol" class="icons">
+                                </button>
+                                <h1 id="arbol8" class="verdeOs mt-2" style="color:#198754">000</h1>
+                            </div>
+                        </div>
+                        <!-- Tercer bloque de posicion árboles -->
+                        <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
+                            <div class="col ms-2">
+                                <button class="btn btn-success">
+                                    <img src="images/tree.svg" alt="arbol" class="icons">
+                                </button>
+                                <h1 id="arbol9" class="verdeOs mt-2" style="color:#198754">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-success">
+                                    <img src="images/tree.svg" alt="arbol" class="icons">
+                                </button>
+                                <h1 id="arbol10" class="verdeOs mt-2" style="color:#198754">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-success">
+                                    <img src="images/tree.svg" alt="arbol" class="icons">
+                                </button>
+                                <h1 id="arbol11" class="verdeOs mt-2" style="color:#198754">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-success">
+                                    <img src="images/tree.svg" alt="arbol" class="icons">
+                                </button>
+                                <h1 id="arbol12" class="verdeOs mt-2" style="color:#198754">000</h1>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!-- Animales -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Animales
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <button type=" button" class="btn btn-warning p-3 mb-4 p-4" id="btnAnimales">
+                        <h3>Posicionar animales</h3>
+                    </button>
+                    <section class="row mb-2 animales">
+                        <!-- Primer bloque de posicion animales-->
+                        <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
+                            <div class="col ms-2">
+                                <button class="btn btn-warning">
+                                    <img src="images/animal.svg" alt="animal" class="icons">
+                                </button>
+                                <h1 id="animal1" class="naranja mt-2" style="color:orange">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-warning">
+                                    <img src="images/animal.svg" alt="animal" class="icons">
+                                </button>
+                                <h1 id="animal2" class="naranja mt-2" style="color:orange">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-warning">
+                                    <img src="images/animal.svg" alt="animal" class="icons">
+                                </button>
+                                <h1 id="animal3" class="naranja mt-2" style="color:orange">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-warning">
+                                    <img src="images/animal.svg" alt="animal" class="icons">
+                                </button>
+                                <h1 id="animal4" class="naranja mt-2" style="color:orange">000</h1>
+                            </div>
+                        </div>
+                        <!-- Segundo bloque de posicion animales-->
+                        <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
+                            <div class="col ms-2">
+                                <button class="btn btn-warning">
+                                    <img src="images/animal.svg" alt="animal" class="icons">
+                                </button>
+                                <h1 id="animal5" class="naranja mt-2" style="color:orange">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-warning">
+                                    <img src="images/animal.svg" alt="animal" class="icons">
+                                </button>
+                                <h1 id="animal6" class="naranja mt-2" style="color:orange">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-warning">
+                                    <img src="images/animal.svg" alt="animal" class="icons">
+                                </button>
+                                <h1 id="animal7" class="naranja mt-2" style="color:orange">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-warning">
+                                    <img src="images/animal.svg" alt="animal" class="icons">
+                                </button>
+                                <h1 id="animal8" class="naranja mt-2" style="color:orange">000</h1>
+                            </div>
+                        </div>
+                        <!-- Tercer bloque de posicion animales-->
+                        <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
+                            <div class="col ms-2">
+                                <button class="btn btn-warning">
+                                    <img src="images/animal.svg" alt="animal" class="icons">
+                                </button>
+                                <h1 id="animal9" class="naranja mt-2" style="color:orange">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-warning">
+                                    <img src="images/animal.svg" alt="animal" class="icons">
+                                </button>
+                                <h1 id="animal10" class="naranja mt-2" style="color:orange">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-warning">
+                                    <img src="images/animal.svg" alt="animal" class="icons">
+                                </button>
+                                <h1 id="animal11" class="naranja mt-2" style="color:orange">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-warning">
+                                    <img src="images/animal.svg" alt="animal" class="icons">
+                                </button>
+                                <h1 id="animal12" class="naranja mt-2" style="color:orange">000</h1>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!-- Rocas -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCuatro" aria-expanded="false" aria-controls="collapseCuatro">
+                    Rocas
+                </button>
+            </h2>
+            <div id="collapseCuatro" class="accordion-collapse collapse" aria-labelledby="headingCuatro" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <button type=" button" class="btn btn-primary p-3 mb-4 p-4" id="btnRocas">
+                        <h3>Posicionar rocas</h3>
+                    </button>
+                    <section class="row mb-2 rocas">
+                        <!-- Primer bloque de posicion rocas -->
+                        <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
+                            <div class="col ms-2">
+                                <button class="btn btn-primary">
+                                    <img src="images/stone.svg" alt="roca" class="icons">
+                                </button>
+                                <h1 id="roca1" class="azul mt-2" style="color:#0d6efd">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-primary">
+                                    <img src="images/stone.svg" alt="roca" class="icons">
+                                </button>
+                                <h1 id="roca2" class="azul mt-2" style="color:#0d6efd">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-primary">
+                                    <img src="images/stone.svg" alt="roca" class="icons">
+                                </button>
+                                <h1 id="roca3" class="azul mt-2" style="color:#0d6efd">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-primary">
+                                    <img src="images/stone.svg" alt="roca" class="icons">
+                                </button>
+                                <h1 id="roca4" class="azul mt-2" style="color:#0d6efd">000</h1>
+                            </div>
+                        </div>
+                        <!-- Segundo bloque de posicion rocas -->
+                        <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
+                            <div class="col ms-2">
+                                <button class="btn btn-primary">
+                                    <img src="images/stone.svg" alt="roca" class="icons">
+                                </button>
+                                <h1 id="roca5" class="azul mt-2" style="color:#0d6efd">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-primary">
+                                    <img src="images/stone.svg" alt="roca" class="icons">
+                                </button>
+                                <h1 id="roca6" class="azul mt-2" style="color:#0d6efd">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-primary">
+                                    <img src="images/stone.svg" alt="roca" class="icons">
+                                </button>
+                                <h1 id="roca7" class="azul mt-2" style="color:#0d6efd">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-primary">
+                                    <img src="images/stone.svg" alt="roca" class="icons">
+                                </button>
+                                <h1 id="roca8" class="azul mt-2" style="color:#0d6efd">000</h1>
+                            </div>
+                        </div>
+                        <!-- Tercer bloque de posicion rocas -->
+                        <div class="row flex-nowrap text-center mb-2 me-2 ms-0">
+                            <div class="col ms-2">
+                                <button class="btn btn-primary">
+                                    <img src="images/stone.svg" alt="roca" class="icons">
+                                </button>
+                                <h1 id="roca9" class="azul mt-2" style="color:#0d6efd">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-primary">
+                                    <img src="images/stone.svg" alt="roca" class="icons">
+                                </button>
+                                <h1 id="roca10" class="azul mt-2" style="color:#0d6efd">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-primary">
+                                    <img src="images/stone.svg" alt="roca" class="icons">
+                                </button>
+                                <h1 id="roca11" class="azul mt-2" style="color:#0d6efd">000</h1>
+                            </div>
+                            <div class="col ms-2">
+                                <button class="btn btn-primary">
+                                    <img src="images/stone.svg" alt="roca" class="icons">
+                                </button>
+                                <h1 id="roca12" class="azul mt-2" style="color:#0d6efd">000</h1>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!-- Ya veremos -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCinco" aria-expanded="false" aria-controls="collapseCinco">
+                    ya veremos
+                </button>
+            </h2>
+            <div id="collapseCinco" class="accordion-collapse collapse" aria-labelledby="headingCinco" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script type="text/javascript" src="index.js"></script>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
