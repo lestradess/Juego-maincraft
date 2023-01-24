@@ -26,7 +26,7 @@ const caminos = [ 21, 40, 41, 42, 43, 44, 45, 46, 47, 54, 55, 56, 57, 58, 59, 60
 //tablero de 30 x 20 = 600 casillas
 const espaciosOcupadosSiempre = [ 1, 2, 21, 22, 19, 20, 39, 40, 269, 270, 271, 272, 289, 290, 291, 292, 309, 310, 311, 312, 329,
     330, 331, 332, 561, 562, 582, 579, 580, 581, 599, 600 ];
-let celdasOcupadas = espaciosOcupadosSiempre;
+let celdasOcupadas = espaciosOcupadosSiempre.slice();
 let celdasEnemigos = [];
 let numEnemigosPosicion = 12;
 let rondaPosEnemy = 0;
@@ -50,11 +50,9 @@ function eventListeners () {
     btnAnimales.addEventListener("click", positionAnimales);
     btnRocas.addEventListener("click", positionRocas);
 }
-
-
-
-
 //Funciones***********************
+//ENEMIGOS*****************************************************
+
 function newEnemy () {
     if (posEnemigo != -1) {
         document.querySelector(`#enemy${ posEnemigo + 1 }`).src = "images/skull.svg";
@@ -99,10 +97,6 @@ function killEnemyImg () {
 // Elección de enemigo y mostrar datos ****************************************************
 function markEnemy () {
     document.querySelector(`#enemy${ posEnemigo + 1 }`).src = "images/skull_2.svg";
-}
-//Nos da un número aleatorio entre un mínimo y un máximo incluidos
-function aleatorio (min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 //Devuelve el level del enemigo
 function eligeEnemigo (e) {
@@ -157,7 +151,15 @@ function estaVivo (enemigoLevel) {
     console.log(`muerto?  pos: ${ posEnemigo } level: ${ enemigoLevel }`)
     return false;
 }
-
+// crea una nueva partida
+function nuevaPartida () {
+    createTxt01.textContent = "Partida Terminada";
+    createTxt02.textContent = "Pulsa Para Una Nueva";
+    btnCreate.style.backgroundColor = "green";
+    btnCreate.addEventListener("click", () => {
+        location.reload();
+    });
+}
 //Retorna las caracteristicas de los enemigos
 function selectProps (enemigoLevel) {
     switch (enemigoLevel) {
@@ -178,18 +180,6 @@ function selectProps (enemigoLevel) {
             return [ 20, 20, 20, 20, " Jefe Final" ];
     }
 }
-
-function nuevaPartida () {
-    createTxt01.textContent = "Partida Terminada";
-    createTxt02.textContent = "Pulsa Para Una Nueva";
-    btnCreate.style.backgroundColor = "green";
-    btnCreate.addEventListener("click", () => {
-        location.reload();
-    });
-}
-
-//POSICIONANDO ENEMIGOS*****************************************************
-
 function reposicionarEnemigos () {
 
     for (let i = 0; i < celdasEnemigos.length; i++) {
@@ -237,23 +227,6 @@ function positionEnemy () {
     posicionarMapa();
 }
 
-// devuelve una celda no ocupada
-function ocupacion (n) {
-    while (buscaEnCeldas(n)) {
-        n = aleatorio(3, 598);
-    }
-    celdasOcupadas.push(n);
-
-    return n;
-}
-//devuelve true si está ocupada
-function buscaEnCeldas (n) {
-    celda = celdasOcupadas.findIndex(e => e === n)
-    if (celda > -1) {
-        return true;
-    }
-    return false;
-}
 function eliminarPosicionEnemigo () {
     document.querySelector(`#posE${ numEnemigosPosicion }`).remove();
     numEnemigosPosicion--;
@@ -263,6 +236,7 @@ function eliminarPosicionEnemigo () {
         pos.textContent = '';
     }
 }
+//Arboles Animales y rocas************************************
 function positionArboles () {
     const contenedorTotal = document.querySelector("#divArboles");
     let contador = 1;
@@ -295,9 +269,13 @@ function positionArboles () {
         contenedorTotal.appendChild(divBotones);
     }
     btnArboles.style.display = "none";
+    posicionarElementos('arbol', 12);
+    celdasArboles.forEach((e, i) => {
+        document.querySelector(`#arbolTxt${ i + 1 }`).textContent = e;
+    });
     posicionarMapa();
 }
-
+//Se usa para cambiar de posición un arbol al darle al botón
 function eventoArboles (e) {
     console.log(`entró en evento arboles con id ${ e }`)
     document.querySelector(`#arbolTxt${ e }`).textContent = "OK";
@@ -309,7 +287,7 @@ function positionAnimales () {
 function positionRocas () {
 
 }
-//Mapa*******************
+//Mapa*************************************************************
 crearMapa();
 function crearMapa () {
     let contador = 20;
@@ -319,8 +297,7 @@ function crearMapa () {
         divFila.className = "contenedorHori flex-nowrap p-0";
         for (let z = 0; z < 20; z++) {
             const img = document.createElement("img");
-            img.src = "images/tree.svg";
-            img.alt = "arbol";
+            img.src = "images/x.svg";
             img.className = "icons";
             img.style.background = "white";
             img.setAttribute("id", `mapa${ contador }`);
@@ -334,13 +311,75 @@ function crearMapa () {
 }
 function posicionarMapa () {
     espaciosOcupadosSiempre.forEach(e => {
-        document.querySelector(`#mapa${ e }`).style.background = "grey";
-        console.log(e);
+        document.querySelector(`#mapa${ e }`).style.background = "#333";
     })
+    console.log("Ocupados" + espaciosOcupadosSiempre.length);
+    console.log("celdas" + celdasOcupadas.length);
     celdasEnemigos.forEach(e => {
         document.querySelector(`#mapa${ e }`).src = "images/skull.svg";
         document.querySelector(`#mapa${ e }`).style.background = "red";
-        console.log(e);
+    })
+    celdasArboles.forEach(e => {
+        document.querySelector(`#mapa${ e }`).src = "images/tree.svg";
+        document.querySelector(`#mapa${ e }`).style.background = "green";
     })
 }
+//Funciones comunes-------------------------
+//Nos da un número aleatorio entre un mínimo y un máximo incluidos
+function aleatorio (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function posicionarElementos (tipo, cantidad) {
+    switch (tipo) {
+        case 'enemigo':
 
+            break;
+        case 'arbol':
+            for (let i = 1; i <= cantidad; i++) {
+                let n = ocupacion(aleatorio(3, 598));
+                celdasArboles.push(n);
+            }
+            //colocamos los enemigos en orden
+            celdasArboles = colocarArray(celdasArboles);
+
+            break;
+        case 'animal':
+
+            break;
+        case 'roca':
+
+            break;
+
+        default:
+            break;
+    }
+}
+//devuelve true si está ocupada
+function buscaEnCeldas (n) {
+    celda = celdasOcupadas.findIndex(e => e === n)
+    if (celda > -1) {
+        return true;
+    }
+    return false;
+}
+// devuelve una celda aleatoria no ocupada
+function ocupacion (n) {
+    while (buscaEnCeldas(n)) {
+        n = aleatorio(3, 598);
+    }
+    celdasOcupadas.push(n);
+
+    return n;
+}
+function colocarArray (e) {
+    e.sort((a, b) => {
+        if (a == b) {
+            return 0;
+        }
+        if (a < b) {
+            return -1;
+        }
+        return 1;
+    });
+    return e;
+}
