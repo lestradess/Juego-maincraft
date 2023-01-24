@@ -21,16 +21,19 @@ h2 {
     padding-right: 1rem;
     margin: 0;
 }
+
 h3 {
     text-align: center;
     margin: 0;
 }
-button{
-    margin:0;
+
+button {
+    margin: 0;
     padding: 16px;
     width: 100%;
 }
-.general{
+
+.general {
     width: 95%;
     margin: 10px;
 }
@@ -49,7 +52,7 @@ button{
 
 .icons {
     border-radius: 0.5rem;
-    width: 100%; */
+    width: 100%;
 }
 
 .contenedorVerti {
@@ -72,20 +75,24 @@ button{
 .margenBotton {
     margin-bottom: 1rem;
 }
-.margingDe{
+
+.margingDe {
     margin-right: 0.25rem;
 }
-.marginIz{
+
+.marginIz {
     margin-left: 0.25rem;
 }
-.paddingZ{
+
+.paddingZ {
     padding: 0;
 }
 
 .verde {
     border: 1px solid greenyellow;
-    border-radius: 0.5rem;   
+    border-radius: 0.5rem;
 }
+
 .verdeOs {
     border: 1px solid #198754;
     border-radius: 0.5rem;
@@ -99,7 +106,7 @@ button{
 .naranja {
     border: 1px solid orange;
     border-radius: 0.5rem;
-    
+
 }
 
 .rojo {
@@ -123,3 +130,4 @@ button{
 .rojoIco {
     background-color: red;
 }
+
