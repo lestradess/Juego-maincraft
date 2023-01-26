@@ -1,0 +1,385 @@
+:root {
+	--texto: rgba(255,255,255, .7);
+	--blanco: #fff;
+	--input: #3A3B3C;
+	--input-hover: #4b4d4e;
+	--activo: #2D88FF;
+	--gris-claro: #B0B3B8;
+	--fondo-contenido: #242526;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: #18191A;
+	color: var(--texto);
+}
+
+a {
+	color: var(--texto);
+	text-decoration: none;
+}
+
+/* ------------------ */
+/* ----- HEADER ----- */
+/* ------------------ */
+header {
+	background: var(--fondo-contenido);
+}
+
+header .logo {
+	display: inline-block;
+}
+
+header .logo svg {
+	color: var(--blanco);
+	height: 35px;
+	width: 35px;
+}
+
+header .barra-busqueda {
+	position: relative;
+	width: 100%;
+}
+
+header .barra-busqueda input {
+	width: 100%;
+	border: none;
+	background: var(--input);
+	color: var(--texto);
+	height: 40px;
+	border-radius: 100px;
+	padding: 0 20px 0 40px;
+}
+
+header .barra-busqueda .icono {
+	position: absolute;
+	top: 6px;
+	left: 15px;
+	color: var(--texto);
+}
+
+/* Menu Principal */
+header .menu a {
+	display: inline-block;
+	padding: 10px 40px;
+}
+
+header .menu a:hover {
+	color: var(--texto);
+	background: var(--input);
+	border-radius: 5px;
+}
+
+header .menu a svg {
+	width: 25px;
+	height: 25px;
+}
+
+header .menu .active {
+	border-bottom: 4px solid var(--activo);
+	color: var(--activo);
+}
+
+header .menu .active:hover {
+	background: none;
+	border-radius: 0px;
+	color: var(--activo);
+}
+
+/* Botones */
+header .botones a {
+	background: var(--input);
+	display: inline-flex;
+	border-radius: 100px;
+	min-width: 40px;
+	height: 40px;
+	align-items: center;
+	justify-content: center;
+	margin-left: 7px;
+}
+
+header .botones a:hover {
+	background: #4b4d4e;
+	color: var(--texto);
+}
+
+header .botones .perfil {
+	height: 40px;
+	padding: 0 7px;
+	background: none;
+	min-width: max-content;
+}
+
+header .botones .perfil img {
+	width: 30px;
+	height: 30px;
+	border-radius: 100px;
+	margin-right: 5px;
+}
+
+/* --- Aside ---  */
+aside {
+	height: 100vh;
+	overflow: auto;
+	padding-top: 60px;
+}
+
+/* Aside Enlaces Rapidos */
+.enlaces-rapidos > nav a {
+	display: flex;
+	align-items: center;
+	color: var(--blanco);
+	padding: 10px 10px;
+	border-radius: 3px;
+}
+
+.enlaces-rapidos > nav a:hover {
+	background: var(--input-hover);
+}
+
+.enlaces-rapidos .perfil img {
+	width: 30px;
+	height: 30px;
+	border-radius: 100px;
+	margin-right: 10px;
+}
+
+.enlaces-rapidos .icono {
+	margin-right: 20px;
+}
+
+.enlaces-rapidos .icono svg {
+	height: 20px;
+	width: 20px;
+}
+
+/* Footer */
+footer {
+	margin: 40px 0;
+}
+
+footer nav a {
+	font-size: 14px;
+	margin-right: 7px;
+	color: var(--gris-claro);
+}
+
+footer nav a:hover {
+	text-decoration: underline;
+	color: var(--gris-claro);
+}
+
+/* --- Contactos ---  */
+.contactos .seccion {
+	margin-bottom: 20px;
+}
+
+.contactos .titulo {
+	font-size: 18px;
+	font-weight: bold;
+	color: var(--gris-claro);
+	margin-bottom: 10px;
+}
+
+.contactos .publicidad {
+	display: block;
+	max-height: 100px;
+	overflow: hidden;
+	margin-bottom: 10px;
+	border-radius: 5px;
+}
+
+.contactos .publicidad img {
+	width: 100%;
+}
+
+.contactos nav a {
+	display: flex;
+	align-items: center;
+	color: var(--blanco);
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.contactos nav a:hover {
+	background: var(--input-hover);
+}
+
+.contactos nav a img {
+	width: 30px;
+	height: 30px;
+	border-radius: 100px;
+	margin-right: 10px;
+}
+
+/* --- MAIN ---  */
+main {
+	padding-top: 70px;
+}
+
+main .publicar,
+main .publicacion {
+	background: var(--fondo-contenido);
+	width: 100%;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+
+main .publicar .formulario {
+	display: flex;
+	justify-self: start;
+}
+
+main .foto {
+	display: block;
+	width: 40px;
+	height: 40px;
+	overflow: hidden;
+	border-radius: 100px;
+	margin-right: 10px;
+}
+
+main .foto img {
+	width: 100%;
+}
+
+main .publicar .formulario input {
+	width: 100%;
+	border: none;
+	background: var(--input);
+	height: 40px;
+	border-radius: 100px;
+	padding: 0 20px;
+	color: var(--texto);
+}
+
+main .publicar .botones a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	padding: 10px;
+	border-radius: 3px;
+}
+
+main .publicar .botones a:hover {
+	background: var(--input-hover);
+	color: var(--texto);
+}
+
+main .publicar .botones a svg {
+	margin-right: 7px;
+}
+
+/* --- Publicacion ---  */
+main .publicacion .header {
+	display: flex;
+	width: 100%;
+	align-items: center;
+}
+
+main .publicacion .header .datos {
+	display: flex;
+	flex-direction: column;
+}
+
+main .publicacion .header .datos .nombre {
+	color: var(--blanco);
+}
+
+main .publicacion .header .datos .hora {
+	color: var(--texto);
+	font-size: 14px;
+}
+
+main .publicacion .header .datos .hora:hover {
+	color: var(--texto);
+}
+
+main .publicacion .header .datos a:hover {
+	color: var(--texto);
+	text-decoration: underline;
+}
+
+main .publicacion .body p {
+	margin-bottom: 10px;
+	color: var(--blanco);
+}
+
+main .publicacion .body img {
+	width: 100%;
+}
+
+main .publicacion .comentarios {
+	padding: 10px;
+}
+
+main .publicacion .comentarios .me-gusta svg {
+	margin-right: 10px;
+	color: #e75151;
+}
+
+main .publicacion .comentarios a,
+main .publicacion .comentarios .me-gusta {
+	color: var(--texto);
+}
+
+main .publicacion .comentarios a:hover {
+	text-decoration: underline;
+	color: var(--texto);
+}
+
+main .publicacion .botones button {
+	width: 100%;
+	border: none;
+	background: none;
+	color: var(--texto);
+	padding: 10px;
+	border-radius: 3px;
+}
+
+main .publicacion .botones button:hover {
+	background: #3a3b3c;
+}
+
+main .publicacion .botones button svg {
+	margin-right: 5px;
+}
+
+
+/* --- MEDIAQUERIES ---  */
+/* Dispositivo MD */
+@media screen and (max-width: 768px) {
+	.enlaces-rapidos,
+	.contactos {
+		display: none;
+	}
+}
+
+/* Dispositivo LG */
+@media screen and (max-width: 992px) {
+	header {
+		padding-top: 10px;
+	}
+
+	.menu {
+		margin-top: 10px;
+	}
+
+	.contenido-principal {
+		padding-top: 70px;
+	}
+}
+
+/* Dispositivo XL */
+@media screen and (max-width: 1200px) {
+	header .menu a {
+		padding: 10px 20px;
+	}
+}

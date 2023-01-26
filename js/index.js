@@ -40,19 +40,19 @@ function eventListeners () {
     btnKill.addEventListener("click", killEnemy);
     btnKill.style.display = "none";
     btnPosEnemy.addEventListener("click", () => {
-        posicionarElementos("#divEnemigos", "images/skull.svg", "red", "orange", "btn-danger", "enemigoTxt", "enemigoTxtDos");
+        posicionarElementos("#divEnemigos", "img/skull.svg", "red", "orange", "btn-danger", "enemigoTxt", "enemigoTxtDos");
     });
     btnCantidad.addEventListener("click", positionCantidadEnemy);
     btnCantidad.style.display = "none";
     btnMapa.addEventListener("click", posicionarMapa);
     btnArboles.addEventListener("click", () => {
-        posicionarElementos("#divArboles", "images/tree.svg", "#198754", "orange", "btn-success", "arbolTxt", "arbolTxtDos");
+        posicionarElementos("#divArboles", "img/tree.svg", "#198754", "orange", "btn-success", "arbolTxt", "arbolTxtDos");
     });
     btnAnimales.addEventListener("click", () => {
-        posicionarElementos("#animales", "images/animal.svg", "#ffc107", "red", "btn-warning", "animalTxt", "animalTxtDos")
+        posicionarElementos("#animales", "img/animal.svg", "#ffc107", "red", "btn-warning", "animalTxt", "animalTxtDos")
     });
     btnRocas.addEventListener("click", () => {
-        posicionarElementos("#rocas", "images/stone.svg", "#0d6efd", "red", "btn-primary", "rocaTxt", "rocaTxtDos");
+        posicionarElementos("#rocas", "img/stone.svg", "#0d6efd", "red", "btn-primary", "rocaTxt", "rocaTxtDos");
     });
 }
 //Funciones***********************
@@ -60,7 +60,7 @@ function eventListeners () {
 
 function newEnemy () {
     if (posEnemigo != -1) {
-        document.querySelector(`#enemy${ posEnemigo + 1 }`).src = "images/skull.svg";
+        document.querySelector(`#enemy${ posEnemigo + 1 }`).src = "img/skull.svg";
     }
     createEnemy(eligeEnemigo(aleatorio(1, 100)));
     console.log(`ListadoActual ${ enemyList }`);
@@ -101,7 +101,7 @@ function killEnemyImg () {
 }
 // Elección de enemigo y mostrar datos ****************************************************
 function markEnemy () {
-    document.querySelector(`#enemy${ posEnemigo + 1 }`).src = "images/skull_2.svg";
+    document.querySelector(`#enemy${ posEnemigo + 1 }`).src = "img/skull_2.svg";
 }
 //Devuelve el level del enemigo
 function eligeEnemigo (e) {
@@ -253,41 +253,44 @@ function posicionarElementos (div, imagen, colorA, colorB, btnClass, idA, idB) {
     let contador = 1;
     for (let z = 0; z < 3; z++) {
         const divBotones = document.createElement("div");
-        divBotones.className = "row divBotones p-0 m-2";
+        divBotones.className = "row divBotones  m-2";
         for (let i = 0; i < 4; i++) {
             const divBoton = document.createElement("div");
-            divBoton.className = "col p-2 boton";
+            divBoton.className = "d-grid col-3";
             const boton = document.createElement("button");
-            boton.className = `btn boton ${ btnClass }`;
+            boton.className = `btn boton btn-lg ${ btnClass }`;
             boton.setAttribute("value", contador);
             boton.onclick = () => eventoElementos(boton.getAttribute("value"), div);
             const img = document.createElement("img");
             img.src = imagen;
             img.className = "icons";
             const celdaNum = document.createElement("h1");
-            celdaNum.className = " border mt-2";
+            celdaNum.className = " border mt-1";
             celdaNum.style.color = "#white";
             celdaNum.textContent = contador;
             celdaNum.style.textAlign = "center";
             celdaNum.style.background = colorA;
-            const celda = document.createElement("h1");
-            celda.className = "border mt-2";
-            celda.style.color = colorA;
-            celda.style.border = `1px solid ${ colorA }`;
-            celda.textContent = "000";
-            celda.style.textAlign = "center";
-            celda.setAttribute("id", idA + contador);
+            celdaNum.style.borderRadius = "0.5rem";
+            const celdaOld = document.createElement("h1");
+            celdaOld.className = "";
+            celdaOld.style.color = "#444";
+            celdaOld.style.border = `1px solid #444`;
+            celdaOld.textContent = "000";
+            celdaOld.style.textAlign = "center";
+            celdaOld.style.borderRadius = "0.5rem";
+            celdaOld.setAttribute("id", idA + contador);
             const celdaDos = document.createElement("h1");
-            celdaDos.className = "border mt-2";
+            celdaDos.className = "mt-1";
             celdaDos.style.color = colorB;
             celdaDos.style.border = `1px solid ${ colorA }`;
+            celdaDos.style.borderRadius = "0.5rem";
             celdaDos.textContent = contador;
             celdaDos.style.textAlign = "center";
             celdaDos.setAttribute("id", idB + contador);
             boton.appendChild(img);
             divBoton.appendChild(celdaNum);
             divBoton.appendChild(boton);
-            divBoton.appendChild(celda);
+            divBoton.appendChild(celdaOld);
             divBoton.appendChild(celdaDos);
             divBotones.appendChild(divBoton);
             contador++;
@@ -295,8 +298,14 @@ function posicionarElementos (div, imagen, colorA, colorB, btnClass, idA, idB) {
         contenedorTotal.appendChild(divBotones);
     }
     switch (div) {
-        case 1:
-
+        case "#divEnemigos":
+            btnPosEnemy.style.display = "none";
+            posicionarItemsEnArrays('enemigo', 12);
+            celdasEnemigos.forEach((e, i) => {
+                document.querySelector(`#enemigoTxtDos${ i + 1 }`).textContent = e;
+            });
+            posicionarMapa();
+            console.log("Posicionar elementos enemigos");
             break;
         case "#divArboles":
             btnArboles.style.display = "none";
@@ -335,6 +344,13 @@ function posicionarElementos (div, imagen, colorA, colorB, btnClass, idA, idB) {
 //Se usa para cambiar de posición un arbol al darle al botón
 function eventoElementos (e, div) {
     switch (div) {
+        case "#divEnemigos":
+            const celdaEnemigos = document.querySelector(`#enemigoTxtDos${ e }`);
+            document.querySelector(`#enemigoTxt${ e }`).textContent = celdaEnemigos.textContent;
+            eliminarItemEnArrays("arbol", celdaEnemigos.textContent);
+            celdaEnemigos.textContent = celdaLibre();
+            reposicionarItemEnArray("enemigo", celdaEnemigos.textContent);
+            break;
         case "#divArboles":
             const celdaDos = document.querySelector(`#arbolTxtDos${ e }`);
             document.querySelector(`#arbolTxt${ e }`).textContent = celdaDos.textContent;
@@ -372,7 +388,7 @@ function crearMapa () {
         divFila.className = "contenedorHori flex-nowrap p-0";
         for (let z = 0; z < 20; z++) {
             const img = document.createElement("img");
-            img.src = "images/x.svg";
+            img.src = "img/x.svg";
             img.className = "icons";
             img.style.background = "white";
             img.textContent = contador;
@@ -399,19 +415,19 @@ function posicionarMapa () {
         document.querySelector(`#mapa${ e }`).style.background = "#333";
     })
     celdasEnemigos.forEach(e => {
-        document.querySelector(`#mapa${ e }`).src = "images/skull.svg";
+        document.querySelector(`#mapa${ e }`).src = "img/skull.svg";
         document.querySelector(`#mapa${ e }`).style.background = "red";
     })
     celdasArboles.forEach(e => {
-        document.querySelector(`#mapa${ e }`).src = "images/tree.svg";
+        document.querySelector(`#mapa${ e }`).src = "img/tree.svg";
         document.querySelector(`#mapa${ e }`).style.background = "green";
     })
     celdasAnimales.forEach(e => {
-        document.querySelector(`#mapa${ e }`).src = "images/animal.svg";
+        document.querySelector(`#mapa${ e }`).src = "img/animal.svg";
         document.querySelector(`#mapa${ e }`).style.background = "#ffc107";
     })
     celdasRocas.forEach(e => {
-        document.querySelector(`#mapa${ e }`).src = "images/stone.svg";
+        document.querySelector(`#mapa${ e }`).src = "img/stone.svg";
         document.querySelector(`#mapa${ e }`).style.background = "#0d6efd";
     })
 }
@@ -421,7 +437,12 @@ function posicionarMapa () {
 function posicionarItemsEnArrays (tipo, cantidad) {
     switch (tipo) {
         case 'enemigo':
-
+            for (let i = 1; i <= cantidad; i++) {
+                let n = celdaLibre();
+                celdasEnemigos.push(n);
+                celdasOcupadas.push(n);
+            }
+            celdasArboles = colocarArray(celdasArboles);
             break;
         case 'arbol':
             for (let i = 1; i <= cantidad; i++) {
@@ -462,7 +483,12 @@ function eliminarItemEnArrays (tipo, valor) {
     const celda = celdasOcupadas.findIndex(e => e === valor);
     switch (tipo) {
         case 'enemigo':
-
+            console.log("Entra a eliminar celdas enemigo")
+            console.log(celdasEnemigos);
+            const celdaEnemigo = celdasEnemigos.findIndex(e => e == valor);
+            celdasOcupadas.splice(celda, 1);
+            celdasEnemigos.splice(celdaEnemigo, 1);
+            break;
             break;
         case 'arbol':
             console.log("Entra a eliminar celdas arbol")
@@ -490,12 +516,14 @@ function reposicionarItemEnArray (tipo, valor) {
     celdasOcupadas.push(valor);
     switch (tipo) {
         case 'enemigo':
-
+            celdasEnemigos.push(valor);
+            console.log(celdasEnemigos);
+            posicionarMapa();
+            console.log("reposicionarItemEnArray  enemigos");
             break;
         case 'arbol':
             celdasArboles.push(valor);
             console.log(celdasArboles);
-
             posicionarMapa();
             console.log("reposicionarItemEnArray  arboles");
             break;
