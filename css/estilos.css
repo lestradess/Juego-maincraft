@@ -227,7 +227,7 @@ main .publicacion {
 	background: var(--fondo-contenido);
 	width: 100%;
 	border-radius: 5px;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 	padding: 10px;
 }
 
@@ -382,4 +382,13 @@ main .publicacion .botones button svg {
 	header .menu a {
 		padding: 10px 20px;
 	}
+}
+
+.card{
+	background-color: #3A3B3C;
+}
+.icons {
+	border-radius: 0.5rem;
+	width: 95%;
+	margin-bottom: 10px;
 }

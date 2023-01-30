@@ -34,7 +34,7 @@
 						</a>
 
 						<a href="#" id="btnSupArbol" type="button" data-bs-toggle="collapse" data-bs-target="#arboles" aria-expanded="false" aria-controls="collapseDos">
-							<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tree" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tree" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 								<path d="M12 13l-2 -2" />
 								<path d="M12 12l2 -2" />
@@ -128,8 +128,7 @@
 							<a href="#">Privacidad</a>
 							<a href="#">Condiciones</a>
 							<a href="#">Publicidad</a>
-							<a href="#">Opciones de anuncios</a>
-							<a href="#">Cookies</a>
+							<a href="#">Opciones de anuncios</a> <a href="#">Cookies</a>
 							<a href="#">Más</a>
 						</nav>
 					</footer>
@@ -141,6 +140,94 @@
 							<div class="header">
 							</div>
 							<div class="body">
+								<div class="container">
+									<!-- Botones posicionar enemigos y crear batalla -->
+									<div class="collapse" id="card">
+										<div class="card">
+											<div class="card-body  d-flex justify-content-between">
+												<a href="#card" type="button" class=" btn btn-success btn-lg col-6 me-1" data-bs-toggle="collapse" aria-expanded="false" aria-controls="card" id="btnCamPosi" value="0">Cambiar Posición</a>
+												<button class="btn btn-danger btn-lg col-6 ms-1" id="btnCrearBatalla" value="0">Crear Batalla</button>
+											</div>
+											<!-- Listado enemigos -->
+											<section class="container enemigos ">
+												<h2 style="color:red" class="text-center">Enemigos activos</h2>
+												<div class="container p-0 m-0">
+													<div class="row row-cols-6 gap-0 justify-content-between ">
+														<div class="col">
+															<img src="img/skull.svg" alt="Monster" class="icons" style="background-color:greenyellow" id="enemy1">
+														</div>
+														<div class="col">
+															<img src="img/skull.svg" alt="Monster" class="icons" style="background-color:greenyellow" id="enemy2">
+														</div>
+														<div class=" col">
+															<img src="img/skull.svg" alt="Monster" class="icons" style="background-color:greenyellow" id="enemy3">
+														</div>
+														<div class="col">
+															<img src="img/skull.svg" alt="Monster" class="icons" style="background-color:greenyellow" id="enemy4">
+														</div>
+														<div class="col">
+															<img src="img/skull.svg" alt="Monster" class="icons" style="background-color:yellow" id="enemy5">
+														</div>
+														<div class="col">
+															<img src="img/skull.svg" alt="Monster" class="icons" style="background-color:yellow" id="enemy6">
+														</div>
+														<div class="col">
+															<img src="img/skull.svg" alt="Monster" class="icons" style="background-color:orange" id="enemy7">
+														</div>
+														<div class="col">
+															<img src="img/skull.svg" alt="Monster" class="icons" style="background-color:orange" id="enemy8">
+														</div>
+														<div class="col">
+															<img src="img/skull.svg" alt="Monster" class="icons" style="background-color:pink" id="enemy9">
+														</div>
+														<div class="col">
+															<img src="img/skull.svg" alt="Monster" class="icons" style="background-color:violet" id="enemy10">
+														</div>
+														<div class="col">
+															<img src="img/skull.svg" alt="Monster" class="icons" style="background-color:magenta" id="enemy11">
+														</div>
+														<div class="col">
+															<img src="img/skull.svg" alt="Monster" class="icons" style="background-color:red" id="enemy12">
+														</div>
+													</div>
+												</div>
+											</section>
+											<!-- Skills del enemigo -->
+											<div class="container text-center">
+												<div class="row divBotones p-2">
+
+													<div class=" d-grid col-3 col-lg-2 p-1 ">
+														<a id="ataque" class="btn btn-primary btn-lg icons">
+															<img src="img/sword.svg" alt="espada"">
+															<h2>000</h2>
+															</a>
+														</div>
+														<div class=" d-grid col-3 col-lg-2 p-1">
+															<a class="btn btn-success btn-lg icons" id="defensa">
+																<img src="img/shield-half-filled.svg" alt="escudo">
+																<h2>000</h2>
+															</a>
+													</div>
+													<div class="d-grid col-3 col-lg-2 p-1">
+														<a class="btn btn-danger btn-lg icons" id="vida">
+															<img src="img/heart.svg" alt="corazon">
+															<h2>000</h2>
+														</a>
+													</div>
+													<div class="d-grid col-3 col-lg-2 p-1">
+														<a class="btn btn-warning btn-lg icons" id="tesoro">
+															<img src="img/coin.svg" alt="moneda">
+															<h2>000</h2>
+														</a>
+
+													</div>
+												</div>
+											</div>
+											<!-- Botón cancelar -->
+											<a href="#card" type="button" class=" btn btn-primary btn-lg col-12 me-1" data-bs-toggle="collapse" aria-expanded="false" aria-controls="card" id="btnCancelar">Cancelar</a>
+										</div>
+									</div>
+								</div>
 								<div class="accordion p-0" id="accordion">
 									<!-- Mapa -->
 									<div id="mapa" class="accordion-collapse collapse p-0" aria-labelledby="hCinco" data-bs-parent="#accordion">
@@ -150,7 +237,7 @@
 													<h3>Posicionar mapa</h3>
 												</button>
 												<!-- Mapa -->
-												<section class="row mt-5 " id="contenedorMapa">
+												<section class="row mt-5 p-2 " id="contenedorMapa">
 													<!-- Aquí se posicionan los elementos en el mapa -->
 												</section>
 											</div>
@@ -159,132 +246,123 @@
 									<!-- Sección Enemigos -->
 									<div id="enemigos" class="collapse" aria-labelledby="hUno" data-bs-parent="#accordion">
 										<div class="accordion-body p-0">
-											<!-- Sección posicionar enemigos -->
 											<!-- Botón posicionar enemigos -->
-											<div class="row align-items-center">
-												<div class="d-grid col-12">
-													<button type="button" class="btn btn-danger" id="btnPosEnemy">
-														<h3 id="createTxt01">Posicionar Enemigos</h3>
+											<div class="d-grid col-12 gap-0">
+												<button type="button" class="btn btn-danger" id="btnPosEnemy">
+													<h3 id="createTxt01">Posicionar Enemigos</h3>
+												</button>
+
+												<section class="p-2 container" id="divEnemigos">
+													<!-- Aquí se posicionan los enemigos -->
+												</section>
+
+											</div>
+										</div>
+										<!-- Seccion Arboles -->
+										<div id="arboles" class="collapse" aria-labelledby="hDos" data-bs-parent="#accordion">
+											<div class="accordion-body p-0">
+												<div class="d-grid col-12 gap-0">
+													<!-- Botón posicionar árboles -->
+													<button type="button" class="btn btn-success" id="btnArboles">
+														<h3>Posicionar árboles</h3>
 													</button>
+													<section class="p-2 m-0 container" id="divArboles">
+														<!-- Aquí se posicionan todos los árboles -->
+													</section>
 												</div>
 											</div>
-											<section  class="p-0" id="divEnemigos">
-												<!-- Aquí se posicionan los enemigos -->
-											</section>
 										</div>
-									</div>
-									<!-- Seccion Arboles -->
-									<div id="arboles" class="collapse p-0" aria-labelledby="hDos" data-bs-parent="#accordion">
-										<div class="accordion-body p-0">
-											<div class="d-grid col-12">
-												<!-- Botón posicionar árboles -->
-												<button type="button" class="btn btn-success" id="btnArboles">
-													<h3>Posicionar árboles</h3>
-												</button>
-												<section class="row mt-2" id="divArboles">
-													<!-- Aquí se posicionan todos los árboles -->
-												</section>
+										<!-- Sección Animales -->
+										<div id="animales" class="collapse" aria-labelledby="hTres" data-bs-parent="#accordion">
+											<div class="accordion-body p-0">
+												<div class="d-grid col-12 gap-0">
+													<!-- boton de posicion animales -->
+													<button type="button" class="btn btn-warning" id="btnAnimales">
+														<h3>Posicionar animales</h3>
+													</button>
+													<section class="p-2 m-0 container" id="animales">
+														<!-- Aquí se posicionan todos los animales-->
+													</section>
+												</div>
 											</div>
 										</div>
-									</div>
-									<!-- Sección Animales -->
-									<div id="animales" class="accordion-collapse collapse p-0" aria-labelledby="hTres" data-bs-parent="#accordion">
-										<div class="accordion-body p-0">
-											<div class="d-grid col-12">
-												<!-- boton de posicion animales -->
-												<button type="button" class="btn btn-warning" id="btnAnimales">
-													<h3>Posicionar animales</h3>
-												</button>
-												<section class="row mt-2" id="animales">
-													<!-- Aquí se posicionan todos los animales-->
-												</section>
-											</div>
-										</div>
-									</div>
-									<!-- Contenedor Rocas -->
-									<div id="rocas" class="accordion-collapse collapse p-0" aria-labelledby="hCuatro" data-bs-parent="#accordion">
-										<div class="accordion-body p-0">
-											<div class="d-grid col-12">
-												<!-- boton de posicion rocas -->
-												<button type="button" class="btn btn-primary" id="btnRocas">
-													<h3>Posicionar rocas</h3>
-												</button>
-												<section class="row mt-2" id="rocas">
-													<!-- Aquí se posicionan todos las rocas-->
-												</section>
+										<!-- Contenedor Rocas -->
+										<div id="rocas" class="collapse" aria-labelledby="hCuatro" data-bs-parent="#accordion">
+											<div class="accordion-body p-0">
+												<div class="d-grid col-12 gap-0">
+													<!-- boton de posicion rocas -->
+													<button type="button" class="btn btn-primary" id="btnRocas">
+														<h3>Posicionar rocas</h3>
+													</button>
+													<section class="p-2 container" id="rocas">
+														<!-- Aquí se posicionan todos las rocas-->
+													</section>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="publicacion invisible">
-								<div class="header">
-									<a class="foto" href="#">
-										<img src="img/persona4.jpg" alt="">
-									</a>
-									<div class="datos">
-										<a class="nombre" href="#">Cesar Doe</a>
-										<a class="hora" href="#">2hr</a>
+								<div class="publicacion invisible">
+									<div class="header">
+										<a class="foto" href="#">
+											<img src="img/persona4.jpg" alt="">
+										</a>
+										<div class="datos">
+											<a class="nombre" href="#">Cesar Doe</a>
+											<a class="hora" href="#">2hr</a>
+										</div>
 									</div>
-								</div>
-								<div class="body">
-									<p>Lorem ipsum dolor sit amet.</p>
-									<img src="img/paisaje2.jpg" alt="">
-								</div>
-								<div class="comentarios d-flex justify-content-between">
-									<div class="me-gusta d-flex justify-content-start align-items-center">
-										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-											<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-										</svg>
-										<span>60</span>
+									<div class="body">
+										<p>Lorem ipsum dolor sit amet.</p>
+										<img src="img/paisaje2.jpg" alt="">
 									</div>
-									<a href="#">7 comentarios</a>
-								</div>
-								<div class="botones  d-flex">
-									<button class="me-gusta">
-										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
-											<path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
-										</svg>
-										Me gusta
-									</button>
-									<button class="comentar">
-										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left" viewBox="0 0 16 16">
-											<path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-										</svg>
-										Comentar
-									</button>
+									<div class="comentarios d-flex justify-content-between">
+										<div class="me-gusta d-flex justify-content-start align-items-center">
+											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+												<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+											</svg>
+											<span>60</span>
+										</div>
+										<a href="#">7 comentarios</a>
+									</div>
+									<div class="botones  d-flex">
+										<button class="me-gusta">
+											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
+												<path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
+											</svg>
+											Me gusta
+										</button>
+										<button class="comentar">
+											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left" viewBox="0 0 16 16">
+												<path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+											</svg>
+											Comentar
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 				</main>
 
 				<aside class="contactos col-3 col-xl-2">
 					<div class="seccion">
 						<h3 class="titulo">Enemigos</h3>
 						<div class="col-3 justify-content-star d-flex" id="arrayEnemigos">
-
 						</div>
-
 					</div>
-
 					<div class="seccion">
 						<h3 class="titulo">Árboles</h3>
 						<div>
-
 						</div>
-
 					</div>
 					<div class="seccion">
 						<h3 class="titulo">Animales</h3>
 						<div>
-
 						</div>
 					</div>
 					<div class="seccion">
 						<h3 class="titulo">Minas</h3>
 						<div>
-
 						</div>
 					</div>
 				</aside>

@@ -18,8 +18,12 @@ const btnSupEnemigo = document.querySelector("#btnSupEnemigo");
 const btnSupArbol = document.querySelector("#btnSupArbol");
 const btnSupAnimal = document.querySelector("#btnSupAnimal");
 const btnSupRoca = document.querySelector("#btnSupRoca");
+const btnCrearBatalla = document.querySelector("#btnCrearBatalla");
+const btnCamPosi = document.querySelector("#btnCamPosi");
+const divCard = document.querySelector("#card");
+const btnCancelar = document.querySelector("#btnCancelar"); 
 //Enemigos vivos
-let hayVivos = 12;
+let enemigosVivos = 12;
 let posEnemigo = -1;
 let enemyList = [ 1, 1, 1, 1, 2, 2, 3, 3, 4, 5, 6, 7 ];
 
@@ -45,19 +49,19 @@ function eventListeners () {
     //btnKill.addEventListener("click", killEnemy);
     //btnKill.style.display = "none";
     btnPosEnemy.addEventListener("click", () => {
-        posicionarElementos("#divEnemigos", "img/skull.svg", "red","btn-danger", "enemigoTxt", "enemigoTxtDos");
+        posicionarElementos("divEnemigos", "img/skull.svg", "red", "btn-danger", "enemigoTxt", "enemigoTxtDos");
     });
     //btnCantidad.addEventListener("click", positionCantidadEnemy);
     //btnCantidad.style.display = "none";
     btnMapa.addEventListener("click", posicionarMapa);
     btnArboles.addEventListener("click", () => {
-        posicionarElementos("#divArboles", "img/tree.svg", "#198754", "btn-success", "arbolTxt", "arbolTxtDos");
+        posicionarElementos("divArboles", "img/tree.svg", "#198754", "btn-success", "arbolTxt", "arbolTxtDos");
     });
     btnAnimales.addEventListener("click", () => {
-        posicionarElementos("#animales", "img/animal.svg", "#ffc107", "btn-warning", "animalTxt", "animalTxtDos")
+        posicionarElementos("animales", "img/animal.svg", "#ffc107", "btn-warning", "animalTxt", "animalTxtDos")
     });
     btnRocas.addEventListener("click", () => {
-        posicionarElementos("#rocas", "img/stone.svg", "#0d6efd", "btn-primary", "rocaTxt", "rocaTxtDos");
+        posicionarElementos("rocas", "img/stone.svg", "#0d6efd", "btn-primary", "rocaTxt", "rocaTxtDos");
     });
     btnSupMapa.addEventListener("click", () => {
         botonActivo("btnSupMapa");
@@ -74,6 +78,14 @@ function eventListeners () {
     btnSupRoca.addEventListener("click", () => {
         botonActivo("btnSupRoca");
     });
+    btnCamPosi.addEventListener('click', () => {
+        eventoElementos(btnCamPosi.value, 'cambiarPosicionEnemigos');
+    });
+    btnCrearBatalla.addEventListener('click', () => {
+        crearBatalla(btnCrearBatalla.value);
+    });
+    btnCancelar.addEventListener('click',cancelar);
+
 }
 function botonActivo (text) {
     btnSupMapa.classList.remove("active");
@@ -103,7 +115,19 @@ function botonActivo (text) {
 }
 //Funciones***********************
 //ENEMIGOS*****************************************************
-
+function crearBatalla (valor) {
+    const enemigo = document.getElementById(`#divEnemigo${valor}`);
+    
+}
+function cancelar() {
+    console.log("Entró a cancelar")
+    for (let i = 1; i < enemigosVivos + 1; i++) {
+        const enemigo = document.querySelector(`#divEnemigos${ i }`);
+        enemigo.classList.remove("disabled");
+        enemigo.classList.remove("btn-warning");
+        enemigo.classList.add("btn-danger");
+    }
+}
 function newEnemy () {
     if (posEnemigo != -1) {
         document.querySelector(`#enemy${ posEnemigo + 1 }`).src = "img/skull.svg";
@@ -121,20 +145,20 @@ function killEnemy () {
     inserProps(0, 0, 0, 0);
     btnKill.style.display = "none";
     eliminarPosicionEnemigo();
-    hayVivos--;
-    if (hayVivos <= 0) {
+    enemigosVivos--;
+    if (enemigosVivos <= 0) {
         nuevaPartida();
     }
     // Cambiando la cantidad si es mayor que enemigos vivos
-    if (enemigosCantidad > hayVivos) {
-        enemigosCantidad = hayVivos;
+    if (enemigosCantidad > enemigosVivos) {
+        enemigosCantidad = enemigosVivos;
         eneCant.textContent = enemigosCantidad;
         btnCantidad.style.display = "none";
     }
 }
 function positionCantidadEnemy () {
     enemigosCantidad++;
-    if (enemigosCantidad > hayVivos) {
+    if (enemigosCantidad > enemigosVivos) {
         eneCant.textContent = "1";
         enemigosCantidad = 1;
     } else {
@@ -293,19 +317,23 @@ function eliminarPosicionEnemigo () {
         pos.textContent = '';
     }
 }
+
+
 //Arboles Animales y rocas************************************
 function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
-    const contenedorTotal = document.querySelector(div);
+    const contenedorTotal = document.querySelector(`#${ div }`);
     let contador = 1;
     for (let z = 0; z < 1; z++) {
         const divBotones = document.createElement("div");
-        divBotones.className = "row divBotones mr-2";
+        divBotones.className = "row divBotones p-2";
         for (let i = 0; i < 12; i++) {
             const divBoton = document.createElement("div");
-            divBoton.className = "d-grid col-3 col-lg-2";
-            const boton = document.createElement("button");
+            divBoton.className = "d-grid col-3 col-lg-2 p-1";
+            const boton = document.createElement("a");
             boton.className = `btn boton btn-lg ${ btnClass }`;
             boton.setAttribute("value", contador);
+            boton.setAttribute("type", "button");
+            boton.setAttribute("id", div + contador);
             boton.textContent = contador;
             boton.onclick = () => eventoElementos(boton.getAttribute("value"), div);
             const img = document.createElement("img");
@@ -336,20 +364,23 @@ function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
         contenedorTotal.appendChild(divBotones);
     }
     switch (div) {
-        case "#divEnemigos":
+        case "divEnemigos":
             btnPosEnemy.style.display = "none";
             posicionarItemsEnArrays('enemigo', 12);
             celdasEnemigos.forEach((e, i) => {
                 document.querySelector(`#enemigoTxtDos${ i + 1 }`).textContent = e;
             });
             posicionarMapa();
-            const uiEnemyList = document.querySelector("#arrayEnemigos");
-            const div = document.createElement("p");
-            div.textContent = celdasEnemigos;
-            uiEnemyList.appendChild(div);
+            for (let i = 1; i < enemigosVivos + 1; i++) {
+                const enemigo = document.querySelector(`#divEnemigos${ i }`);
+                enemigo.setAttribute("href", "#card");
+                enemigo.setAttribute('data-bs-toggle', "collapse");
+                enemigo.setAttribute("aria-expanded", "false");
+                enemigo.setAttribute("aria-controls", "#card");
+            }
             console.log("Posicionar elementos enemigos");
             break;
-        case "#divArboles":
+        case "divArboles":
             btnArboles.style.display = "none";
             posicionarItemsEnArrays('arbol', 12);
             celdasArboles.forEach((e, i) => {
@@ -358,7 +389,7 @@ function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
             posicionarMapa();
             console.log("Posicionar elementos arboles");
             break;
-        case "#animales":
+        case "animales":
             btnAnimales.style.display = "none";
             posicionarItemsEnArrays('animal', 12);
             celdasAnimales.forEach((e, i) => {
@@ -367,7 +398,7 @@ function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
             posicionarMapa();
             console.log("Posicionar elementos animales");
             break;
-        case "#rocas":
+        case "rocas":
             btnRocas.style.display = "none";
             posicionarItemsEnArrays('roca', 12);
             celdasRocas.forEach((e, i) => {
@@ -383,31 +414,42 @@ function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
 
 
 }
-//Se usa para cambiar de posición un arbol al darle al botón
+//Se usa para cambiar de posición a un elemento al darle al botón div es el nombre e es el puesto.
 function eventoElementos (e, div) {
+    console.log("eventoElementos");
     switch (div) {
-        case "#divEnemigos":
+        case "cambiarPosicionEnemigos":
             const celdaEnemigos = document.querySelector(`#enemigoTxtDos${ e }`);
             document.querySelector(`#enemigoTxt${ e }`).textContent = celdaEnemigos.textContent;
             eliminarItemEnArrays("enemigo", celdaEnemigos.textContent);
             celdaEnemigos.textContent = celdaLibre();
             reposicionarItemEnArray("enemigo", celdaEnemigos.textContent);
+            let enemigo = document.querySelector(`#divEnemigos${ e }`);
+            enemigo.classList.remove("btn-warning");
+            enemigo.classList.add("btn-danger");
+            for (let i = 1; i < enemigosVivos + 1; i++) {
+                enemigo = document.querySelector(`#divEnemigos${ i }`);
+                enemigo.classList.remove("disabled");
+            }
             break;
-        case "#divArboles":
+        case "divEnemigos":
+            crearCardEnemigo(e, div);
+            break;
+        case "divArboles":
             const celdaDos = document.querySelector(`#arbolTxtDos${ e }`);
             document.querySelector(`#arbolTxt${ e }`).textContent = celdaDos.textContent;
             eliminarItemEnArrays("arbol", celdaDos.textContent);
             celdaDos.textContent = celdaLibre();
             reposicionarItemEnArray("arbol", celdaDos.textContent);
             break;
-        case "#animales":
+        case "animales":
             const celdaAnimales = document.querySelector(`#animalTxtDos${ e }`);
             document.querySelector(`#animalTxt${ e }`).textContent = celdaAnimales.textContent;
             eliminarItemEnArrays("animal", celdaAnimales.textContent);
             celdaAnimales.textContent = celdaLibre();
             reposicionarItemEnArray("animal", celdaAnimales.textContent);
             break;
-        case "#rocas":
+        case "rocas":
             const celdaRocas = document.querySelector(`#rocaTxtDos${ e }`);
             document.querySelector(`#rocaTxt${ e }`).textContent = celdaRocas.textContent;
             eliminarItemEnArrays("roca", celdaRocas.textContent);
@@ -418,6 +460,22 @@ function eventoElementos (e, div) {
             break;
     }
 
+}
+function crearCardEnemigo (valor, div) {
+    console.log(`entró a crearCard ${ div + valor }`);
+    let enemigo = document.querySelector(`#${ div + valor }`);
+    enemigo.classList.remove("btn-danger");
+    enemigo.classList.add("btn-warning");
+    //Pasarle los valores a los botones
+    btnCamPosi.value = valor;
+    btnCrearBatalla.value = valor;
+    console.log(`valor de enemigo: ${ valor }`);
+    //inhabilitar los demás botones
+
+    for (let i = 1; i < enemigosVivos + 1; i++) {
+        enemigo = document.querySelector(`#${ div + i }`);
+        enemigo.classList.add("disabled");
+    }
 }
 
 //Mapa*************************************************************
@@ -452,7 +510,7 @@ function posicionarMapa () {
     btnMapa.style.display = "none";
     limpiarMapa();
     crearMapa();
-    console.log("entra a posicionar mapa")
+    console.log("posicionar mapa")
     espaciosOcupadosSiempre.forEach(e => {
         document.querySelector(`#mapa${ e }`).style.background = "#333";
     })
@@ -521,11 +579,10 @@ function posicionarItemsEnArrays (tipo, cantidad) {
 }
 
 function eliminarItemEnArrays (tipo, valor) {
-    console.log(`valor: ${ valor }`);
     const celda = celdasOcupadas.findIndex(e => e === valor);
     switch (tipo) {
         case 'enemigo':
-            console.log("Entra a eliminar celdas enemigo")
+            console.log(`Elimina celda con valor: ${ valor }`)
             console.log(celdasEnemigos);
             const celdaEnemigo = celdasEnemigos.findIndex(e => e == valor);
             celdasOcupadas.splice(celda, 1);
@@ -560,8 +617,8 @@ function reposicionarItemEnArray (tipo, valor) {
         case 'enemigo':
             celdasEnemigos.push(valor);
             console.log(celdasEnemigos);
+            console.log(`Crea celda con valor ${ valor }`);
             posicionarMapa();
-            console.log("reposicionarItemEnArray  enemigos");
             break;
         case 'arbol':
             celdasArboles.push(valor);
