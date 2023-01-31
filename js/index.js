@@ -12,6 +12,7 @@ const btnArboles = document.querySelector("#btnArboles");
 const btnAnimales = document.querySelector("#btnAnimales");
 const btnRocas = document.querySelector("#btnRocas");
 const divArboles = document.querySelector("#divArboles");
+const btnSupInicio = document.querySelector("#btnSupInicio");
 const btnMapa = document.querySelector("#btnMapa");
 const btnSupMapa = document.querySelector("#btnSupMapa");
 const btnSupEnemigo = document.querySelector("#btnSupEnemigo");
@@ -21,7 +22,8 @@ const btnSupRoca = document.querySelector("#btnSupRoca");
 const btnCrearBatalla = document.querySelector("#btnCrearBatalla");
 const btnCamPosi = document.querySelector("#btnCamPosi");
 const divCard = document.querySelector("#card");
-const btnCancelar = document.querySelector("#btnCancelar"); 
+const btnCancelar = document.querySelector("#btnCancelar");
+
 //Enemigos vivos
 let enemigosVivos = 12;
 let posEnemigo = -1;
@@ -36,7 +38,6 @@ let numEnemigosPosicion = 12;
 let rondaPosEnemy = 0;
 let enemigosCantidad = 12;
 //eneCant.textContent = enemigosCantidad;
-
 let celdasArboles = [];
 let celdasAnimales = [];
 let celdasRocas = [];
@@ -44,18 +45,13 @@ let celdasRocas = [];
 //Listerners**************************
 eventListeners();
 function eventListeners () {
-    //btnCreate.addEventListener("click", newEnemy);
-    //btnCreate.style.display = "none";
-    //btnKill.addEventListener("click", killEnemy);
-    //btnKill.style.display = "none";
+
     btnPosEnemy.addEventListener("click", () => {
-        posicionarElementos("divEnemigos", "img/skull.svg", "red", "btn-danger", "enemigoTxt", "enemigoTxtDos");
+        posicionarElementos("enemigos", "img/skull.svg", "red", "btn-danger", "enemigoTxt", "enemigoTxtDos");
     });
-    //btnCantidad.addEventListener("click", positionCantidadEnemy);
-    //btnCantidad.style.display = "none";
     btnMapa.addEventListener("click", posicionarMapa);
     btnArboles.addEventListener("click", () => {
-        posicionarElementos("divArboles", "img/tree.svg", "#198754", "btn-success", "arbolTxt", "arbolTxtDos");
+        posicionarElementos("arboles", "img/tree.svg", "#198754", "btn-success", "arbolTxt", "arbolTxtDos");
     });
     btnAnimales.addEventListener("click", () => {
         posicionarElementos("animales", "img/animal.svg", "#ffc107", "btn-warning", "animalTxt", "animalTxtDos")
@@ -63,6 +59,9 @@ function eventListeners () {
     btnRocas.addEventListener("click", () => {
         posicionarElementos("rocas", "img/stone.svg", "#0d6efd", "btn-primary", "rocaTxt", "rocaTxtDos");
     });
+    btnSupInicio.addEventListener("click", () => {
+        botonActivo("btnSupInicio");
+    })
     btnSupMapa.addEventListener("click", () => {
         botonActivo("btnSupMapa");
     });
@@ -79,12 +78,28 @@ function eventListeners () {
         botonActivo("btnSupRoca");
     });
     btnCamPosi.addEventListener('click', () => {
+
+        if (btnCamPosi.textContent === "Enemigo Escapa") {
+            for (let i = 1; i < enemigosVivos + 1; i++) {
+                const enemigo = document.querySelector(`#enemigos${ i }`);
+                enemigo.classList.remove("disabled");
+                enemigo.classList.remove("btn-warning");
+                enemigo.classList.add("btn-danger");
+            }
+            return;
+        }
         eventoElementos(btnCamPosi.value, 'cambiarPosicionEnemigos');
     });
     btnCrearBatalla.addEventListener('click', () => {
+
+        if (btnCrearBatalla.textContent === "Enemigo Muere") {
+            console.log("Enemigo muerto");
+            killEnemy();
+            return;
+        }
         crearBatalla(btnCrearBatalla.value);
     });
-    btnCancelar.addEventListener('click',cancelar);
+    btnCancelar.addEventListener('click', cancelar);
 
 }
 function botonActivo (text) {
@@ -93,7 +108,11 @@ function botonActivo (text) {
     btnSupArbol.classList.remove("active");
     btnSupAnimal.classList.remove("active");
     btnSupRoca.classList.remove("active");
+    btnSupInicio.classList.remove("active");
     switch (text) {
+        case "btnSupInicio":
+            btnSupMapa.classList.add("active");
+            break;
         case "btnSupMapa":
             btnSupMapa.classList.add("active");
             break;
@@ -116,18 +135,27 @@ function botonActivo (text) {
 //Funciones***********************
 //ENEMIGOS*****************************************************
 function crearBatalla (valor) {
-    const enemigo = document.getElementById(`#divEnemigo${valor}`);
-    
+    //TODO: limpiar html
+
+    //TODO: Quitar botones cambiar posicion y crear batalla
+    btnCrearBatalla.textContent = "Enemigo Muere";
+    btnCamPosi.textContent = "Enemigo Escapa";
+    //TODO: Poner botones enemigo ejecutado enemigo ganador
+    const enemigo = document.getElementById(`#divEnemigo${ valor }`);
+
+    newEnemy();
 }
-function cancelar() {
+//Creada para el btnCancelar usada para salir de la card de batalla de enemigos.
+function cancelar () {
     console.log("Entró a cancelar")
     for (let i = 1; i < enemigosVivos + 1; i++) {
-        const enemigo = document.querySelector(`#divEnemigos${ i }`);
+        const enemigo = document.querySelector(`#enemigos${ i }`);
         enemigo.classList.remove("disabled");
         enemigo.classList.remove("btn-warning");
         enemigo.classList.add("btn-danger");
     }
 }
+//Crea los skills de un enemigo.
 function newEnemy () {
     if (posEnemigo != -1) {
         document.querySelector(`#enemy${ posEnemigo + 1 }`).src = "img/skull.svg";
@@ -135,15 +163,13 @@ function newEnemy () {
     createEnemy(eligeEnemigo(aleatorio(1, 100)));
     console.log(`ListadoActual ${ enemyList }`);
     markEnemy();
-    btnKill.style.display = "block";
 }
-//Enemigo muerto *******************************************
+//Mata un enemigo y lo elimina de las imagenes gracias a killEnemyImg
 function killEnemy () {
     enemyList[ posEnemigo ] = 0;
     console.log(`ListadoActual ${ enemyList }`);
     killEnemyImg();
     inserProps(0, 0, 0, 0);
-    btnKill.style.display = "none";
     eliminarPosicionEnemigo();
     enemigosVivos--;
     if (enemigosVivos <= 0) {
@@ -156,20 +182,11 @@ function killEnemy () {
         btnCantidad.style.display = "none";
     }
 }
-function positionCantidadEnemy () {
-    enemigosCantidad++;
-    if (enemigosCantidad > enemigosVivos) {
-        eneCant.textContent = "1";
-        enemigosCantidad = 1;
-    } else {
-        eneCant.textContent = enemigosCantidad;
-    }
-    console.log(enemigosCantidad);
-}
+//Controla las imágenes de los enemigos.
 function killEnemyImg () {
     document.querySelector(`#enemy${ posEnemigo + 1 }`).style.backgroundColor = '#333';
 }
-// Elección de enemigo y mostrar datos ****************************************************
+// Marca el enemigo actual.
 function markEnemy () {
     document.querySelector(`#enemy${ posEnemigo + 1 }`).src = "img/skull_2.svg";
 }
@@ -187,7 +204,7 @@ function eligeEnemigo (e) {
 function createEnemy (enemigoLevel) {
     inserProps(selectProps(enemigoVivo(enemigoLevel)));
 }
-//Modifica las propiedades del enemigo y marca el enemigo activo
+//imprime las skills del enemigo
 function inserProps (prop) {
     let props = [];
     props = prop;
@@ -215,6 +232,7 @@ function enemigoVivo (enemigoLevel) {
     }
     console.log("Ya no hay enemigos vivos")
 }
+//Nos dice si un enemigo esta vivo (true o false)
 function estaVivo (enemigoLevel) {
     //buscamos si en el array hay algun enemigo de ese level 
     // -1 es no, si lo hay nos devuelve la posicion
@@ -255,59 +273,22 @@ function selectProps (enemigoLevel) {
             return [ 20, 20, 20, 20, " Jefe Final" ];
     }
 }
-function reposicionarEnemigos () {
-
-    for (let i = 0; i < celdasEnemigos.length; i++) {
-        let celda = celdasOcupadas.findIndex(e => e == celdasEnemigos[ i ])
-        celdasOcupadas.splice(celda, 1);
+function crearCardEnemigo (valor, div) {
+    console.log(`entró a crearCard ${ div + valor }`);
+    let enemigo = document.querySelector(`#${ div + valor }`);
+    enemigo.classList.remove("btn-danger");
+    enemigo.classList.add("btn-warning");
+    //Pasarle los valores a los botones
+    btnCamPosi.value = valor;
+    btnCrearBatalla.value = valor;
+    console.log(`valor de enemigo: ${ valor }`);
+    //inhabilitar los demás botones 
+    //TODO: hay que hacerlo bien.
+    for (let i = 1; i < enemigosVivos + 1; i++) {
+        enemigo = document.querySelector(`#${ div + i }`);
+        enemigo.classList.add("disabled");
     }
-    //Elimina todos los elementos
-    while (celdasEnemigos.length > 0) {
-        celdasEnemigos.shift();
-    };
-    posicionarMapa();
-    console.log("Reposicionar enemigos");
 }
-
-function positionEnemy () {
-
-
-
-
-    // if (rondaPosEnemy != 0) {
-    //     reposicionarEnemigos();
-    // }
-    // rondaPosEnemy++;
-    // //Mostramos botón cantidad enemigos
-    // btnCantidad.style.display = "block";
-
-    // //Creamos array de enemigos celdas enemigos
-    // for (let i = 1; i <= numEnemigosPosicion; i++) {
-    //     let n = celdaLibre();
-    //     celdasEnemigos.push(n);
-    // }
-
-    // //colocamos los enemigos en orden
-    // celdasEnemigos.sort((a, b) => {
-    //     if (a == b) {
-    //         return 0;
-    //     }
-    //     if (a < b) {
-    //         return -1;
-    //     }
-    //     return 1;
-    // });
-    // //Posicionamos enemigos
-    // let pos;
-    // for (let i = 0; i < numEnemigosPosicion; i++) {
-    //     pos = document.querySelector(`#posE${ i + 1 }`);
-    //     pos.textContent = celdasEnemigos[ i ];
-    // }
-    // console.log(`CE ${ celdasEnemigos }`);
-    // posicionarMapa();
-    // console.log("positionEnemy");
-}
-
 function eliminarPosicionEnemigo () {
     document.querySelector(`#posE${ numEnemigosPosicion }`).remove();
     numEnemigosPosicion--;
@@ -317,9 +298,71 @@ function eliminarPosicionEnemigo () {
         pos.textContent = '';
     }
 }
+//Actualiza los enemigos 
 
 
-//Arboles Animales y rocas************************************
+
+//Se usa para cambiar de posición a un elemento al darle al botón div es el nombre e es el puesto.
+
+
+//Mapa*************************************************************
+//Se crea el mapa por primera vez.
+function crearMapa () {
+    let contador = 20;
+    const contenedorMapa = document.querySelector("#contenedorMapa");
+    for (let i = 0; i < 30; i++) {
+        const divFila = document.createElement("div");
+        divFila.className = "col flex-nowrap p-0";
+        for (let z = 0; z < 20; z++) {
+            const img = document.createElement("img");
+            img.src = "img/x.svg";
+            img.className = "icons";
+            img.style.background = "white";
+            img.textContent = contador;
+            img.setAttribute("id", `mapa${ contador }`);
+            divFila.appendChild(img);
+            contador--;
+        }
+        contador += 40;
+        contenedorMapa.appendChild(divFila);
+    }
+}
+//Hay que limpiar el HTML del mapa al cambiar elementos de posición
+function limpiarMapa () {
+    const contenedorMapa = document.querySelector("#contenedorMapa");
+    while (contenedorMapa.firstChild) {
+        contenedorMapa.removeChild(contenedorMapa.firstChild);
+    }
+}
+//Posiciona todos los elementos en el mapa, cada vez que se manda llamar la función.
+function posicionarMapa () {
+    btnMapa.style.display = "none";
+    limpiarMapa();
+    crearMapa();
+    console.log("posicionar mapa")
+    espaciosOcupadosSiempre.forEach(e => {
+        document.querySelector(`#mapa${ e }`).style.background = "#333";
+    })
+    celdasEnemigos.forEach(e => {
+        document.querySelector(`#mapa${ e }`).src = "img/skull.svg";
+        document.querySelector(`#mapa${ e }`).style.background = "red";
+    })
+    celdasArboles.forEach(e => {
+        document.querySelector(`#mapa${ e }`).src = "img/tree.svg";
+        document.querySelector(`#mapa${ e }`).style.background = "green";
+    })
+    celdasAnimales.forEach(e => {
+        document.querySelector(`#mapa${ e }`).src = "img/animal.svg";
+        document.querySelector(`#mapa${ e }`).style.background = "#ffc107";
+    })
+    celdasRocas.forEach(e => {
+        document.querySelector(`#mapa${ e }`).src = "img/stone.svg";
+        document.querySelector(`#mapa${ e }`).style.background = "#0d6efd";
+    })
+}
+//Funciones comunes********************************************************************************
+
+//Posiciona Enemigos, Arboles, Animales y rocas************************************
 function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
     const contenedorTotal = document.querySelector(`#${ div }`);
     let contador = 1;
@@ -364,7 +407,7 @@ function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
         contenedorTotal.appendChild(divBotones);
     }
     switch (div) {
-        case "divEnemigos":
+        case "enemigos":
             btnPosEnemy.style.display = "none";
             posicionarItemsEnArrays('enemigo', 12);
             celdasEnemigos.forEach((e, i) => {
@@ -372,7 +415,7 @@ function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
             });
             posicionarMapa();
             for (let i = 1; i < enemigosVivos + 1; i++) {
-                const enemigo = document.querySelector(`#divEnemigos${ i }`);
+                const enemigo = document.querySelector(`#enemigos${ i }`);
                 enemigo.setAttribute("href", "#card");
                 enemigo.setAttribute('data-bs-toggle', "collapse");
                 enemigo.setAttribute("aria-expanded", "false");
@@ -380,7 +423,7 @@ function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
             }
             console.log("Posicionar elementos enemigos");
             break;
-        case "divArboles":
+        case "arboles":
             btnArboles.style.display = "none";
             posicionarItemsEnArrays('arbol', 12);
             celdasArboles.forEach((e, i) => {
@@ -407,14 +450,10 @@ function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
             posicionarMapa();
             console.log("Posicionar elementos rocas");
             break;
-
         default:
             break;
     }
-
-
 }
-//Se usa para cambiar de posición a un elemento al darle al botón div es el nombre e es el puesto.
 function eventoElementos (e, div) {
     console.log("eventoElementos");
     switch (div) {
@@ -424,18 +463,18 @@ function eventoElementos (e, div) {
             eliminarItemEnArrays("enemigo", celdaEnemigos.textContent);
             celdaEnemigos.textContent = celdaLibre();
             reposicionarItemEnArray("enemigo", celdaEnemigos.textContent);
-            let enemigo = document.querySelector(`#divEnemigos${ e }`);
+            let enemigo = document.querySelector(`#enemigos${ e }`);
             enemigo.classList.remove("btn-warning");
             enemigo.classList.add("btn-danger");
             for (let i = 1; i < enemigosVivos + 1; i++) {
-                enemigo = document.querySelector(`#divEnemigos${ i }`);
+                enemigo = document.querySelector(`#enemigos${ i }`);
                 enemigo.classList.remove("disabled");
             }
             break;
-        case "divEnemigos":
+        case "enemigos":
             crearCardEnemigo(e, div);
             break;
-        case "divArboles":
+        case "arboles":
             const celdaDos = document.querySelector(`#arbolTxtDos${ e }`);
             document.querySelector(`#arbolTxt${ e }`).textContent = celdaDos.textContent;
             eliminarItemEnArrays("arbol", celdaDos.textContent);
@@ -461,78 +500,6 @@ function eventoElementos (e, div) {
     }
 
 }
-function crearCardEnemigo (valor, div) {
-    console.log(`entró a crearCard ${ div + valor }`);
-    let enemigo = document.querySelector(`#${ div + valor }`);
-    enemigo.classList.remove("btn-danger");
-    enemigo.classList.add("btn-warning");
-    //Pasarle los valores a los botones
-    btnCamPosi.value = valor;
-    btnCrearBatalla.value = valor;
-    console.log(`valor de enemigo: ${ valor }`);
-    //inhabilitar los demás botones
-
-    for (let i = 1; i < enemigosVivos + 1; i++) {
-        enemigo = document.querySelector(`#${ div + i }`);
-        enemigo.classList.add("disabled");
-    }
-}
-
-//Mapa*************************************************************
-
-function crearMapa () {
-    let contador = 20;
-    const contenedorMapa = document.querySelector("#contenedorMapa");
-    for (let i = 0; i < 30; i++) {
-        const divFila = document.createElement("div");
-        divFila.className = "col flex-nowrap p-0";
-        for (let z = 0; z < 20; z++) {
-            const img = document.createElement("img");
-            img.src = "img/x.svg";
-            img.className = "icons";
-            img.style.background = "white";
-            img.textContent = contador;
-            img.setAttribute("id", `mapa${ contador }`);
-            divFila.appendChild(img);
-            contador--;
-        }
-        contador += 40;
-        contenedorMapa.appendChild(divFila);
-    }
-}
-function limpiarMapa () {
-    const contenedorMapa = document.querySelector("#contenedorMapa");
-    while (contenedorMapa.firstChild) {
-        contenedorMapa.removeChild(contenedorMapa.firstChild);
-    }
-}
-function posicionarMapa () {
-    btnMapa.style.display = "none";
-    limpiarMapa();
-    crearMapa();
-    console.log("posicionar mapa")
-    espaciosOcupadosSiempre.forEach(e => {
-        document.querySelector(`#mapa${ e }`).style.background = "#333";
-    })
-    celdasEnemigos.forEach(e => {
-        document.querySelector(`#mapa${ e }`).src = "img/skull.svg";
-        document.querySelector(`#mapa${ e }`).style.background = "red";
-    })
-    celdasArboles.forEach(e => {
-        document.querySelector(`#mapa${ e }`).src = "img/tree.svg";
-        document.querySelector(`#mapa${ e }`).style.background = "green";
-    })
-    celdasAnimales.forEach(e => {
-        document.querySelector(`#mapa${ e }`).src = "img/animal.svg";
-        document.querySelector(`#mapa${ e }`).style.background = "#ffc107";
-    })
-    celdasRocas.forEach(e => {
-        document.querySelector(`#mapa${ e }`).src = "img/stone.svg";
-        document.querySelector(`#mapa${ e }`).style.background = "#0d6efd";
-    })
-}
-//Funciones comunes-------------------------
-
 //Utilizado para la primera vez que posicionamos
 function posicionarItemsEnArrays (tipo, cantidad) {
     switch (tipo) {
@@ -542,7 +509,7 @@ function posicionarItemsEnArrays (tipo, cantidad) {
                 celdasEnemigos.push(n);
                 celdasOcupadas.push(n);
             }
-            celdasArboles = colocarArray(celdasArboles);
+            celdasEnemigos = colocarArray(celdasEnemigos);
             break;
         case 'arbol':
             for (let i = 1; i <= cantidad; i++) {
@@ -551,7 +518,6 @@ function posicionarItemsEnArrays (tipo, cantidad) {
                 celdasOcupadas.push(n);
             }
             celdasArboles = colocarArray(celdasArboles);
-
             console.log("PosicionarItemsEnArrays arboles");
             break;
         case 'animal':
@@ -561,7 +527,6 @@ function posicionarItemsEnArrays (tipo, cantidad) {
                 celdasOcupadas.push(n);
             }
             celdasAnimales = colocarArray(celdasAnimales);
-
             console.log("PosicionarItemsEnArrays animales");
             break;
         case 'roca':
@@ -577,7 +542,7 @@ function posicionarItemsEnArrays (tipo, cantidad) {
             break;
     }
 }
-
+//Elimina elementos en su respectivo array
 function eliminarItemEnArrays (tipo, valor) {
     const celda = celdasOcupadas.findIndex(e => e === valor);
     switch (tipo) {
@@ -587,7 +552,6 @@ function eliminarItemEnArrays (tipo, valor) {
             const celdaEnemigo = celdasEnemigos.findIndex(e => e == valor);
             celdasOcupadas.splice(celda, 1);
             celdasEnemigos.splice(celdaEnemigo, 1);
-            break;
             break;
         case 'arbol':
             console.log("Entra a eliminar celdas arbol")
@@ -662,7 +626,7 @@ function celdaLibre () {
 
     return n;
 }
-//Coloca el array en orden
+//Coloca el array en orden se usa solo al principio
 function colocarArray (e) {
     e.sort((a, b) => {
         if (a == b) {
@@ -675,3 +639,52 @@ function colocarArray (e) {
     });
     return e;
 }
+
+// function reposicionarEnemigos () {
+
+//     for (let i = 0; i < celdasEnemigos.length; i++) {
+//         let celda = celdasOcupadas.findIndex(e => e == celdasEnemigos[ i ])
+//         celdasOcupadas.splice(celda, 1);
+//     }
+//     //Elimina todos los elementos
+//     while (celdasEnemigos.length > 0) {
+//         celdasEnemigos.shift();
+//     };
+//     posicionarMapa();
+//     console.log("Reposicionar enemigos");
+// }
+
+// function positionEnemy () {
+//     if (rondaPosEnemy != 0) {
+//         reposicionarEnemigos();
+//     }
+//     rondaPosEnemy++;
+//     //Mostramos botón cantidad enemigos
+//     btnCantidad.style.display = "block";
+
+//     //Creamos array de enemigos celdas enemigos
+//     for (let i = 1; i <= numEnemigosPosicion; i++) {
+//         let n = celdaLibre();
+//         celdasEnemigos.push(n);
+//     }
+
+//     //colocamos los enemigos en orden
+//     celdasEnemigos.sort((a, b) => {
+//         if (a == b) {
+//             return 0;
+//         }
+//         if (a < b) {
+//             return -1;
+//         }
+//         return 1;
+//     });
+//     //Posicionamos enemigos
+//     let pos;
+//     for (let i = 0; i < numEnemigosPosicion; i++) {
+//         pos = document.querySelector(`#posE${ i + 1 }`);
+//         pos.textContent = celdasEnemigos[ i ];
+//     }
+//     console.log(`CE ${ celdasEnemigos }`);
+//     posicionarMapa();
+//     console.log("positionEnemy");
+// }

@@ -17,13 +17,21 @@
 					<!-- Logo y barra de busqueda -->
 					<!-- Menu -->
 					<div class="menu col-12 text-center">
-						<a href="#" id="btnSupMapa" type="button" data-bs-toggle="collapse" data-bs-target="#mapa" aria-expanded="false" aria-controls="collapseCinco">
+						<!-- btnSupInicio -->
+						<a href="#inicio" id="btnSupInicio" class="active" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#inicio" aria-controls="inicio">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-square" viewBox="0 0 16 16">
+								<path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+								<path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+							</svg>
+						</a>
+						<!-- btnSupMApa -->
+						<a href="#mapa" id="btnSupMapa" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#mapa" aria-controls="mapa">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-flag" viewBox="0 0 16 16">
 								<path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21.294 21.294 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21.317 21.317 0 0 0 14 7.655V1.222z" />
 							</svg>
 						</a>
-						<a href="#" id="btnSupEnemigo" class="active" type="button" data-bs-toggle="collapse" data-bs-target="#enemigos" aria-expanded="false" aria-controls="collapseUno">
-
+						<!-- btnSupEnemigo -->
+						<a href="#enemigos" id="btnSupEnemigo" type="button" data-bs-toggle="collapse" data-bs-target="#enemigos" aria-expanded="false" aria-controls="enemigos">
 							<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-skull" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 								<path d="M12 4c4.418 0 8 3.358 8 7.5c0 1.901 -.755 3.637 -1.999 4.96l-.001 2.54a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1v-2.54c-1.245 -1.322 -2 -3.058 -2 -4.96c0 -4.142 3.582 -7.5 8 -7.5z" />
 								<path d="M10 17v3" />
@@ -32,8 +40,8 @@
 								<circle cx="15" cy="11" r="1" />
 							</svg>
 						</a>
-
-						<a href="#" id="btnSupArbol" type="button" data-bs-toggle="collapse" data-bs-target="#arboles" aria-expanded="false" aria-controls="collapseDos">
+						<!-- btnSupArbol -->
+						<a href="#arboles" id="btnSupArbol" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#arboles" aria-controls="arboles">
 							<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tree" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 								<path d="M12 13l-2 -2" />
@@ -42,7 +50,8 @@
 								<path d="M9.824 15.995a3 3 0 0 1 -2.743 -3.69a2.998 2.998 0 0 1 .304 -4.833a3 3 0 0 1 4.615 -3.707a3 3 0 0 1 4.614 3.707a2.997 2.997 0 0 1 .305 4.833a3 3 0 0 1 -2.919 3.695h-4z" />
 							</svg>
 						</a>
-						<a href="#" id="btnSupAnimal" type="button" data-bs-toggle="collapse" data-bs-target="#animales" aria-expanded="false" aria-controls="collapseTres">
+						<!-- btnSupAnimal -->
+						<a href="#animales" id="btnSupAnimal" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#animales" aria-controls="aminales">
 							<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-paw" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 								<path d="M14.7 13.5c-1.1 -1.996 -1.441 -2.5 -2.7 -2.5c-1.259 0 -1.736 .755 -2.836 2.747c-.942 1.703 -2.846 1.845 -3.321 3.291c-.097 .265 -.145 .677 -.143 .962c0 1.176 .787 2 1.8 2c1.259 0 3.004 -1 4.5 -1s3.241 1 4.5 1c1.013 0 1.8 -.823 1.8 -2c0 -.285 -.049 -.697 -.146 -.962c-.475 -1.451 -2.512 -1.835 -3.454 -3.538z" />
@@ -52,7 +61,8 @@
 								<path d="M5.69 12.918c.816 -.352 1.054 -1.719 .536 -3.052c-.436 -1.124 -1.271 -1.866 -2.009 -1.866c-.14 0 -.277 .027 -.407 .082c-.816 .352 -1.054 1.719 -.536 3.052c.436 1.124 1.271 1.866 2.009 1.866c.14 0 .277 -.027 .407 -.082z" />
 							</svg>
 						</a>
-						<a href="#" id="btnSupRoca" type="button" data-bs-toggle="collapse" data-bs-target="#rocas" aria-expanded="false" aria-controls="collapseCuatro">
+						<!-- btnSupRoca -->
+						<a href="#rocas" id="btnSupRoca" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#rocas" aria-controls="rocas">
 
 							<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mountain" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -144,15 +154,15 @@
 									<!-- Botones posicionar enemigos y crear batalla -->
 									<div class="collapse" id="card">
 										<div class="card">
-											<div class="card-body  d-flex justify-content-between">
+											<div class="card-body d-flex justify-content-between">
 												<a href="#card" type="button" class=" btn btn-success btn-lg col-6 me-1" data-bs-toggle="collapse" aria-expanded="false" aria-controls="card" id="btnCamPosi" value="0">Cambiar Posición</a>
-												<button class="btn btn-danger btn-lg col-6 ms-1" id="btnCrearBatalla" value="0">Crear Batalla</button>
+												<a href="#batalla" type="button" class="btn btn-danger btn-lg col-6 ms-1" data-bs-toggle="collapse" aria-expanded="false" aria-controls="batalla" id="btnCrearBatalla" value="0">Crear Batalla</a>
 											</div>
 											<!-- Listado enemigos -->
-											<section class="container enemigos ">
-												<h2 style="color:red" class="text-center">Enemigos activos</h2>
+											<section class="container enemigos mb-2">
+												<h2 style="color:red" class="text-center mt-2 mb-3">Enemigos activos</h2>
 												<div class="container p-0 m-0">
-													<div class="row row-cols-6 gap-0 justify-content-between ">
+													<div class="row row-cols-6 gap-0 justify-content-between">
 														<div class="col">
 															<img src="img/skull.svg" alt="Monster" class="icons" style="background-color:greenyellow" id="enemy1">
 														</div>
@@ -194,32 +204,34 @@
 											</section>
 											<!-- Skills del enemigo -->
 											<div class="container text-center">
-												<div class="row divBotones p-2">
-
-													<div class=" d-grid col-3 col-lg-2 p-1 ">
-														<a id="ataque" class="btn btn-primary btn-lg icons">
-															<img src="img/sword.svg" alt="espada"">
-															<h2>000</h2>
-															</a>
-														</div>
-														<div class=" d-grid col-3 col-lg-2 p-1">
-															<a class="btn btn-success btn-lg icons" id="defensa">
-																<img src="img/shield-half-filled.svg" alt="escudo">
-																<h2>000</h2>
-															</a>
+												<div class="row p-2 collapse" id="batalla">
+													<div class=" d-grid col-3 col-lg-2 p-1 gap-0">
+														<a class="text-bg-primary rounded-top pt-2">Ataque</a>
+														<a class="text-bg-primary">
+															<img src="img/sword.svg" alt="espada">
+														</a>
+														<h2 id="ataque" class="text-bg-primary rounded-bottom pb-2">000</h2>
 													</div>
-													<div class="d-grid col-3 col-lg-2 p-1">
-														<a class="btn btn-danger btn-lg icons" id="vida">
+													<div class=" d-grid col-3 col-lg-2 p-1">
+														<a class="text-bg-success rounded-top pt-2">Defensa</a>
+														<a class="text-bg-success" >
+															<img src="img/shield-half-filled.svg" alt="escudo">
+														</a>
+														<h2 id="defensa" class="text-bg-success rounded-bottom pb-2">000</h2>
+													</div>
+													<div class=" d-grid col-3 col-lg-2 p-1">
+														<a class="text-bg-danger rounded-top pt-2">Salud</a>
+														<a class="text-bg-danger">
 															<img src="img/heart.svg" alt="corazon">
-															<h2>000</h2>
 														</a>
+														<h2 id="vida" class="text-bg-danger rounded-bottom pb-2">000</h2>
 													</div>
 													<div class="d-grid col-3 col-lg-2 p-1">
-														<a class="btn btn-warning btn-lg icons" id="tesoro">
+														<a class="text-bg-warning rounded-top pt-2">Tesoro</a>
+														<a class="text-bg-warning">
 															<img src="img/coin.svg" alt="moneda">
-															<h2>000</h2>
 														</a>
-
+														<h2 id="tesoro" class="text-bg-warning rounded-bottom pb-2">000</h2>
 													</div>
 												</div>
 											</div>
@@ -227,39 +239,50 @@
 											<a href="#card" type="button" class=" btn btn-primary btn-lg col-12 me-1" data-bs-toggle="collapse" aria-expanded="false" aria-controls="card" id="btnCancelar">Cancelar</a>
 										</div>
 									</div>
-								</div>
-								<div class="accordion p-0" id="accordion">
-									<!-- Mapa -->
-									<div id="mapa" class="accordion-collapse collapse p-0" aria-labelledby="hCinco" data-bs-parent="#accordion">
-										<div class="accordion-body p-0">
-											<div class="d-grid col-12">
-												<button type="button" class="btn btn-secondary" id="btnMapa">
-													<h3>Posicionar mapa</h3>
-												</button>
-												<!-- Mapa -->
-												<section class="row mt-5 p-2 " id="contenedorMapa">
-													<!-- Aquí se posicionan los elementos en el mapa -->
-												</section>
+
+									<div class="accordion p-0" id="accordion">
+										<!-- inicio -->
+										<div id="inicio" class="accordion-collapse collapse show p-0" data-bs-parent="#accordion">
+											<div class="accordion-body p-0">
+												<div class="d-grid col-12">
+													<h3>Información</h3>
+													<!-- Mapa -->
+													<section class="row mt-5 p-2 " id="contenedorInicio">
+														<!-- Aquí se posicionan los elementos en el mapa -->
+													</section>
+												</div>
 											</div>
 										</div>
-									</div>
-									<!-- Sección Enemigos -->
-									<div id="enemigos" class="collapse" aria-labelledby="hUno" data-bs-parent="#accordion">
-										<div class="accordion-body p-0">
-											<!-- Botón posicionar enemigos -->
-											<div class="d-grid col-12 gap-0">
-												<button type="button" class="btn btn-danger" id="btnPosEnemy">
-													<h3 id="createTxt01">Posicionar Enemigos</h3>
-												</button>
-
-												<section class="p-2 container" id="divEnemigos">
-													<!-- Aquí se posicionan los enemigos -->
-												</section>
-
+										<!-- Mapa -->
+										<div id="mapa" class="collapse" data-bs-parent="#accordion">
+											<div class="accordion-body p-0">
+												<div class="d-grid col-12">
+													<button type="button" class="btn btn-secondary" id="btnMapa">
+														<h3>Posicionar mapa</h3>
+													</button>
+													<!-- Mapa -->
+													<section class="row mt-5 p-2 " id="contenedorMapa">
+														<!-- Aquí se posicionan los elementos en el mapa -->
+													</section>
+												</div>
+											</div>
+										</div>
+										<!-- Sección Enemigos -->
+										<div id="enemigos" class="collapse" data-bs-parent="#accordion">
+											<div class="accordion-body p-0">
+												<!-- Botón posicionar enemigos -->
+												<div class="d-grid col-12 gap-0">
+													<button type="button" class="btn btn-danger" id="btnPosEnemy">
+														<h3 id="createTxt01">Posicionar Enemigos</h3>
+													</button>
+													<section class="p-2 container" id="divEnemigos">
+														<!-- Aquí se posicionan los enemigos -->
+													</section>
+												</div>
 											</div>
 										</div>
 										<!-- Seccion Arboles -->
-										<div id="arboles" class="collapse" aria-labelledby="hDos" data-bs-parent="#accordion">
+										<div id="arboles" class="collapse" data-bs-parent="#accordion">
 											<div class="accordion-body p-0">
 												<div class="d-grid col-12 gap-0">
 													<!-- Botón posicionar árboles -->
@@ -273,7 +296,7 @@
 											</div>
 										</div>
 										<!-- Sección Animales -->
-										<div id="animales" class="collapse" aria-labelledby="hTres" data-bs-parent="#accordion">
+										<div id="animales" class="collapse" data-bs-parent="#accordion">
 											<div class="accordion-body p-0">
 												<div class="d-grid col-12 gap-0">
 													<!-- boton de posicion animales -->
@@ -287,7 +310,7 @@
 											</div>
 										</div>
 										<!-- Contenedor Rocas -->
-										<div id="rocas" class="collapse" aria-labelledby="hCuatro" data-bs-parent="#accordion">
+										<div id="rocas" class="collapse" data-bs-parent="#accordion">
 											<div class="accordion-body p-0">
 												<div class="d-grid col-12 gap-0">
 													<!-- boton de posicion rocas -->
