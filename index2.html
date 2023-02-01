@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,14 +15,14 @@
 				<div class="row justify-content-evenly align-items-center">
 					<!-- Logo y barra de busqueda -->
 					<!-- Menu -->
-					<div class="menu col-12 text-center">
+					<div class="menu col-12 text-center nowrap">
 						<!-- btnSupInicio -->
-						<a href="#inicio" id="btnSupInicio" class="active" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#inicio" aria-controls="inicio">
+						<!-- <a href="#inicio" id="btnSupInicio" class="active" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#inicio" aria-controls="inicio">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-square" viewBox="0 0 16 16">
 								<path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
 								<path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
 							</svg>
-						</a>
+						</a> -->
 						<!-- btnSupMApa -->
 						<a href="#mapa" id="btnSupMapa" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#mapa" aria-controls="mapa">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-flag" viewBox="0 0 16 16">
@@ -79,8 +78,9 @@
 		<div class="container-fluid">
 			<div class="contenido-principal row justify-content-center justify-content-md-between">
 				<aside class="enlaces-rapidos col-3 col-xl-2">
+					<!-- Sección izquierda -->
 					<nav class="invisible">
-						<!-- Sección izquierda -->
+						
 						<a href="#">
 							<div class="icono">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
@@ -132,7 +132,7 @@
 							Eventos
 						</a>
 					</nav>
-
+					<!-- Pie de página -->
 					<footer class="invisible">
 						<nav>
 							<a href="#">Privacidad</a>
@@ -143,7 +143,7 @@
 						</nav>
 					</footer>
 				</aside>
-
+				<!-- Cuerpo central -->
 				<main class="col-12 col-sm-10 col-md-6 col-xxl-4">
 					<div class="publicaciones">
 						<div class="publicacion">
@@ -239,17 +239,19 @@
 											<a href="#card" type="button" class=" btn btn-primary btn-lg col-12 me-1" data-bs-toggle="collapse" aria-expanded="false" aria-controls="card" id="btnCancelar">Cancelar</a>
 										</div>
 									</div>
-
+									<!-- Empeza la sección de acordion -->
 									<div class="accordion p-0" id="accordion">
 										<!-- inicio -->
 										<div id="inicio" class="accordion-collapse collapse show p-0" data-bs-parent="#accordion">
 											<div class="accordion-body p-0">
 												<div class="d-grid col-12">
-													<h3>Información</h3>
-													<!-- Mapa -->
-													<section class="row mt-5 p-2 " id="contenedorInicio">
-														<!-- Aquí se posicionan los elementos en el mapa -->
-													</section>
+													<h3 align="center">Información de uso</h3>
+													<p align="justify">En los botones superiores tenemos 5 elementos, todos ellos se despliegan presionando su botón en la barra de navegación superior.</p>
+													<p align="justify">Al desplegarse muestran un botón con el cual posicionamos cada elemento en el mapa y a la vez nos da el número de celda de cada pieza</p>
+													<p align="justify">En el primer lugar está el mapa, donde se verá todos los demás elementos, si estos están posicionados. </p>
+													<p align="justify">En el segundo lugar están los enemigos, donde se muestra la posición de cada uno y al presionar en cada enemigo se preguntará si se quiere mover o presentar batalla, en cuyo caso se mostrarán sus atributos.</p>
+													<p align="justify">Los elementos restantes, al igual que los enemigos, al presionar el botón posicionar, se presentara el número de casilla que le corresponde a cada elemento y al hacer click en cada botón nos cambiará la ubicación de la pieza que presionemos.</p>
+													<p align="justify">Cada botón nos muestra en su parte superior la casilla que ocupaba y en la parte inferior la celda que tiene que ocupar actualmente.</p>													
 												</div>
 											</div>
 										</div>
@@ -275,7 +277,7 @@
 													<button type="button" class="btn btn-danger" id="btnPosEnemy">
 														<h3 id="createTxt01">Posicionar Enemigos</h3>
 													</button>
-													<section class="p-2 container" id="divEnemigos">
+													<section class="p-2 container" id="enemigo">
 														<!-- Aquí se posicionan los enemigos -->
 													</section>
 												</div>
@@ -289,7 +291,7 @@
 													<button type="button" class="btn btn-success" id="btnArboles">
 														<h3>Posicionar árboles</h3>
 													</button>
-													<section class="p-2 m-0 container" id="divArboles">
+													<section class="p-2 m-0 container" id="arbol">
 														<!-- Aquí se posicionan todos los árboles -->
 													</section>
 												</div>
@@ -303,7 +305,7 @@
 													<button type="button" class="btn btn-warning" id="btnAnimales">
 														<h3>Posicionar animales</h3>
 													</button>
-													<section class="p-2 m-0 container" id="animales">
+													<section class="p-2 m-0 container" id="animal">
 														<!-- Aquí se posicionan todos los animales-->
 													</section>
 												</div>
@@ -317,7 +319,7 @@
 													<button type="button" class="btn btn-primary" id="btnRocas">
 														<h3>Posicionar rocas</h3>
 													</button>
-													<section class="p-2 container" id="rocas">
+													<section class="p-2 container" id="roca">
 														<!-- Aquí se posicionan todos las rocas-->
 													</section>
 												</div>
