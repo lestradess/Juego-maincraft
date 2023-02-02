@@ -23,6 +23,8 @@ const btnCrearBatalla = document.querySelector("#btnCrearBatalla");
 const btnCamPosi = document.querySelector("#btnCamPosi");
 const divCard = document.querySelector("#card");
 const btnCancelar = document.querySelector("#btnCancelar");
+// const masDa = document.querySelector("#masDa");
+// const menosDa = document.querySelector("#menosDa");
 
 //Enemigos vivos
 let enemigosVivos = 12;
@@ -46,6 +48,16 @@ let celdasRocas = [];
 //Listerners**************************
 eventListeners();
 function eventListeners () {
+    // masDa.addEventListener("click", () => {
+    //     let a = ataque.textContent;
+    //     a++;
+    //     ataque.textContent = a;
+    // });
+    // menosDa.addEventListener("click", () => {
+    //     let a = ataque.textContent;
+    //     a--;
+    //     ataque.textContent = a;
+    // });
 
     btnPosEnemy.addEventListener("click", () => {
         posicionarElementos("enemigo", "img/skull.svg", "red", "btn-danger", "enemigoTxt", "enemigoTxtDos");
@@ -308,7 +320,7 @@ function configurarBotonesEnemigo (modo, valor) {
 }
 function crearCardEnemigo (valor, div) {
     console.log(`entró a crearCard ${ div + valor }`);
-    configurarBotonesEnemigo(false,valor);
+    configurarBotonesEnemigo(false, valor);
     //Pasarle los valores a los botones
     btnCamPosi.value = valor;
     btnCrearBatalla.value = valor;
@@ -519,7 +531,7 @@ function eventoElementos (e, div) {
             celdasEnemigos[ e - 1 ] = libre;
             document.querySelector(`#${ div }TxtDos${ e }`).textContent = libre;
             posicionarMapa();
-            configurarBotonesEnemigo(true,0);
+            configurarBotonesEnemigo(true, 0);
 
             break;
         default:
