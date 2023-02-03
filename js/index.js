@@ -23,13 +23,21 @@ const btnCrearBatalla = document.querySelector("#btnCrearBatalla");
 const btnCamPosi = document.querySelector("#btnCamPosi");
 const divCard = document.querySelector("#card");
 const btnCancelar = document.querySelector("#btnCancelar");
-// const masDa = document.querySelector("#masDa");
-// const menosDa = document.querySelector("#menosDa");
+const masDa = document.querySelector("#masDa");
+const menosDa = document.querySelector("#menosDa");
+const masDe = document.querySelector("#masDe");
+const menosDe = document.querySelector("#menosDe");
+const masVi = document.querySelector("#masVi");
+const menosVi = document.querySelector("#menosVi");
+const masTe = document.querySelector("#masTe");
+const menosTe = document.querySelector("#menosTe");
+const levelTex = document.querySelector("#enemyLevel");
 
 //Enemigos vivos
 let enemigosVivos = 12;
 let posEnemigo = -1;
 let enemyList = [ 1, 1, 1, 1, 2, 2, 3, 3, 4, 5, 6, 7 ];
+let enemigoActual;
 
 //tablero de 30 x 20 = 600 casillas
 const espaciosOcupadosSiempre = [ 1, 2, 21, 22, 19, 20, 39, 40, 269, 270, 271, 272, 289, 290, 291, 292, 309, 310, 311, 312, 329,
@@ -48,16 +56,54 @@ let celdasRocas = [];
 //Listerners**************************
 eventListeners();
 function eventListeners () {
-    // masDa.addEventListener("click", () => {
-    //     let a = ataque.textContent;
-    //     a++;
-    //     ataque.textContent = a;
-    // });
-    // menosDa.addEventListener("click", () => {
-    //     let a = ataque.textContent;
-    //     a--;
-    //     ataque.textContent = a;
-    // });
+    masDa.addEventListener("click", () => {
+        let a = ataque.textContent;
+        a++;
+        if (a > 20) a = 20;
+        ataque.textContent = a;
+    });
+    menosDa.addEventListener("click", () => {
+        let a = ataque.textContent;
+        a--;
+        if (a < 0) a = 0;
+        ataque.textContent = a;
+    });
+    masDe.addEventListener("click", () => {
+        let a = defensa.textContent;
+        a++;
+        if (a > 20) a = 20;
+        defensa.textContent = a;
+    });
+    menosDe.addEventListener("click", () => {
+        let a = defensa.textContent;
+        a--;
+        if (a < 0) a = 0;
+        defensa.textContent = a;
+    });
+    masVi.addEventListener("click", () => {
+        let a = vida.textContent;
+        a++;
+        if (a > 20) a = 20;
+        vida.textContent = a;
+    });
+    menosVi.addEventListener("click", () => {
+        let a = vida.textContent;
+        a--;
+        if (a < 0) a = 0;
+        vida.textContent = a;
+    });
+    masTe.addEventListener("click", () => {
+        let a = tesoro.textContent;
+        a++;
+        if (a > 20) a = 20;
+        tesoro.textContent = a;
+    });
+    menosTe.addEventListener("click", () => {
+        let a = tesoro.textContent;
+        a--;
+        if (a < 0) a = 0;
+        tesoro.textContent = a;
+    });
 
     btnPosEnemy.addEventListener("click", () => {
         posicionarElementos("enemigo", "img/skull.svg", "red", "btn-danger", "enemigoTxt", "enemigoTxtDos");
@@ -91,18 +137,30 @@ function eventListeners () {
         botonActivo("btnSupRoca");
     });
     btnCamPosi.addEventListener('click', () => {
-
+        console.log(btnCamPosi);
         if (btnCamPosi.textContent === "Enemigo Escapa") {
-            configurarBotonesEnemigo(true);
+
+            btnCamPosi.setAttribute("href", "#card");
+            btnCamPosi.textContent = "Cambiar Posición";
+            btnCrearBatalla.textContent = "Crear Batalla";
+            btnCrearBatalla.style.display = "none";
+            btnCamPosi.classList.add("precaucion");
             return;
         }
+        configurarBotonesEnemigo(true);
+        btnCamPosi.classList.remove("precaucion");
+        btnCrearBatalla.style.display = "block";
         eventoElementos(btnCamPosi.value, 'cambiarPosicionEnemigos');
     });
     btnCrearBatalla.addEventListener('click', () => {
 
         if (btnCrearBatalla.textContent === "Enemigo Muere") {
             console.log("Enemigo muerto");
+            btnCamPosi.textContent = "Cambiar Posición";
+            btnCrearBatalla.textContent = "Crear Batalla";
+            document.querySelector("#card").classList.remove("show");
             killEnemy();
+            configurarBotonesEnemigo(true);
             return;
         }
         crearBatalla(btnCrearBatalla.value);
@@ -144,14 +202,13 @@ function botonActivo (text) {
 //ENEMIGOS*****************************************************
 function crearBatalla (valor) {
     console.log(`valor crearBatalla ${ valor }`);
-    //TODO: limpiar html
-
-    //TODO: Quitar botones cambiar posicion y crear batalla
+    enemigoActual = valor;
+    console.log(`Enemigo actual= ${ valor }`);
+    btnCancelar.style.display = "none";
     btnCrearBatalla.textContent = "Enemigo Muere";
     btnCamPosi.textContent = "Enemigo Escapa";
-    //TODO: Poner botones enemigo ejecutado enemigo ganador
-    const enemigo = document.getElementById(`#divEnemigo${ valor }`);
-
+    btnCamPosi.setAttribute("href", "#batalla");
+    console.log(`ariacontrol ${ btnCamPosi }`);
     newEnemy();
 }
 //Creada para el btnCancelar usada para salir de la card de batalla de enemigos.
@@ -178,17 +235,13 @@ function killEnemy () {
     enemyList[ posEnemigo ] = 0;
     console.log(`ListadoActual ${ enemyList }`);
     killEnemyImg();
+    celdasEnemigos[ enemigoActual - 1 ] = 0;
+    document.querySelector(`#enemigoTxtDos${ enemigoActual }`).style.color = "rgb(68, 68, 68)";
+    posicionarMapa();
     inserProps(0, 0, 0, 0);
-    eliminarPosicionEnemigo();
     enemigosVivos--;
     if (enemigosVivos <= 0) {
         nuevaPartida();
-    }
-    // Cambiando la cantidad si es mayor que enemigos vivos
-    if (enemigosCantidad > enemigosVivos) {
-        enemigosCantidad = enemigosVivos;
-        eneCant.textContent = enemigosCantidad;
-        btnCantidad.style.display = "none";
     }
 }
 //Controla las imágenes de los enemigos.
@@ -212,6 +265,7 @@ function eligeEnemigo (e) {
 // Creación del enemigo
 function createEnemy (enemigoLevel) {
     inserProps(selectProps(enemigoVivo(enemigoLevel)));
+    levelTex.textContent = `Enemigo Level ${ enemigoLevel }`;
 }
 //imprime las skills del enemigo
 function inserProps (prop) {
@@ -327,17 +381,15 @@ function crearCardEnemigo (valor, div) {
     console.log(`valor de enemigo: ${ valor }`);
 
 }
-function eliminarPosicionEnemigo () {
-    document.querySelector(`#posE${ numEnemigosPosicion }`).remove();
-    numEnemigosPosicion--;
-    let pos;
-    for (let i = 1; i <= numEnemigosPosicion; i++) {
-        pos = document.querySelector(`#posE${ i }`);
-        pos.textContent = '';
-    }
-
-
-}
+// function eliminarPosicionEnemigo () {
+//     document.querySelector(`#posE${ numEnemigosPosicion }`).remove();
+//     numEnemigosPosicion--;
+//     let pos;
+//     for (let i = 1; i <= numEnemigosPosicion; i++) {
+//         pos = document.querySelector(`#posE${ i }`);
+//         pos.textContent = '';
+//     }
+// }
 //Mapa*************************************************************
 //Se crea el mapa por primera vez.
 function crearMapa () {
@@ -383,6 +435,7 @@ function posicionarMapa () {
         document.querySelector(`#mapa${ e }`).style.background = "#333";
     })
     celdasEnemigos.forEach(e => {
+        if (e === 0) return;
         document.querySelector(`#mapa${ e }`).src = "img/skull.svg";
         document.querySelector(`#mapa${ e }`).style.background = "red";
     })

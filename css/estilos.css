@@ -1,5 +1,5 @@
 :root {
-	--texto: rgba(255,255,255, .7);
+	--texto: rgba(255, 255, 255, .7);
 	--blanco: #fff;
 	--input: #3A3B3C;
 	--input-hover: #4b4d4e;
@@ -356,6 +356,7 @@ main .publicacion .botones button svg {
 /* --- MEDIAQUERIES ---  */
 /* Dispositivo MD */
 @media screen and (max-width: 768px) {
+
 	.enlaces-rapidos,
 	.contactos {
 		display: none;
@@ -363,19 +364,13 @@ main .publicacion .botones button svg {
 }
 
 /* Dispositivo LG */
-@media screen and (max-width: 992px) {
-	header {
-		padding-top: 10px;
-	}
+/* @media screen and (max-width: 992px) {
 
-	.menu {
-		margin-top: 10px;
+	.enlaces-rapidos,
+	.contactos {
+		display: none;
 	}
-
-	.contenido-principal {
-		padding-top: 70px;
-	}
-}
+} */
 
 /* Dispositivo XL */
 @media screen and (max-width: 1200px) {
@@ -384,11 +379,35 @@ main .publicacion .botones button svg {
 	}
 }
 
-.card{
+.card {
 	background-color: #3A3B3C;
 }
+
 .icons {
 	border-radius: 0.5rem;
 	width: 95%;
 	margin-bottom: 10px;
+}
+
+@keyframes alerta {
+	from {
+		opacity: 0;
+	}
+
+	25% {
+		opacity: 1;
+	}
+
+	75% {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+.precaucion {
+	animation: alerta 1s linear 100ms infinite;
+	opacity: 0;
 }

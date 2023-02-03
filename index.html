@@ -11,7 +11,7 @@
     </head>
 
     <body>
-        <header class="fixed-top p-0">
+        <header class="fixed-top">
             <div class="container-fluid">
                 <div class="row justify-content-evenly align-items-center">
                     <!-- Logo y barra de busqueda -->
@@ -145,7 +145,8 @@
                     </footer>
                 </aside>
                 <!-- Cuerpo central -->
-                <main class="col-12 col-sm-10 col-md-6 col-xxl-4 p-2">
+                <main class=" miPadding col-12 col-sm-10 col-md-6 col-xxl-4">
+                    
                     <div class="publicaciones">
                         <div class="publicacion">
                             <div class="header">
@@ -206,52 +207,55 @@
                                             <!-- Skills del enemigo -->
                                             <div class="container text-center">
                                                 <div class="collapse" id="batalla">
+                                                    <div>
+                                                        <h2 id="enemyLevel">Enemigo Level 10</h2>
+                                                    </div>
                                                     <div class="row ">
                                                         <!-- Ataque -->
-                                                        <div class=" g-1 mb-2 col-6 col-lg-3 ">
+                                                        <div class=" g-1 mb-2 col-6 col-xl-3 ">
                                                             <div class="row m-1 bg-primary rounded ">
-                                                                <a class="col-12 pt-2 h2">Ataque</a>
+                                                                <a class="col-12 pt-2 h2">Arma</a>
                                                                 <a class="col-12">
                                                                     <img src="img/sword.svg" alt="espada">
                                                                 </a>
                                                                 <h2 id="menosDa" class="col-3 fw-bolder">-</h2>
-                                                                <h2 id="ataque" class="col-6 fw-bolder">000</h2>
+                                                                <h3 id="ataque" class="col-6 fw-bolder">000</h3>
                                                                 <h2 id="masDa" class="col-3 fw-bolder">+</h2>
                                                             </div>
                                                         </div>
                                                         <!-- Defensa -->
-                                                        <div class="g-1 mb-2 flex-fill col-6 col-lg-3  ">
+                                                        <div class="g-1 mb-2 flex-fill col-6 col-xl-3">
                                                             <div class="row m-1 bg-success rounded">
-                                                                <a class="pt-2 h2">Defensa</a>
+                                                                <a class="pt-2 h2">Escudo</a>
                                                                 <a class="">
                                                                     <img src="img/shield-half-filled.svg" alt="escudo">
                                                                 </a>
                                                                 <h2 id="menosDe" class="col-3 fw-bolder">-</h2>
-                                                                <h2 id="defensa" class="col-6 fw-bolder">000</h2>
+                                                                <h3 id="defensa" class="col-6 fw-bolder">000</h3>
                                                                 <h2 id="masDe" class="col-3 fw-bolder">+</h2>
                                                             </div>
                                                         </div>
                                                         <!-- Salud -->
-                                                        <div class="g-1 mb-2 flex-fill col-6 col-lg-3">
+                                                        <div class="g-1 mb-2 flex-fill col-6 col-xl-3">
                                                             <div class="row m-1 bg-danger rounded">
-                                                                <a class="pt-2 h2">Salud</a>
+                                                                <a class="pt-2 h2 text-dark fw-bolder">Salud</a>
                                                                 <a class="">
                                                                     <img src="img/heart.svg" alt="corazon">
                                                                 </a>
-                                                                <h2 id="menosVi" class="col-3 fw-bolder">-</h2>
-                                                                <h2 id="vida" class="col-6 fw-bolder">000</h2>
-                                                                <h2 id="masVi" class="col-3 fw-bolder">+</h2>
+                                                                <h2 id="menosVi" class="col-3 text-dark fw-bolder">-</h2>
+                                                                <h3 id="vida" class="col-6 text-dark fw-bolder">000</h3>
+                                                                <h2 id="masVi" class="col-3 text-dark fw-bolder">+</h2>
                                                             </div>
                                                         </div>
                                                         <!-- Tesoro -->
-                                                        <div class="g-1 mb-2 flex-fill col-6 col-lg-3">
+                                                        <div class="g-1 mb-2 flex-fill col-6 col-xl-3">
                                                             <div class="row m-1 bg-warning rounded ">
-                                                                <a class="pt-2 h2">Tesoro</a>
+                                                                <a class="pt-2 h2 text-dark fw-bolder">Tesoro</a>
                                                                 <a class="">
                                                                     <img src="img/coin.svg" alt="moneda">
                                                                 </a>
                                                                 <h2 id="menosTe" class="col-3 text-dark fw-bolder">-</h2>
-                                                                <h2 id="tesoro" class="col-6 text-dark fw-bolder">000</h2>
+                                                                <h3 id="tesoro" class="col-6 text-dark fw-bolder">000</h3>
                                                                 <h2 id="masTe" class="col-3 text-dark fw-bolder">+</h2>
                                                             </div>
                                                         </div>
