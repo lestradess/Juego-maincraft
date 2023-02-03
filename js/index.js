@@ -381,38 +381,36 @@ function crearCardEnemigo (valor, div) {
     console.log(`valor de enemigo: ${ valor }`);
 
 }
-// function eliminarPosicionEnemigo () {
-//     document.querySelector(`#posE${ numEnemigosPosicion }`).remove();
-//     numEnemigosPosicion--;
-//     let pos;
-//     for (let i = 1; i <= numEnemigosPosicion; i++) {
-//         pos = document.querySelector(`#posE${ i }`);
-//         pos.textContent = '';
-//     }
-// }
+
 //Mapa*************************************************************
 //Se crea el mapa por primera vez.
 function crearMapa () {
     let contador = 1;
-    let contadornum = 1;
     const contenedorMapa = document.querySelector("#contenedorMapa");
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 20; i++) {
         const divFila = document.createElement("div");
-        const num = document.createElement("a")
-        num.classList.add("text-center");
-        num.textContent = contadornum++;
-        if (contadornum > 9) contadornum = 0;
-        divFila.className = "col flex-nowrap p-0 gap-0";
-        for (let z = 0; z < 20; z++) {
-            const img = document.createElement("img");
-            img.src = "img/x.svg";
-            img.className = "icons";
+        // const num = document.createElement("a")
+        // num.classList.add("text-center");
+        // num.textContent = contadornum++;
+        // if (contadornum > 9) contadornum = 0;
+        divFila.className = "flex-nowrap m-1";
+        for (let z = 0; z < 30; z++) {
+            const img = document.createElement("a");
+            img.className = "icons col p-1 mx-1";
             img.style.background = "white";
-            img.textContent = contador;
+            img.style.color = "black";
+            if (contador > 581 + i) contador = i + 1;
+            if (contador < 10) {
+                img.textContent = `00${ contador }`
+            } else if (contador < 100) {
+                img.textContent = `0${ contador }`;
+            } else {
+                img.textContent = contador;
+            }
             img.setAttribute("id", `mapa${ contador }`);
             divFila.appendChild(img);
-            divFila.appendChild(num);
-            contador++;
+            //divFila.appendChild(num);
+            contador += 20;
         }
         contenedorMapa.appendChild(divFila);
 
@@ -432,6 +430,7 @@ function posicionarMapa () {
     crearMapa();
     console.log("posicionar mapa")
     espaciosOcupadosSiempre.forEach(e => {
+        console.log(`#mapa${ e }`);
         document.querySelector(`#mapa${ e }`).style.background = "#333";
     })
     celdasEnemigos.forEach(e => {
