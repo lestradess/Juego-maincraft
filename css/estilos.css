@@ -361,22 +361,43 @@ main .publicacion .botones button svg {
 	.contactos {
 		display: none;
 	}
+
+	.miFuente {
+		font-size: 0.80vh;
+		margin: 0.1vh;
+		padding: 0.1vh;
+	}
+
+	.mip {
+		margin: 0px;
+	}
+
 }
 
 /* Dispositivo LG */
-/* @media screen and (max-width: 992px) {
+@media screen and (max-width: 992px) {
 
 	.enlaces-rapidos,
 	.contactos {
 		display: none;
 	}
-} */
+}
 
 /* Dispositivo XL */
 @media screen and (max-width: 1200px) {
 	header .menu a {
 		padding: 10px 20px;
 	}
+
+	.miFuente {
+		margin: 2px;
+		padding: 2px;
+	}
+
+	.miP {
+		margin: 2px;
+	}
+
 }
 
 .card {

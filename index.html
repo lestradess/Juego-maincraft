@@ -145,8 +145,8 @@
                     </footer>
                 </aside>
                 <!-- Cuerpo central -->
-                <main class=" miPadding col-12 col-sm-10 col-md-6 col-xxl-4">
-                    
+                <main class=" miPadding col-12 col-sm-10 col-md-6 col-xxl-4" id="main">
+
                     <div class="publicaciones">
                         <div class="publicacion">
                             <div class="header">
@@ -258,9 +258,9 @@
                                                                 <h2 id="masTe" class="col-3 text-dark fw-bolder">+</h2>
                                                             </div>
                                                         </div>
-                                                        </div>
-                                                        </div>
                                                     </div>
+                                                </div>
+                                            </div>
                                             <!-- Botón cancelar -->
                                             <a href="#card" type="button" class=" btn btn-primary btn-lg col-12 me-1" data-bs-toggle="collapse" aria-expanded="false" aria-controls="card" id="btnCancelar">Cancelar</a>
                                         </div>
@@ -289,7 +289,7 @@
                                                         <h3>Posicionar mapa</h3>
                                                     </button>
                                                     <!-- Mapa -->
-                                                    <section class="row mt-5 p-2 overflow-auto" id="contenedorMapa">
+                                                    <section class="table table-striped-columns" id="contenedorMapa">
                                                         <!-- Aquí se posicionan los elementos en el mapa -->
                                                     </section>
                                                 </div>
@@ -352,6 +352,18 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="container">
+                                        <div class="row">
+                                            <button class="col btn btn-danger invisible" id="btnPosEnemy2">Posiciona enemigos</button>
+                                            <button class="col btn btn-success invisible" id="btnArboles2">Posiciona Arboles</button>
+                                            <button class="col btn btn-warning invisible" id="btnAnimales2">Posiciona Animales</button>
+                                            <button class="col btn btn-primary invisible" id="btnRocas2">Posiciona Minas</button>
+                                        </div>
+                                    </div>
+                                    <!-- información -->
+                                    <div id="informacion"></div>
+
                                 </div>
                                 <div class="publicacion invisible">
                                     <div class="header">
@@ -393,6 +405,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </main>
 
                 <aside class="contactos col-3 col-xl-2">

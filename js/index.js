@@ -1,16 +1,19 @@
 
 //const btnCreate = document.querySelector('#btnCreate');
 const btnKill = document.querySelector("#btnKill");
-const btnPosEnemy = document.querySelector("#btnPosEnemy");
 const ataque = document.querySelector("#ataque");
 const defensa = document.querySelector("#defensa");
 const vida = document.querySelector("#vida");
 const createTxt01 = document.querySelector("#createTxt01");
 const createTxt02 = document.querySelector("#createTxt02");
-//const eneCant = document.querySelector("#EnemigosCantidad");
+const btnPosEnemy = document.querySelector("#btnPosEnemy");
 const btnArboles = document.querySelector("#btnArboles");
 const btnAnimales = document.querySelector("#btnAnimales");
 const btnRocas = document.querySelector("#btnRocas");
+const btnPosEnemy2 = document.querySelector("#btnPosEnemy2");
+const btnArboles2 = document.querySelector("#btnArboles2");
+const btnAnimales2 = document.querySelector("#btnAnimales2");
+const btnRocas2 = document.querySelector("#btnRocas2")
 const divArboles = document.querySelector("#divArboles");
 const btnSupInicio = document.querySelector("#btnSupInicio");
 const btnMapa = document.querySelector("#btnMapa");
@@ -32,6 +35,9 @@ const menosVi = document.querySelector("#menosVi");
 const masTe = document.querySelector("#masTe");
 const menosTe = document.querySelector("#menosTe");
 const levelTex = document.querySelector("#enemyLevel");
+const info = document.querySelector("#informacion");
+const cuerpo = document.querySelector("#main");
+
 
 //Enemigos vivos
 let enemigosVivos = 12;
@@ -39,9 +45,10 @@ let posEnemigo = -1;
 let enemyList = [ 1, 1, 1, 1, 2, 2, 3, 3, 4, 5, 6, 7 ];
 let enemigoActual;
 
+
 //tablero de 30 x 20 = 600 casillas
-const espaciosOcupadosSiempre = [ 1, 2, 21, 22, 19, 20, 39, 40, 269, 270, 271, 272, 289, 290, 291, 292, 309, 310, 311, 312, 329,
-    330, 331, 332, 561, 562, 582, 579, 580, 581, 599, 600 ];
+const espaciosOcupadosSiempre = [ "A1", "A2", "B1", "B2", "A29", "A30", "B29", "B30", "S1", "S2", "T1", "T2", "S29", "S30", "T29", "T30", "I14", "I15", "I16", "I17", "J14", "J15", "J16", "J17", "K14", "K15", "K16", "K17", "L14", "L15", "L16", "L17" ];
+//Con slice copiamos una tabla en otra
 let celdasOcupadas = espaciosOcupadosSiempre.slice();
 let celdasEnemigos = [];
 let numEnemigosPosicion = 12;
@@ -51,11 +58,53 @@ let enemigosCantidad = 12;
 let celdasArboles = [];
 let celdasAnimales = [];
 let celdasRocas = [];
+let memoVacias = 600 - celdasOcupadas.length;
 
 
 //Listerners**************************
 eventListeners();
+
+function informacion () {
+
+    while (info.firstChild) {
+        info.removeChild(info.firstChild);
+    }
+    const celdasVacias = document.createElement("div");
+    celdasVacias.textContent = `Celdas vacias: antes: ${ memoVacias } Ahora: ${ 600 - celdasOcupadas.length } faltan: ${ memoVacias - (600 - celdasOcupadas.length) }`;
+    memoVacias = 600 - celdasOcupadas.length;
+    info.appendChild(celdasVacias);
+    const infoCeldasEnemigos = document.createElement("div");
+    infoCeldasEnemigos.textContent = "Enemigos: ";
+    celdasEnemigos.forEach(e => {
+        console.log(e);
+        infoCeldasEnemigos.textContent += `${ e }, `;
+    });
+    info.appendChild(infoCeldasEnemigos);
+    const infoCeldasArboles = document.createElement("div");
+    infoCeldasArboles.textContent = "Árboles: ";
+    celdasArboles.forEach(e => {
+        console.log(e);
+        infoCeldasArboles.textContent += `${ e }, `;
+    });
+    info.appendChild(infoCeldasArboles);
+    const infoCeldasAnimales = document.createElement("div");
+    infoCeldasAnimales.textContent = "Animales: ";
+    celdasAnimales.forEach(e => {
+        console.log(e);
+        infoCeldasAnimales.textContent += `${ e }, `;
+    });
+    info.appendChild(infoCeldasAnimales);
+    const infoCeldasRocas = document.createElement("div");
+    infoCeldasRocas.textContent = "Minas: ";
+    celdasRocas.forEach(e => {
+        console.log(e);
+        infoCeldasRocas.textContent += `${ e }, `;
+    });
+    info.appendChild(infoCeldasRocas);
+
+}
 function eventListeners () {
+    main.addEventListener("click", informacion);
     masDa.addEventListener("click", () => {
         let a = ataque.textContent;
         a++;
@@ -105,18 +154,47 @@ function eventListeners () {
         tesoro.textContent = a;
     });
 
+    btnMapa.addEventListener("click", posicionarMapa);
+
     btnPosEnemy.addEventListener("click", () => {
         posicionarElementos("enemigo", "img/skull.svg", "red", "btn-danger", "enemigoTxt", "enemigoTxtDos");
+        btnPosEnemy.remove();
+        btnPosEnemy2.remove();
     });
-    btnMapa.addEventListener("click", posicionarMapa);
+    btnPosEnemy2.addEventListener("click", () => {
+        posicionarElementos("enemigo", "img/skull.svg", "red", "btn-danger", "enemigoTxt", "enemigoTxtDos");
+        btnPosEnemy2.remove();
+        btnPosEnemy.remove();
+    });
     btnArboles.addEventListener("click", () => {
         posicionarElementos("arbol", "img/tree.svg", "#198754", "btn-success", "arbolTxt", "arbolTxtDos");
+        btnArboles.remove();
+        btnArboles2.remove();
+    });
+    btnArboles2.addEventListener("click", () => {
+        posicionarElementos("arbol", "img/tree.svg", "#198754", "btn-success", "arbolTxt", "arbolTxtDos");
+        btnArboles.remove();
+        btnArboles2.remove();
     });
     btnAnimales.addEventListener("click", () => {
-        posicionarElementos("animal", "img/animal.svg", "#ffc107", "btn-warning", "animalTxt", "animalTxtDos")
+        posicionarElementos("animal", "img/animal.svg", "#ffc107", "btn-warning", "animalTxt", "animalTxtDos");
+        btnAnimales.remove();
+        btnAnimales2.remove();
+    });
+    btnAnimales2.addEventListener("click", () => {
+        posicionarElementos("animal", "img/animal.svg", "#ffc107", "btn-warning", "animalTxt", "animalTxtDos");
+        btnAnimales.remove();
+        btnAnimales2.remove();
     });
     btnRocas.addEventListener("click", () => {
         posicionarElementos("roca", "img/stone.svg", "#0d6efd", "btn-primary", "rocaTxt", "rocaTxtDos");
+        btnRocas.remove();
+        btnRocas2.remove();
+    });
+    btnRocas2.addEventListener("click", () => {
+        posicionarElementos("roca", "img/stone.svg", "#0d6efd", "btn-primary", "rocaTxt", "rocaTxtDos");
+        btnRocas.remove();
+        btnRocas2.remove();
     });
     // btnSupInicio.addEventListener("click", () => {
     //     botonActivo("btnSupInicio");
@@ -139,7 +217,6 @@ function eventListeners () {
     btnCamPosi.addEventListener('click', () => {
         console.log(btnCamPosi);
         if (btnCamPosi.textContent === "Enemigo Escapa") {
-
             btnCamPosi.setAttribute("href", "#card");
             btnCamPosi.textContent = "Cambiar Posición";
             btnCrearBatalla.textContent = "Crear Batalla";
@@ -214,12 +291,7 @@ function crearBatalla (valor) {
 //Creada para el btnCancelar usada para salir de la card de batalla de enemigos.
 function cancelar () {
     console.log("Entró a cancelar")
-    for (let i = 1; i < enemigosVivos + 1; i++) {
-        const enemigo = document.querySelector(`#enemigos${ i }`);
-        enemigo.classList.remove("disabled");
-        enemigo.classList.remove("btn-warning");
-        enemigo.classList.add("btn-danger");
-    }
+    configurarBotonesEnemigo(true);
 }
 //Crea los skills de un enemigo.
 function newEnemy () {
@@ -385,36 +457,23 @@ function crearCardEnemigo (valor, div) {
 //Mapa*************************************************************
 //Se crea el mapa por primera vez.
 function crearMapa () {
-    let contador = 1;
     const contenedorMapa = document.querySelector("#contenedorMapa");
     for (let i = 0; i < 20; i++) {
-        const divFila = document.createElement("div");
-        // const num = document.createElement("a")
-        // num.classList.add("text-center");
-        // num.textContent = contadornum++;
-        // if (contadornum > 9) contadornum = 0;
-        divFila.className = "flex-nowrap m-1";
+        const divFila = document.createElement("tr");
+        divFila.className = "";
+
         for (let z = 0; z < 30; z++) {
-            const img = document.createElement("a");
-            img.className = "icons col p-1 mx-1";
+            const img = document.createElement("td");
+            img.className = "miFuente icons text-center";
             img.style.background = "white";
             img.style.color = "black";
-            if (contador > 581 + i) contador = i + 1;
-            if (contador < 10) {
-                img.textContent = `00${ contador }`
-            } else if (contador < 100) {
-                img.textContent = `0${ contador }`;
-            } else {
-                img.textContent = contador;
-            }
-            img.setAttribute("id", `mapa${ contador }`);
+            img.textContent = String.fromCharCode(i + 65) + (z + 1);
+            img.setAttribute("id", `mapa${ String.fromCharCode(i + 65) + (z + 1) }`);
             divFila.appendChild(img);
-            //divFila.appendChild(num);
-            contador += 20;
         }
         contenedorMapa.appendChild(divFila);
-
     }
+
 }
 //Hay que limpiar el HTML del mapa al cambiar elementos de posición
 function limpiarMapa () {
@@ -426,28 +485,43 @@ function limpiarMapa () {
 //Posiciona todos los elementos en el mapa, cada vez que se manda llamar la función.
 function posicionarMapa () {
     btnMapa.style.display = "none";
+    if (celdasEnemigos.length <= 0) {
+        btnPosEnemy.remove();
+        btnPosEnemy2.classList.remove("invisible");
+    }
+    if (celdasArboles.length <= 0) {
+        btnArboles.remove();
+        btnArboles2.classList.remove("invisible");
+    }
+    if (celdasAnimales.length <= 0) {
+        btnAnimales.remove();
+        btnAnimales2.classList.remove("invisible");
+    }
+    if (celdasRocas.length <= 0) {
+        btnRocas.remove();
+        btnRocas2.classList.remove("invisible");
+    }
     limpiarMapa();
     crearMapa();
-    console.log("posicionar mapa")
     espaciosOcupadosSiempre.forEach(e => {
-        console.log(`#mapa${ e }`);
+
         document.querySelector(`#mapa${ e }`).style.background = "#333";
     })
     celdasEnemigos.forEach(e => {
         if (e === 0) return;
-        document.querySelector(`#mapa${ e }`).src = "img/skull.svg";
+        //document.querySelector(`#mapa${ e }`).src = "img/skull.svg";
         document.querySelector(`#mapa${ e }`).style.background = "red";
     })
     celdasArboles.forEach(e => {
-        document.querySelector(`#mapa${ e }`).src = "img/tree.svg";
+        //document.querySelector(`#mapa${ e }`).src = "img/tree.svg";
         document.querySelector(`#mapa${ e }`).style.background = "green";
     })
     celdasAnimales.forEach(e => {
-        document.querySelector(`#mapa${ e }`).src = "img/animal.svg";
+        //document.querySelector(`#mapa${ e }`).src = "img/animal.svg";
         document.querySelector(`#mapa${ e }`).style.background = "#ffc107";
     })
     celdasRocas.forEach(e => {
-        document.querySelector(`#mapa${ e }`).src = "img/stone.svg";
+        //document.querySelector(`#mapa${ e }`).src = "img/stone.svg";
         document.querySelector(`#mapa${ e }`).style.background = "#0d6efd";
     })
 }
@@ -496,7 +570,6 @@ function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
     }
     switch (div) {
         case "enemigo":
-            btnPosEnemy.style.display = "none";
             posicionarItemsEnArrays('enemigo', 12);
             celdasEnemigos.forEach((e, i) => {
                 document.querySelector(`#enemigoTxtDos${ i + 1 }`).textContent = e;
@@ -512,7 +585,6 @@ function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
             console.log("Posicionar elementos enemigos");
             break;
         case "arbol":
-            btnArboles.style.display = "none";
             posicionarItemsEnArrays('arbol', 12);
             celdasArboles.forEach((e, i) => {
                 document.querySelector(`#arbolTxtDos${ i + 1 }`).textContent = e;
@@ -521,7 +593,6 @@ function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
             console.log("Posicionar elementos arboles");
             break;
         case "animal":
-            btnAnimales.style.display = "none";
             posicionarItemsEnArrays('animal', 12);
             celdasAnimales.forEach((e, i) => {
                 document.querySelector(`#animalTxtDos${ i + 1 }`).textContent = e;
@@ -530,7 +601,6 @@ function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
             console.log("Posicionar elementos animales");
             break;
         case "roca":
-            btnRocas.style.display = "none";
             posicionarItemsEnArrays('roca', 12);
             celdasRocas.forEach((e, i) => {
                 document.querySelector(`#rocaTxtDos${ i + 1 }`).textContent = e;
@@ -634,7 +704,13 @@ function posicionarItemsEnArrays (tipo, cantidad) {
 }
 //Nos da un número aleatorio entre un mínimo y un máximo incluidos
 function aleatorio (min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    if (Number.isInteger(min)) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    const letra = String.fromCharCode(64 + Math.floor(Math.random() * (20)) + 1);
+    const numero = Math.floor(Math.random() * (max)) + 1;
+    return letra + numero;
+
 }
 //devuelve true si está ocupada
 function buscaEnCeldas (n) {
@@ -646,12 +722,10 @@ function buscaEnCeldas (n) {
 }
 // devuelve una celda aleatoria no ocupada
 function celdaLibre () {
-    let n = aleatorio(3, 598);
+    let n = aleatorio("a", 30);
     while (buscaEnCeldas(n)) {
-        n = aleatorio(3, 598);
+        n = aleatorio("a", 30);
     }
-    celdasOcupadas.push(n);
-
     return n;
 }
 //Coloca el array en orden se usa solo al principio
@@ -667,52 +741,3 @@ function colocarArray (e) {
     });
     return e;
 }
-
-// function reposicionarEnemigos () {
-
-//     for (let i = 0; i < celdasEnemigos.length; i++) {
-//         let celda = celdasOcupadas.findIndex(e => e == celdasEnemigos[ i ])
-//         celdasOcupadas.splice(celda, 1);
-//     }
-//     //Elimina todos los elementos
-//     while (celdasEnemigos.length > 0) {
-//         celdasEnemigos.shift();
-//     };
-//     posicionarMapa();
-//     console.log("Reposicionar enemigos");
-// }
-
-// function positionEnemy () {
-//     if (rondaPosEnemy != 0) {
-//         reposicionarEnemigos();
-//     }
-//     rondaPosEnemy++;
-//     //Mostramos botón cantidad enemigos
-//     btnCantidad.style.display = "block";
-
-//     //Creamos array de enemigos celdas enemigos
-//     for (let i = 1; i <= numEnemigosPosicion; i++) {
-//         let n = celdaLibre();
-//         celdasEnemigos.push(n);
-//     }
-
-//     //colocamos los enemigos en orden
-//     celdasEnemigos.sort((a, b) => {
-//         if (a == b) {
-//             return 0;
-//         }
-//         if (a < b) {
-//             retur<!-- Mapa -->n -1;
-//         }
-//         return 1;
-//     });
-//     //Posicionamos enemigos
-//     let pos;
-//     for (let i = 0; i < numEnemigosPosicion; i++) {
-//         pos = document.querySelector(`#posE${ i + 1 }`);
-//         pos.textContent = celdasEnemigos[ i ];
-//     }
-//     console.log(`CE ${ celdasEnemigos }`);
-//     posicionarMapa();
-//     console.log("positionEnemy");
-// }
