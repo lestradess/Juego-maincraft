@@ -1,5 +1,6 @@
 
 //const btnCreate = document.querySelector('#btnCreate');
+const documento = document.documentElement.style;
 const btnKill = document.querySelector("#btnKill");
 const ataque = document.querySelector("#ataque");
 const defensa = document.querySelector("#defensa");
@@ -24,6 +25,8 @@ const btnSupAnimal = document.querySelector("#btnSupAnimal");
 const btnSupRoca = document.querySelector("#btnSupRoca");
 const btnCrearBatalla = document.querySelector("#btnCrearBatalla");
 const btnCamPosi = document.querySelector("#btnCamPosi");
+const btnStarGame = document.querySelector("#btnStarGame");
+const btnContinuar = document.querySelector("#btnContinuar");
 const divCard = document.querySelector("#card");
 const btnCancelar = document.querySelector("#btnCancelar");
 const masDa = document.querySelector("#masDa");
@@ -37,7 +40,15 @@ const menosTe = document.querySelector("#menosTe");
 const levelTex = document.querySelector("#enemyLevel");
 const info = document.querySelector("#informacion");
 const cuerpo = document.querySelector("#main");
-
+const mapaDiv = document.querySelector("#contenedorMapa");
+const menu = document.querySelector("#menu");
+const contenedorJugadores = document.querySelector("#contenedorJugadores");
+const inputJugUno = document.querySelector("#inputJugUno");
+const inputJugDos = document.querySelector("#inputJugDos");
+const inputJugTres = document.querySelector("#inputJugTres");
+const inputJugCuatro = document.querySelector("#inputJugCuatro");
+const inputJugCinco = document.querySelector("#inputJugCinco");
+const inputJugSeis = document.querySelector("#inputJugSeis");
 
 //Enemigos vivos
 let enemigosVivos = 12;
@@ -52,58 +63,23 @@ const espaciosOcupadosSiempre = [ "A1", "A2", "B1", "B2", "A29", "A30", "B29", "
 let celdasOcupadas = espaciosOcupadosSiempre.slice();
 let celdasEnemigos = [];
 let numEnemigosPosicion = 12;
-let rondaPosEnemy = 0;
+let rondaPosEnemy = 0;//no usada
 let enemigosCantidad = 12;
-//eneCant.textContent = enemigosCantidad;
 let celdasArboles = [];
 let celdasAnimales = [];
 let celdasRocas = [];
-let memoVacias = 600 - celdasOcupadas.length;
+let jugadores = [];
 
-
+console.log(inputJugUno);
 //Listerners**************************
 eventListeners();
-
-function informacion () {
-
-    while (info.firstChild) {
-        info.removeChild(info.firstChild);
-    }
-    const celdasVacias = document.createElement("div");
-    celdasVacias.textContent = `Celdas vacias: antes: ${ memoVacias } Ahora: ${ 600 - celdasOcupadas.length } faltan: ${ memoVacias - (600 - celdasOcupadas.length) }`;
-    memoVacias = 600 - celdasOcupadas.length;
-    info.appendChild(celdasVacias);
-    const infoCeldasEnemigos = document.createElement("div");
-    infoCeldasEnemigos.textContent = "Enemigos: ";
-    celdasEnemigos.forEach(e => {
-        console.log(e);
-        infoCeldasEnemigos.textContent += `${ e }, `;
-    });
-    info.appendChild(infoCeldasEnemigos);
-    const infoCeldasArboles = document.createElement("div");
-    infoCeldasArboles.textContent = "Árboles: ";
-    celdasArboles.forEach(e => {
-        console.log(e);
-        infoCeldasArboles.textContent += `${ e }, `;
-    });
-    info.appendChild(infoCeldasArboles);
-    const infoCeldasAnimales = document.createElement("div");
-    infoCeldasAnimales.textContent = "Animales: ";
-    celdasAnimales.forEach(e => {
-        console.log(e);
-        infoCeldasAnimales.textContent += `${ e }, `;
-    });
-    info.appendChild(infoCeldasAnimales);
-    const infoCeldasRocas = document.createElement("div");
-    infoCeldasRocas.textContent = "Minas: ";
-    celdasRocas.forEach(e => {
-        console.log(e);
-        infoCeldasRocas.textContent += `${ e }, `;
-    });
-    info.appendChild(infoCeldasRocas);
-
-}
 function eventListeners () {
+    inputJugUno.addEventListener('blur', (e) => {
+        jugadores.push(e.target.value);
+        console.log("Entro a evento"+jugadores);
+    });
+    btnContinuar.addEventListener("click", continuar);
+    btnStarGame.addEventListener("click", starGame);
     main.addEventListener("click", informacion);
     masDa.addEventListener("click", () => {
         let a = ataque.textContent;
@@ -245,11 +221,54 @@ function eventListeners () {
     btnCancelar.addEventListener('click', cancelar);
 
 }
+function informacion () {
+
+    while (info.firstChild) {
+        info.removeChild(info.firstChild);
+    }
+    const celdasVacias = document.createElement("div");
+    celdasVacias.textContent = `Celdas vacias: ${ 600 - celdasOcupadas.length }`;
+    memoVacias = 600 - celdasOcupadas.length;
+    info.appendChild(celdasVacias);
+    const infoCeldasEnemigos = document.createElement("div");
+    infoCeldasEnemigos.textContent = "Enemigos: ";
+    celdasEnemigos.forEach(e => {
+        infoCeldasEnemigos.textContent += `${ e }, `;
+    });
+    info.appendChild(infoCeldasEnemigos);
+    const infoCeldasArboles = document.createElement("div");
+    infoCeldasArboles.textContent = "Árboles: ";
+    celdasArboles.forEach(e => {
+        infoCeldasArboles.textContent += `${ e }, `;
+    });
+    info.appendChild(infoCeldasArboles);
+    const infoCeldasAnimales = document.createElement("div");
+    infoCeldasAnimales.textContent = "Animales: ";
+    celdasAnimales.forEach(e => {
+        infoCeldasAnimales.textContent += `${ e }, `;
+    });
+    info.appendChild(infoCeldasAnimales);
+    const infoCeldasRocas = document.createElement("div");
+    infoCeldasRocas.textContent = "Minas: ";
+    celdasRocas.forEach(e => {
+        infoCeldasRocas.textContent += `${ e }, `;
+    });
+    info.appendChild(infoCeldasRocas);
+
+}
+function starGame () {
+    btnStarGame.remove();
+    document.querySelector("#calavera").remove();
+    contenedorJugadores.classList.remove("invisible");
+}
+function continuar () {
+
+}
 function botonActivo (text) {
-    btnSupMapa.classList.remove("active");
-    btnSupEnemigo.classList.remove("active");
-    btnSupArbol.classList.remove("active");
-    btnSupAnimal.classList.remove("active");
+    btnSupMapa.classList.remove("activeGris");
+    btnSupEnemigo.classList.remove("activeRojo");
+    btnSupArbol.classList.remove("activeVerde");
+    btnSupAnimal.classList.remove("activeAmarillo");
     btnSupRoca.classList.remove("active");
     // btnSupInicio.classList.remove("active");
     switch (text) {
@@ -257,16 +276,17 @@ function botonActivo (text) {
         //     btnSupMapa.classList.add("active");
         //     break;
         case "btnSupMapa":
-            btnSupMapa.classList.add("active");
+            btnSupMapa.classList.add("activeGris");
             break;
         case "btnSupEnemigo":
-            btnSupEnemigo.classList.add("active");
+            console.log("entró en rojo")
+            btnSupEnemigo.classList.add("activeRojo");
             break;
         case "btnSupArbol":
-            btnSupArbol.classList.add("active");
+            btnSupArbol.classList.add("activeVerde");
             break;
         case "btnSupAnimal":
-            btnSupAnimal.classList.add("active");
+            btnSupAnimal.classList.add("activeAmarillo");
             break;
         case "btnSupRoca":
             btnSupRoca.classList.add("active");
@@ -485,6 +505,7 @@ function limpiarMapa () {
 //Posiciona todos los elementos en el mapa, cada vez que se manda llamar la función.
 function posicionarMapa () {
     btnMapa.style.display = "none";
+    mapaDiv.classList.remove("invisible");
     if (celdasEnemigos.length <= 0) {
         btnPosEnemy.remove();
         btnPosEnemy2.classList.remove("invisible");

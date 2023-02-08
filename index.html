@@ -16,14 +16,7 @@
                 <div class="row justify-content-evenly align-items-center">
                     <!-- Logo y barra de busqueda -->
                     <!-- Menu -->
-                    <div class="menu col-12 text-center nowrap">
-                        <!-- btnSupInicio -->
-                        <!-- <a href="#inicio" id="btnSupInicio" class="active" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#inicio" aria-controls="inicio">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-square" viewBox="0 0 16 16">
-								<path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-								<path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-							</svg>
-						</a> -->
+                    <div class="menu col-12 text-center nowrap invisible" id="menu">
                         <!-- btnSupMApa -->
                         <a href="#mapa" id="btnSupMapa" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#mapa" aria-controls="mapa">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-flag" viewBox="0 0 16 16">
@@ -82,58 +75,8 @@
                     <!-- Sección izquierda -->
                     <nav class="invisible">
 
-                        <a href="#">
-                            <div class="icono">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
-                                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                                    <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
-                                    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
-                                </svg>
-                            </div>
-                            Amigos
-                        </a>
-                        <a href="#">
-                            <div class="icono">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-flag-fill" viewBox="0 0 16 16">
-                                    <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001" />
-                                </svg>
-                            </div>
-                            Páginas
-                        </a>
-                        <a href="#">
-                            <div class="icono">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-collection-fill" viewBox="0 0 16 16">
-                                    <path d="M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z" />
-                                </svg>
-                            </div>
-                            Grupos
-                        </a>
-                        <a href="#">
-                            <div class="icono">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
-                                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
-                                </svg>
-                            </div>
-                            Marketplace
-                        </a>
-                        <a href="#">
-                            <div class="icono">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tv-fill" viewBox="0 0 16 16">
-                                    <path d="M2.5 13.5A.5.5 0 0 1 3 13h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zM2 2h12s2 0 2 2v6s0 2-2 2H2s-2 0-2-2V4s0-2 2-2z" />
-                                </svg>
-                            </div>
-                            Watch
-                        </a>
-                        <a href="#">
-                            <div class="icono">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event-fill" viewBox="0 0 16 16">
-                                    <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-3.5-7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z" />
-                                </svg>
-                            </div>
-                            Eventos
-                        </a>
                     </nav>
-                    <!-- Pie de página -->
+                    <!-- Pie de página (Pero está a la derecha)-->
                     <footer class="invisible">
                         <nav>
                             <a href="#">Privacidad</a>
@@ -270,26 +213,50 @@
                                         <!-- inicio -->
                                         <div id="inicio" class="accordion-collapse collapse show p-0" data-bs-parent="#accordion">
                                             <div class="accordion-body p-0">
-                                                <div class="d-grid col-12">
-                                                    <h3 align="center">Información de uso</h3>
-                                                    <p align="justify">En los botones superiores tenemos 5 elementos, todos ellos se despliegan presionando su botón en la barra de navegación superior.</p>
-                                                    <p align="justify">Al desplegarse muestran un botón con el cual posicionamos cada elemento en el mapa y a la vez nos da el número de celda de cada pieza</p>
-                                                    <p align="justify">En el primer lugar está el mapa, donde se verá todos los demás elementos, si estos están posicionados. </p>
-                                                    <p align="justify">En el segundo lugar están los enemigos, donde se muestra la posición de cada uno y al presionar en cada enemigo se preguntará si se quiere mover o presentar batalla, en cuyo caso se mostrarán sus atributos.</p>
-                                                    <p align="justify">Los elementos restantes, al igual que los enemigos, al presionar el botón posicionar, se presentara el número de casilla que le corresponde a cada elemento y al hacer click en cada botón nos cambiará la ubicación de la pieza que presionemos.</p>
-                                                    <p align="justify">Cada botón nos muestra en su parte superior la casilla que ocupaba y en la parte inferior la celda que tiene que ocupar actualmente.</p>
+                                                <div class="d-grid col-12"> <button class="btn btn-secondary my-5 " id="btnStarGame">El juego empieza presionando aquí</button>
+                                                    <img src="/img/skull.svg" alt="calavera" id="calavera">
+                                                    <form class="container invisible mt-3" id="contenedorJugadores">
+                                                        <h3 align="center">Elige el nombre de los jugadores</h3>
+                                                        <p>Rellena los campos con el nombre de los jugadores, eligiendo así su color, solo jugarán los que contengan un nombre </p>
+                                                        <div class="row flex-nowrap mt-4">
+                                                            <a class="btn btn-primary col-2 me-2"><img src="img/person.svg" alt="persona"></a>
+                                                            <input id="inputJugUno" class="col-10 btn btn-outline-primary text-start" type="text" name="jugadorUno" placeholder="Nombre jugador">
+                                                        </div>
+                                                        <div class="row flex-nowrap mt-2">
+                                                            <a class="btn btn-success col-2 me-2" type="text"><img src="img/person.svg" alt="persona"></a>
+                                                            <input id="inputJugDos" class="col-10 btn btn-outline-success text-start" type="text" placeholder="Nombre jugador">
+                                                        </div>
+                                                        <div class="row flex-nowrap mt-2">
+                                                            <a class="btn btn-danger col-2 me-2" type="text"><img src="img/person.svg" alt="persona"></a>
+                                                            <input id="inputJugTres" class="col-10 btn btn-outline-danger text-start" type="text" placeholder="Nombre jugador">
+                                                        </div>
+                                                        <div class="row flex-nowrap mt-2">
+                                                            <a class="btn btn-warning col-2 me-2" type="text"><img src="img/person.svg" alt="persona"></a>
+                                                            <input id="inputJugCuatro" class="col-10 btn btn-outline-warning text-start" type="text" placeholder="Nombre jugador">
+                                                        </div>
+                                                        <div class="row flex-nowrap mt-2">
+                                                            <a class="btn btn-info col-2 me-2" type="text"><img src="img/person.svg" alt="persona"></a>
+                                                            <input id="inputJugCinco" class="col-10 btn btn-outline-info text-start" type="text" placeholder="Nombre jugador">
+                                                        </div>
+                                                        <div class="row flex-nowrap mt-2">
+                                                            <a class="btn btn-secondary col-2 me-2" type="text"><img src="img/person.svg" alt="persona"></a>
+                                                            <input id="inputJugSeis" class="col-10 btn btn-outline-secondary text-start" type="text" placeholder="Nombre jugador">
+                                                        </div>
+                                                        <button type="submit" id="btnContinuar" class="btn btn-primary col-12 mt-3">Pulsa para continuar...</button>
+                                                    </form>
+
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Mapa -->
                                         <div id="mapa" class="collapse" data-bs-parent="#accordion">
                                             <div class="accordion-body p-0">
-                                                <div class="d-grid col-12">
+                                                <div class="d-grid col-12 p-1">
                                                     <button type="button" class="btn btn-secondary" id="btnMapa">
                                                         <h3>Posicionar mapa</h3>
                                                     </button>
                                                     <!-- Mapa -->
-                                                    <section class="table table-striped-columns" id="contenedorMapa">
+                                                    <section class="table table-striped-columns overflow-x-scroll invisible" id="contenedorMapa">
                                                         <!-- Aquí se posicionan los elementos en el mapa -->
                                                     </section>
                                                 </div>
@@ -355,10 +322,10 @@
 
                                     <div class="container">
                                         <div class="row">
-                                            <button class="col btn btn-danger invisible" id="btnPosEnemy2">Posiciona enemigos</button>
-                                            <button class="col btn btn-success invisible" id="btnArboles2">Posiciona Arboles</button>
-                                            <button class="col btn btn-warning invisible" id="btnAnimales2">Posiciona Animales</button>
-                                            <button class="col btn btn-primary invisible" id="btnRocas2">Posiciona Minas</button>
+                                            <button class="col-3 btn btn-danger invisible" id="btnPosEnemy2">Posiciona enemigos</button>
+                                            <button class="col-3 btn btn-success invisible" id="btnArboles2">Posiciona Arboles</button>
+                                            <button class="col-3 btn btn-warning invisible" id="btnAnimales2">Posiciona Animales</button>
+                                            <button class="col-3 btn btn-primary invisible" id="btnRocas2">Posiciona Minas</button>
                                         </div>
                                     </div>
                                     <!-- información -->
@@ -408,7 +375,7 @@
                     </div>
                 </main>
 
-                <aside class="contactos col-3 col-xl-2">
+                <aside class="contactos col-3 col-xl-2 invisible">
                     <div class="seccion">
                         <h3 class="titulo">Enemigos</h3>
                         <div class="col-3 justify-content-star d-flex" id="arrayEnemigos">
