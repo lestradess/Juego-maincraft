@@ -70,7 +70,6 @@ let celdasAnimales = [];
 let celdasRocas = [];
 let jugadores = [];
 
-console.log(inputJugUno);
 //Listerners**************************
 eventListeners();
 function eventListeners () {
@@ -257,12 +256,15 @@ function informacion () {
 
 }
 function starGame () {
-    //btnStarGame.remove();
-    //document.querySelector("#calavera").remove();
+    btnStarGame.remove();
+    document.querySelector("#calavera").remove();
     //contenedorJugadores.classList.remove("invisible");
+    btnMapa.classList.remove("invisible");
+    
+    
 }
 function continuar () {
-
+    console.log("continuar");
 }
 function botonActivo (text) {
     btnSupMapa.classList.remove("activeGris");
@@ -413,19 +415,19 @@ function selectProps (enemigoLevel) {
     switch (enemigoLevel) {
         case 1:
             //    ataque, defensa,     vida,  tesoro
-            return [ 5, aleatorio(5, 10), 5, aleatorio(5, 10), "LV01" ];
+            return [ aleatorio(4,9), aleatorio(5, 10), 5, aleatorio(5, 10), "LV01" ];
         case 2:
-            return [ 7, aleatorio(7, 12), 7, aleatorio(7, 12), " LV02" ];
+            return [ aleatorio(5,12), aleatorio(7, 12), 7, aleatorio(7, 12), " LV02" ];
         case 3:
-            return [ 9, aleatorio(9, 14), 9, aleatorio(9, 14), " LV03" ];
+            return [ aleatorio(6,16), aleatorio(9, 14), 9, aleatorio(9, 14), " LV03" ];
         case 4:
-            return [ 10, aleatorio(10, 16), 5, aleatorio(10, 16), " LV04" ];
+            return [ aleatorio(7,19), aleatorio(10, 16), 5, aleatorio(10, 16), " LV04" ];
         case 5:
-            return [ 11, aleatorio(11, 18), 5, aleatorio(11, 18), " LV05" ];
+            return [ aleatorio(8,20), aleatorio(11, 18), 5, aleatorio(11, 18), " LV05" ];
         case 6:
-            return [ 12, aleatorio(12, 20), 5, aleatorio(12, 20), " LV06" ];
+            return [ aleatorio(12,25), aleatorio(12, 20), 5, aleatorio(12, 20), " LV06" ];
         default:
-            return [ 20, 20, 20, 20, " Jefe Final" ];
+            return [ aleatorio(20,30), 20, 20, 20, " Jefe Final" ];
     }
 }
 //Configura los botones de enemigo modo true cuando estan activos false inactivos(cuando aparece el card)
