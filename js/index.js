@@ -257,9 +257,9 @@ function informacion () {
 
 }
 function starGame () {
-    btnStarGame.remove();
-    document.querySelector("#calavera").remove();
-    contenedorJugadores.classList.remove("invisible");
+    //btnStarGame.remove();
+    //document.querySelector("#calavera").remove();
+    //contenedorJugadores.classList.remove("invisible");
 }
 function continuar () {
 
