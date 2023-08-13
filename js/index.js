@@ -11,6 +11,8 @@ const btnPosEnemy = document.querySelector("#btnPosEnemy");
 const btnArboles = document.querySelector("#btnArboles");
 const btnAnimales = document.querySelector("#btnAnimales");
 const btnRocas = document.querySelector("#btnRocas");
+const btnCaos2 =document.querySelector("#btnCaos2"); 
+const btnCaos=document.querySelector("#btnCaos");
 const btnPosEnemy2 = document.querySelector("#btnPosEnemy2");
 const btnArboles2 = document.querySelector("#btnArboles2");
 const btnAnimales2 = document.querySelector("#btnAnimales2");
@@ -170,6 +172,16 @@ function eventListeners () {
         posicionarElementos("roca", "img/stone.svg", "#0d6efd", "btn-primary", "rocaTxt", "rocaTxtDos");
         btnRocas.remove();
         btnRocas2.remove();
+    });
+    btnCaos.addEventListener("click", () => {
+        posicionarElementos("roca", "img/stone.svg", "#ccc", "btn-secondary", "caosTxt", "caosTxtDos");
+        btnCaos.remove();
+        btnCaos2.remove();
+    });
+    btnCaos2.addEventListener("click", () => {
+        posicionarElementos("roca", "img/stone.svg", "#ccc", "btn-secondary", "caosTxt", "caosTxtDos");
+        btnCaos.remove();
+        btnCaos2.remove();
     });
     // btnSupInicio.addEventListener("click", () => {
     //     botonActivo("btnSupInicio");
@@ -427,7 +439,7 @@ function selectProps (enemigoLevel) {
         case 6:
             return [ aleatorio(12,25), aleatorio(12, 20), 5, aleatorio(12, 20), " LV06" ];
         default:
-            return [ aleatorio(20,30), 20, 20, 20, " Jefe Final" ];
+            return [ aleatorio(20,30), 20, 20, 25, " Jefe Final" ];
     }
 }
 //Configura los botones de enemigo modo true cuando estan activos false inactivos(cuando aparece el card)
