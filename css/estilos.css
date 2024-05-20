@@ -167,21 +167,6 @@ header .botones .perfil img {
 	margin-right: 5px;
 }
 
-/* --- Aside ---  */
-aside {
-	height: 100vh;
-	overflow: auto;
-	padding-top: 60px;
-}
-
-/* Aside Enlaces Rapidos */
-.enlaces-rapidos > nav a {
-	display: flex;
-	align-items: center;
-	color: var(--blanco);
-	padding: 10px 10px;
-	border-radius: 3px;
-}
 
 .enlaces-rapidos > nav a:hover {
 	background: var(--input-hover);
@@ -396,7 +381,7 @@ main .publicacion .botones button svg {
 
 .icons {
 	border-radius: 0.5rem;
-	width: 95%;
+	/* width: 95%; */
 	margin-bottom: 10px;
 }
 
