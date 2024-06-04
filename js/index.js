@@ -11,13 +11,11 @@ const btnPosEnemy = document.querySelector("#btnPosEnemy");
 const btnArboles = document.querySelector("#btnArboles");
 const btnAnimales = document.querySelector("#btnAnimales");
 const btnRocas = document.querySelector("#btnRocas");
-const btnCaos2 = document.querySelector("#btnCaos2");
-const btnCaos = document.querySelector("#btnCaos");
 const btnPosEnemy2 = document.querySelector("#btnPosEnemy2");
 const btnArboles2 = document.querySelector("#btnArboles2");
 const btnAnimales2 = document.querySelector("#btnAnimales2");
 const btnRocas2 = document.querySelector("#btnRocas2")
-const divArboles = document.querySelector("#divArboles");
+
 const btnSupInicio = document.querySelector("#btnSupInicio");
 const btnMapa = document.querySelector("#btnMapa");
 const btnSupMapa = document.querySelector("#btnSupMapa");
@@ -53,6 +51,9 @@ const inputJugCinco = document.querySelector("#inputJugCinco");
 const inputJugSeis = document.querySelector("#inputJugSeis");
 const divMapa = document.querySelector("#mapa");
 const divEnemigos = document.querySelector("#enemigos");
+const divArboles = document.querySelector("#arboles");
+const divAnimales = document.querySelector("#animales");
+const divRocas = document.querySelector("#rocas");
 //Enemigos vivos
 let enemigosVivos = 12;
 let posEnemigo = -1;
@@ -134,7 +135,7 @@ function eventListeners () {
         tesoro.textContent = a;
     });
 
-    
+
 
     btnPosEnemy.addEventListener("click", () => {
         posicionarElementos("enemigo", "img/skull.svg", "red", "btn-danger", "enemigoTxt", "enemigoTxtDos");
@@ -176,21 +177,12 @@ function eventListeners () {
         btnRocas.remove();
         btnRocas2.remove();
     });
-    btnCaos.addEventListener("click", () => {
-        posicionarElementos("roca", "img/stone.svg", "#ccc", "btn-secondary", "caosTxt", "caosTxtDos");
-        btnCaos.remove();
-        btnCaos2.remove();
-    });
-    btnCaos2.addEventListener("click", () => {
-        posicionarElementos("roca", "img/stone.svg", "#ccc", "btn-secondary", "caosTxt", "caosTxtDos");
-        btnCaos.remove();
-        btnCaos2.remove();
-    });
     // btnSupInicio.addEventListener("click", () => {
     //     botonActivo("btnSupInicio");
     // })
     btnSupMapa.addEventListener("click", () => {
         botonActivo("btnSupMapa");
+        console.log("btnSupMapaPulsado")
     });
     btnSupEnemigo.addEventListener("click", () => {
         botonActivo("btnSupEnemigo");
@@ -271,10 +263,10 @@ function informacion () {
 
 }
 function starGame () {
-    btnStarGame.remove();
+    //btnStarGame.remove();
     document.querySelector("#calavera").remove();
     //contenedorJugadores.classList.remove("invisible");
-    btnMapa.classList.remove("invisible");
+    //btnMapa.classList.remove("invisible");
     // btnSupMapa.click();
     // btnMapa.click();
     // btnPosEnemy2.click();
@@ -285,13 +277,20 @@ function starGame () {
 function continuar () {
     console.log("continuar");
 }
+function esconderDivs () {
+    divMapa.classList.remove("show");
+    divEnemigos.classList.remove("show");
+    divArboles.classList.remove("show");
+    divAnimales.classList.remove("show");
+    divRocas.classList.remove("show");
+}
 function botonActivo (text) {
     btnSupMapa.classList.remove("activeGris");
     btnSupEnemigo.classList.remove("activeRojo");
     btnSupArbol.classList.remove("activeVerde");
     btnSupAnimal.classList.remove("activeAmarillo");
     btnSupRoca.classList.remove("active");
-    
+    esconderDivs();
     // btnSupInicio.classList.remove("active");
     switch (text) {
         // case "btnSupInicio":
@@ -299,14 +298,10 @@ function botonActivo (text) {
         //     break;
         case "btnSupMapa":
             btnSupMapa.classList.add("activeGris");
-            divMapa.classList.add("show");
-            // divEnemigos.style.display = 'none';
             break;
         case "btnSupEnemigo":
             console.log("entró en rojo")
             btnSupEnemigo.classList.add("activeRojo");
-            divMapa.classList.remove("show");
-            divEnemigos.classList.add("show");
             break;
         case "btnSupArbol":
             btnSupArbol.classList.add("activeVerde");
@@ -513,7 +508,7 @@ function crearMapa () {
             img.className = "miFuente icons text-center";
             img.style.background = "white";
             img.style.color = "black";
-            img.textContent = String.fromCharCode(i + 65) + (z<9 ? '0' + (z + 1): z + 1);
+            img.textContent = String.fromCharCode(i + 65) + (z < 9 ? '0' + (z + 1) : z + 1);
             img.setAttribute("id", `mapa${ String.fromCharCode(i + 65) + (z + 1) }`);
             divFila.appendChild(img);
         }
@@ -571,7 +566,7 @@ function posicionarMapa () {
         //document.querySelector(`#mapa${ e }`).src = "img/stone.svg";
         document.querySelector(`#mapa${ e }`).style.background = "#0d6efd";
     })
-    
+
 }
 //Funciones comunes********************************************************************************
 
