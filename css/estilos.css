@@ -407,3 +407,23 @@ main .publicacion .botones button svg {
 	animation: alerta 1s linear 100ms infinite;
 	opacity: 0;
 }
+.table {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	height: 80vh;
+}
+.tr {
+	width: 100%;
+}
+.celda {
+	width: 100px;
+	height: 20px;
+	border-radius: 0.5rem;
+	/* margin-bottom: 10px; */
+}
+.calavera{
+	height: 80vh;
+}
