@@ -11,8 +11,8 @@ const btnPosEnemy = document.querySelector("#btnPosEnemy");
 const btnArboles = document.querySelector("#btnArboles");
 const btnAnimales = document.querySelector("#btnAnimales");
 const btnRocas = document.querySelector("#btnRocas");
-const btnCaos2 =document.querySelector("#btnCaos2"); 
-const btnCaos=document.querySelector("#btnCaos");
+const btnCaos2 = document.querySelector("#btnCaos2");
+const btnCaos = document.querySelector("#btnCaos");
 const btnPosEnemy2 = document.querySelector("#btnPosEnemy2");
 const btnArboles2 = document.querySelector("#btnArboles2");
 const btnAnimales2 = document.querySelector("#btnAnimales2");
@@ -51,7 +51,8 @@ const inputJugTres = document.querySelector("#inputJugTres");
 const inputJugCuatro = document.querySelector("#inputJugCuatro");
 const inputJugCinco = document.querySelector("#inputJugCinco");
 const inputJugSeis = document.querySelector("#inputJugSeis");
-
+const divMapa = document.querySelector("#mapa");
+const divEnemigos = document.querySelector("#enemigos");
 //Enemigos vivos
 let enemigosVivos = 12;
 let posEnemigo = -1;
@@ -74,13 +75,15 @@ let jugadores = [];
 
 //Listerners**************************
 eventListeners();
+
 function eventListeners () {
     inputJugUno.addEventListener('blur', (e) => {
         jugadores.push(e.target.value);
-        console.log("Entro a evento"+jugadores);
+        console.log("Entro a evento" + jugadores);
     });
     btnContinuar.addEventListener("click", continuar);
-    btnStarGame.addEventListener("click", starGame);
+    btnMapa.addEventListener("click", starGame);
+    btnMapa.addEventListener("click", posicionarMapa);
     main.addEventListener("click", informacion);
     masDa.addEventListener("click", () => {
         let a = ataque.textContent;
@@ -131,7 +134,7 @@ function eventListeners () {
         tesoro.textContent = a;
     });
 
-    btnMapa.addEventListener("click", posicionarMapa);
+    
 
     btnPosEnemy.addEventListener("click", () => {
         posicionarElementos("enemigo", "img/skull.svg", "red", "btn-danger", "enemigoTxt", "enemigoTxtDos");
@@ -272,8 +275,12 @@ function starGame () {
     document.querySelector("#calavera").remove();
     //contenedorJugadores.classList.remove("invisible");
     btnMapa.classList.remove("invisible");
-    
-    
+    // btnSupMapa.click();
+    // btnMapa.click();
+    // btnPosEnemy2.click();
+    // btnArboles2.click();
+    // btnAnimales2.click();
+    // btnRocas2.click();
 }
 function continuar () {
     console.log("continuar");
@@ -284,6 +291,7 @@ function botonActivo (text) {
     btnSupArbol.classList.remove("activeVerde");
     btnSupAnimal.classList.remove("activeAmarillo");
     btnSupRoca.classList.remove("active");
+    
     // btnSupInicio.classList.remove("active");
     switch (text) {
         // case "btnSupInicio":
@@ -291,10 +299,14 @@ function botonActivo (text) {
         //     break;
         case "btnSupMapa":
             btnSupMapa.classList.add("activeGris");
+            divMapa.classList.add("show");
+            // divEnemigos.style.display = 'none';
             break;
         case "btnSupEnemigo":
             console.log("entró en rojo")
             btnSupEnemigo.classList.add("activeRojo");
+            divMapa.classList.remove("show");
+            divEnemigos.classList.add("show");
             break;
         case "btnSupArbol":
             btnSupArbol.classList.add("activeVerde");
@@ -427,19 +439,19 @@ function selectProps (enemigoLevel) {
     switch (enemigoLevel) {
         case 1:
             //    ataque, defensa,     vida,  tesoro
-            return [ aleatorio(4,9), aleatorio(5, 10), 5, aleatorio(5, 10), "LV01" ];
+            return [ aleatorio(4, 9), aleatorio(5, 10), 5, aleatorio(5, 10), "LV01" ];
         case 2:
-            return [ aleatorio(5,12), aleatorio(7, 12), 7, aleatorio(7, 12), " LV02" ];
+            return [ aleatorio(5, 12), aleatorio(7, 12), 7, aleatorio(7, 12), " LV02" ];
         case 3:
-            return [ aleatorio(6,16), aleatorio(9, 14), 9, aleatorio(9, 14), " LV03" ];
+            return [ aleatorio(6, 16), aleatorio(9, 14), 9, aleatorio(9, 14), " LV03" ];
         case 4:
-            return [ aleatorio(7,19), aleatorio(10, 16), 5, aleatorio(10, 16), " LV04" ];
+            return [ aleatorio(7, 19), aleatorio(10, 16), 5, aleatorio(10, 16), " LV04" ];
         case 5:
-            return [ aleatorio(8,20), aleatorio(11, 18), 5, aleatorio(11, 18), " LV05" ];
+            return [ aleatorio(8, 20), aleatorio(11, 18), 5, aleatorio(11, 18), " LV05" ];
         case 6:
-            return [ aleatorio(12,25), aleatorio(12, 20), 5, aleatorio(12, 20), " LV06" ];
+            return [ aleatorio(12, 25), aleatorio(12, 20), 5, aleatorio(12, 20), " LV06" ];
         default:
-            return [ aleatorio(20,30), 20, 20, 25, " Jefe Final" ];
+            return [ aleatorio(20, 30), 20, 20, 25, " Jefe Final" ];
     }
 }
 //Configura los botones de enemigo modo true cuando estan activos false inactivos(cuando aparece el card)
@@ -494,14 +506,14 @@ function crearMapa () {
     const contenedorMapa = document.querySelector("#contenedorMapa");
     for (let i = 0; i < 20; i++) {
         const divFila = document.createElement("tr");
-        divFila.className = "";
+        divFila.className = "tr";
 
         for (let z = 0; z < 30; z++) {
             const img = document.createElement("td");
             img.className = "miFuente icons text-center";
             img.style.background = "white";
             img.style.color = "black";
-            img.textContent = String.fromCharCode(i + 65) + (z + 1);
+            img.textContent = String.fromCharCode(i + 65) + (z<9 ? '0' + (z + 1): z + 1);
             img.setAttribute("id", `mapa${ String.fromCharCode(i + 65) + (z + 1) }`);
             divFila.appendChild(img);
         }
@@ -559,6 +571,7 @@ function posicionarMapa () {
         //document.querySelector(`#mapa${ e }`).src = "img/stone.svg";
         document.querySelector(`#mapa${ e }`).style.background = "#0d6efd";
     })
+    
 }
 //Funciones comunes********************************************************************************
 

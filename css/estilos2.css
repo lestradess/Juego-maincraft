@@ -1,0 +1,90 @@
+:root {
+	--texto: rgba(255, 255, 255, .7);
+	--blanco: #fff;
+	--input: #3A3B3C;
+	--input-hover: #4b4d4e;
+	--activo: #2D88FF;
+	--gris-claro: #B0B3B8;
+	--fondo-contenido: #242526;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: #484b4e;
+	color: var(--texto);
+}
+
+a {
+	color: var(--texto);
+	text-decoration: none;
+}
+
+
+.menu a svg {
+	
+	max-width: 100px;
+	height: 100px;
+}
+.offcanvas-custom{
+	width: 100px !important;
+	background-color: #3A3B3C;
+}
+.boton{
+	display: flex;
+	margin-left: 0.5rem;
+	justify-content: center;
+		/* Centra el contenido horizontalmente */
+	align-items: center;
+		/* Centra el contenido verticalmente */
+	width: 80%;
+		/* Ancho completo del contenedor */
+	height: calc(80vh/5);
+		/* Altura completa del viewport */
+	/* border: 1px solid #ccc; */
+		/* Opcional: para visualizar los bordes */
+	box-sizing: border-box;
+	gap: 0.5rem;
+	
+}
+.icon{
+	width: 24;
+	height: 24;
+}
+.botones{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	height: 80vh;
+	
+	
+}
+.btnCerrar{
+	justify-content: center !important;
+}
+.icons {
+	border-radius: 0.5rem;
+	/* width: 95%; */
+	margin-bottom: 10px;
+}
+.table {
+	display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		
+		height: 80vh;
+}
+.tr {
+	width: 100%;
+}
+.icons{
+	width: 100px;
+	height: 20px;
+}
