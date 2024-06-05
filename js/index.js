@@ -54,7 +54,7 @@ const divInicio = document.querySelector("#inicio");
 const contenedorJugadores = document.querySelector("#contenedorJugadores");
 const mapaDiv = document.querySelector("#contenedorMapa");
 const cuerpo = document.querySelector("#main");
-const menu = document.querySelector("#menu");
+const divMenu = document.querySelector("#menu");
 const info = document.querySelector("#informacion");
 const divBatalla = document.querySelector("#batalla");
 
@@ -93,7 +93,8 @@ function setupGame () {
     divEnemigos.style.display = "none";
     divRocas.style.display = "none";
     contenedorJugadores.style.display = "none";
-
+    divMenu.style.display = "none";
+    
 }
 // ?Listerners**************************
 // Se asignan todos los eventListeners
@@ -244,7 +245,8 @@ function eventListeners () {
 function starGame () {
     //btnStarGame.remove();
     document.querySelector("#calavera").remove();
-    
+    divMenu.style.display = "block";
+
 
 
 }
@@ -313,7 +315,7 @@ function limpiarMapa () {
 //? Posiciona todos los elementos en el mapa, cada vez que se manda llamar la función.
 function posicionarMapa () {
     btnMapa.style.display = "none";
-    divMapa.style.display="block";
+    divMapa.style.display = "block";
     limpiarMapa();
     crearMapa();
     espaciosOcupadosSiempre.forEach(e => {
@@ -343,12 +345,12 @@ function continuar () {
     console.log("continuar");
 }
 function esconderDivs () {
-    divMapa.classList.remove("show");
-    divEnemigos.classList.remove("show");
-    divArboles.classList.remove("show");
-    divAnimales.classList.remove("show");
-    divRocas.classList.remove("show");
-    divInicio.classList.remove("show");
+    divMapa.style.display = "none";
+    divEnemigos.style.display = "none";
+    divArboles.style.display = "none";
+    divAnimales.style.display = "none";
+    divRocas.style.display = "none";
+    divInicio.style.display = "none";
 }
 function botonActivo (text) {
     btnSupMapa.classList.remove("activeGris");
@@ -364,19 +366,28 @@ function botonActivo (text) {
         //     break;
         case "btnSupMapa":
             btnSupMapa.classList.add("activeGris");
+            divMapa.style.display = "block";
+
             break;
         case "btnSupEnemigo":
-            console.log("entró en rojo")
             btnSupEnemigo.classList.add("activeRojo");
+            divEnemigos.style.display = "block";
+
             break;
         case "btnSupArbol":
             btnSupArbol.classList.add("activeVerde");
+            divArboles.style.display = "block";
+
             break;
         case "btnSupAnimal":
             btnSupAnimal.classList.add("activeAmarillo");
+            divAnimales.style.display = "block";
+
             break;
         case "btnSupRoca":
             btnSupRoca.classList.add("active");
+            divRocas.style.display = "block";
+
             break;
         default:
             break;

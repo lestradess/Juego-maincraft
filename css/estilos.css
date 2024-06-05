@@ -55,8 +55,9 @@ header .menu a:hover {
 }
 
 header .menu a svg {
-	width: 8rem;
-	height: 8rem;
+	min-width: 5rem;
+	min-height: 5rem;
+
 }
 
 header .menu .active {
