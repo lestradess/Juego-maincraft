@@ -1,21 +1,27 @@
 
 //const btnCreate = document.querySelector('#btnCreate');
 const documento = document.documentElement.style;
-const btnKill = document.querySelector("#btnKill");
+// ? TEXTOS *****************************************************************************
 const ataque = document.querySelector("#ataque");
 const defensa = document.querySelector("#defensa");
 const vida = document.querySelector("#vida");
 const createTxt01 = document.querySelector("#createTxt01");
 const createTxt02 = document.querySelector("#createTxt02");
+const masDa = document.querySelector("#masDa");
+const menosDa = document.querySelector("#menosDa");
+const masDe = document.querySelector("#masDe");
+const menosDe = document.querySelector("#menosDe");
+const masVi = document.querySelector("#masVi");
+const menosVi = document.querySelector("#menosVi");
+const masTe = document.querySelector("#masTe");
+const menosTe = document.querySelector("#menosTe");
+const levelTex = document.querySelector("#enemyLevel");
+
+// ?Botones****************************************************************************
 const btnPosEnemy = document.querySelector("#btnPosEnemy");
 const btnArboles = document.querySelector("#btnArboles");
 const btnAnimales = document.querySelector("#btnAnimales");
 const btnRocas = document.querySelector("#btnRocas");
-const btnPosEnemy2 = document.querySelector("#btnPosEnemy2");
-const btnArboles2 = document.querySelector("#btnArboles2");
-const btnAnimales2 = document.querySelector("#btnAnimales2");
-const btnRocas2 = document.querySelector("#btnRocas2")
-
 const btnSupInicio = document.querySelector("#btnSupInicio");
 const btnMapa = document.querySelector("#btnMapa");
 const btnSupMapa = document.querySelector("#btnSupMapa");
@@ -27,34 +33,32 @@ const btnCrearBatalla = document.querySelector("#btnCrearBatalla");
 const btnCamPosi = document.querySelector("#btnCamPosi");
 const btnStarGame = document.querySelector("#btnStarGame");
 const btnContinuar = document.querySelector("#btnContinuar");
-const divCard = document.querySelector("#card");
 const btnCancelar = document.querySelector("#btnCancelar");
-const masDa = document.querySelector("#masDa");
-const menosDa = document.querySelector("#menosDa");
-const masDe = document.querySelector("#masDe");
-const menosDe = document.querySelector("#menosDe");
-const masVi = document.querySelector("#masVi");
-const menosVi = document.querySelector("#menosVi");
-const masTe = document.querySelector("#masTe");
-const menosTe = document.querySelector("#menosTe");
-const levelTex = document.querySelector("#enemyLevel");
-const info = document.querySelector("#informacion");
-const cuerpo = document.querySelector("#main");
-const mapaDiv = document.querySelector("#contenedorMapa");
-const menu = document.querySelector("#menu");
-const contenedorJugadores = document.querySelector("#contenedorJugadores");
+const btnKill = document.querySelector("#btnKill");
+
+// ? INPUTS *************************************************************************
 const inputJugUno = document.querySelector("#inputJugUno");
 const inputJugDos = document.querySelector("#inputJugDos");
 const inputJugTres = document.querySelector("#inputJugTres");
 const inputJugCuatro = document.querySelector("#inputJugCuatro");
 const inputJugCinco = document.querySelector("#inputJugCinco");
 const inputJugSeis = document.querySelector("#inputJugSeis");
+
+// ? DIVS   ***************************************************************
 const divMapa = document.querySelector("#mapa");
 const divEnemigos = document.querySelector("#enemigos");
 const divArboles = document.querySelector("#arboles");
 const divAnimales = document.querySelector("#animales");
 const divRocas = document.querySelector("#rocas");
 const divInicio = document.querySelector("#inicio");
+const contenedorJugadores = document.querySelector("#contenedorJugadores");
+const mapaDiv = document.querySelector("#contenedorMapa");
+const cuerpo = document.querySelector("#main");
+const menu = document.querySelector("#menu");
+const info = document.querySelector("#informacion");
+const divBatalla = document.querySelector("#batalla");
+
+// ? VARIABLES GLOBALES
 //Enemigos vivos
 let enemigosVivos = 12;
 let posEnemigo = -1;
@@ -75,15 +79,31 @@ let celdasAnimales = [];
 let celdasRocas = [];
 let jugadores = [];
 
-//Listerners**************************
-eventListeners();
 
+// Inicialización de eventListeners
+eventListeners();
+// Inicializacion de componentes
+setupGame();
+
+function setupGame () {
+    divBatalla.style.display = "none";
+    divMapa.style.display = "none";
+    divAnimales.style.display = "none";
+    divArboles.style.display = "none";
+    divEnemigos.style.display = "none";
+    divRocas.style.display = "none";
+    contenedorJugadores.style.display = "none";
+
+}
+// ?Listerners**************************
+// Se asignan todos los eventListeners
 function eventListeners () {
-    inputJugUno.addEventListener('blur', (e) => {
-        jugadores.push(e.target.value);
-        console.log("Entro a evento" + jugadores);
-    });
-    btnContinuar.addEventListener("click", continuar);
+    console.log("entra en el eventListener");
+    // inputJugUno.addEventListener('blur', (e) => {
+    //     jugadores.push(e.target.value);
+    //     console.log("Entro a evento" + jugadores);
+    // });
+    //btnContinuar.addEventListener("click", continuar);
     btnMapa.addEventListener("click", starGame);
     btnMapa.addEventListener("click", posicionarMapa);
     main.addEventListener("click", informacion);
@@ -135,49 +155,42 @@ function eventListeners () {
         if (a < 0) a = 0;
         tesoro.textContent = a;
     });
-
-
-
     btnPosEnemy.addEventListener("click", () => {
         posicionarElementos("enemigo", "img/skull.svg", "red", "btn-danger", "enemigoTxt", "enemigoTxtDos");
         btnPosEnemy.remove();
-        btnPosEnemy2.remove();
     });
-    btnPosEnemy2.addEventListener("click", () => {
-        posicionarElementos("enemigo", "img/skull.svg", "red", "btn-danger", "enemigoTxt", "enemigoTxtDos");
-        btnPosEnemy2.remove();
-        btnPosEnemy.remove();
-    });
+    // btnPosEnemy2.addEventListener("click", () => {
+    //     posicionarElementos("enemigo", "img/skull.svg", "red", "btn-danger", "enemigoTxt", "enemigoTxtDos");
+    //     btnPosEnemy2.remove();
+    //     btnPosEnemy.remove();
+    // });
     btnArboles.addEventListener("click", () => {
         posicionarElementos("arbol", "img/tree.svg", "#198754", "btn-success", "arbolTxt", "arbolTxtDos");
         btnArboles.remove();
-        btnArboles2.remove();
     });
-    btnArboles2.addEventListener("click", () => {
-        posicionarElementos("arbol", "img/tree.svg", "#198754", "btn-success", "arbolTxt", "arbolTxtDos");
-        btnArboles.remove();
-        btnArboles2.remove();
-    });
+    // btnArboles2.addEventListener("click", () => {
+    //     posicionarElementos("arbol", "img/tree.svg", "#198754", "btn-success", "arbolTxt", "arbolTxtDos");
+    //     btnArboles.remove();
+    //     btnArboles2.remove();
+    // });
     btnAnimales.addEventListener("click", () => {
         posicionarElementos("animal", "img/animal.svg", "#ffc107", "btn-warning", "animalTxt", "animalTxtDos");
         btnAnimales.remove();
-        btnAnimales2.remove();
     });
-    btnAnimales2.addEventListener("click", () => {
-        posicionarElementos("animal", "img/animal.svg", "#ffc107", "btn-warning", "animalTxt", "animalTxtDos");
-        btnAnimales.remove();
-        btnAnimales2.remove();
-    });
+    // btnAnimales2.addEventListener("click", () => {
+    //     posicionarElementos("animal", "img/animal.svg", "#ffc107", "btn-warning", "animalTxt", "animalTxtDos");
+    //     btnAnimales.remove();
+    //     btnAnimales2.remove();
+    // });
     btnRocas.addEventListener("click", () => {
         posicionarElementos("roca", "img/stone.svg", "#0d6efd", "btn-primary", "rocaTxt", "rocaTxtDos");
         btnRocas.remove();
-        btnRocas2.remove();
     });
-    btnRocas2.addEventListener("click", () => {
-        posicionarElementos("roca", "img/stone.svg", "#0d6efd", "btn-primary", "rocaTxt", "rocaTxtDos");
-        btnRocas.remove();
-        btnRocas2.remove();
-    });
+    // btnRocas2.addEventListener("click", () => {
+    //     posicionarElementos("roca", "img/stone.svg", "#0d6efd", "btn-primary", "rocaTxt", "rocaTxtDos");
+    //     btnRocas.remove();
+    //     btnRocas2.remove();
+    // });
     // btnSupInicio.addEventListener("click", () => {
     //     botonActivo("btnSupInicio");
     // })
@@ -228,6 +241,13 @@ function eventListeners () {
     btnCancelar.addEventListener('click', cancelar);
 
 }
+function starGame () {
+    //btnStarGame.remove();
+    document.querySelector("#calavera").remove();
+    
+
+
+}
 function informacion () {
 
     while (info.firstChild) {
@@ -263,19 +283,61 @@ function informacion () {
     info.appendChild(infoCeldasRocas);
 
 }
-function starGame () {
-    //btnStarGame.remove();
-    document.querySelector("#calavera").remove();
-    esconderDivs();
-    divMapa.classList.add("show");
-    //contenedorJugadores.classList.remove("invisible");
-    //btnMapa.classList.remove("invisible");
-    // btnSupMapa.click();
-    // btnMapa.click();
-    // btnPosEnemy2.click();
-    // btnArboles2.click();
-    // btnAnimales2.click();
-    // btnRocas2.click();
+// ?Mapa*************************************************************
+//Se crea el mapa por primera vez.
+function crearMapa () {
+    const contenedorMapa = document.querySelector("#contenedorMapa");
+    for (let i = 0; i < 20; i++) {
+        const divFila = document.createElement("tr");
+        divFila.className = "tr";
+
+        for (let z = 0; z < 30; z++) {
+            const img = document.createElement("td");
+            img.className = "miFuente celda text-center";
+            img.style.background = "white";
+            img.style.color = "black";
+            img.textContent = String.fromCharCode(i + 65) + (z < 9 ? '0' + (z + 1) : z + 1);
+            img.setAttribute("id", `mapa${ String.fromCharCode(i + 65) + (z + 1) }`);
+            divFila.appendChild(img);
+        }
+        contenedorMapa.appendChild(divFila);
+    }
+}
+// ?Hay que limpiar el HTML del mapa al cambiar elementos de posición
+function limpiarMapa () {
+    const contenedorMapa = document.querySelector("#contenedorMapa");
+    while (contenedorMapa.firstChild) {
+        contenedorMapa.removeChild(contenedorMapa.firstChild);
+    }
+}
+//? Posiciona todos los elementos en el mapa, cada vez que se manda llamar la función.
+function posicionarMapa () {
+    btnMapa.style.display = "none";
+    divMapa.style.display="block";
+    limpiarMapa();
+    crearMapa();
+    espaciosOcupadosSiempre.forEach(e => {
+
+        document.querySelector(`#mapa${ e }`).style.background = "#333";
+    })
+    celdasEnemigos.forEach(e => {
+        if (e === 0) return;
+        //document.querySelector(`#mapa${ e }`).src = "img/skull.svg";
+        document.querySelector(`#mapa${ e }`).style.background = "red";
+    })
+    celdasArboles.forEach(e => {
+        //document.querySelector(`#mapa${ e }`).src = "img/tree.svg";
+        document.querySelector(`#mapa${ e }`).style.background = "green";
+    })
+    celdasAnimales.forEach(e => {
+        //document.querySelector(`#mapa${ e }`).src = "img/animal.svg";
+        document.querySelector(`#mapa${ e }`).style.background = "#ffc107";
+    })
+    celdasRocas.forEach(e => {
+        //document.querySelector(`#mapa${ e }`).src = "img/stone.svg";
+        document.querySelector(`#mapa${ e }`).style.background = "#0d6efd";
+    })
+
 }
 function continuar () {
     console.log("continuar");
@@ -499,79 +561,8 @@ function crearCardEnemigo (valor, div) {
 
 }
 
-//Mapa*************************************************************
-//Se crea el mapa por primera vez.
-function crearMapa () {
-    const contenedorMapa = document.querySelector("#contenedorMapa");
-    for (let i = 0; i < 20; i++) {
-        const divFila = document.createElement("tr");
-        divFila.className = "tr";
 
-        for (let z = 0; z < 30; z++) {
-            const img = document.createElement("td");
-            img.className = "miFuente celda text-center";
-            img.style.background = "white";
-            img.style.color = "black";
-            img.textContent = String.fromCharCode(i + 65) + (z < 9 ? '0' + (z + 1) : z + 1);
-            img.setAttribute("id", `mapa${ String.fromCharCode(i + 65) + (z + 1) }`);
-            divFila.appendChild(img);
-        }
-        contenedorMapa.appendChild(divFila);
-    }
 
-}
-//Hay que limpiar el HTML del mapa al cambiar elementos de posición
-function limpiarMapa () {
-    const contenedorMapa = document.querySelector("#contenedorMapa");
-    while (contenedorMapa.firstChild) {
-        contenedorMapa.removeChild(contenedorMapa.firstChild);
-    }
-}
-//Posiciona todos los elementos en el mapa, cada vez que se manda llamar la función.
-function posicionarMapa () {
-    btnMapa.style.display = "none";
-    mapaDiv.classList.remove("invisible");
-    if (celdasEnemigos.length <= 0) {
-        btnPosEnemy.remove();
-        btnPosEnemy2.classList.remove("invisible");
-    }
-    if (celdasArboles.length <= 0) {
-        btnArboles.remove();
-        btnArboles2.classList.remove("invisible");
-    }
-    if (celdasAnimales.length <= 0) {
-        btnAnimales.remove();
-        btnAnimales2.classList.remove("invisible");
-    }
-    if (celdasRocas.length <= 0) {
-        btnRocas.remove();
-        btnRocas2.classList.remove("invisible");
-    }
-    limpiarMapa();
-    crearMapa();
-    espaciosOcupadosSiempre.forEach(e => {
-
-        document.querySelector(`#mapa${ e }`).style.background = "#333";
-    })
-    celdasEnemigos.forEach(e => {
-        if (e === 0) return;
-        //document.querySelector(`#mapa${ e }`).src = "img/skull.svg";
-        document.querySelector(`#mapa${ e }`).style.background = "red";
-    })
-    celdasArboles.forEach(e => {
-        //document.querySelector(`#mapa${ e }`).src = "img/tree.svg";
-        document.querySelector(`#mapa${ e }`).style.background = "green";
-    })
-    celdasAnimales.forEach(e => {
-        //document.querySelector(`#mapa${ e }`).src = "img/animal.svg";
-        document.querySelector(`#mapa${ e }`).style.background = "#ffc107";
-    })
-    celdasRocas.forEach(e => {
-        //document.querySelector(`#mapa${ e }`).src = "img/stone.svg";
-        document.querySelector(`#mapa${ e }`).style.background = "#0d6efd";
-    })
-
-}
 //Funciones comunes********************************************************************************
 
 //Posiciona Enemigos, Arboles, Animales y rocas************************************
