@@ -11,6 +11,16 @@
 	--animales: #ffc107;
 	--rocas: #ababac;
 	--fondo: #18191A;
+	--hover: #ffae00;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	background: var(--fondo);
+	color: var(--texto);
 }
 
 #inicio {
@@ -22,17 +32,6 @@
 }
 .miFuente{
 	font-family: 'Monaco';
-}
-
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
-body {
-	background: var(--fondo);
-	color: var(--texto);
 }
 
 a {
@@ -56,8 +55,8 @@ header .menu a:hover {
 }
 
 header .menu a svg {
-	width: 25px;
-	height: 25px;
+	width: 8rem;
+	height: 8rem;
 }
 
 header .menu .active {
@@ -68,51 +67,51 @@ header .menu .active {
 header .menu .active:hover {
 	background: none;
 	border-radius: 0px;
-	color: var(--activo);
+	color: var(--hover);
 }
 
 header .menu .activeRojo {
-	border-bottom: 4px solid red;
+	border-bottom: 4px solid var(--activo);
 	color: red;
 }
 
 header .menu .activeRojo:hover {
 	background: none;
 	border-radius: 0px;
-	color: red;
+	color: var(--hover);
 }
 
 header .menu .activeVerde {
-	border-bottom: 4px solid #198754;
+	border-bottom: 4px solid var(--activo);
 	color: #198754;
 }
 
 header .menu .activeVerde:hover {
 	background: none;
 	border-radius: 0px;
-	color: #198754;
+	color: var(--hover);
 }
 
 header .menu .activeAmarillo {
-	border-bottom: 4px solid #ffc107;
+	border-bottom: 4px solid var(--activo);;
 	color: #ffc107;
 }
 
 header .menu .activeAmarillo:hover {
 	background: none;
 	border-radius: 0px;
-	color: #ffc107;
+	color: var(--activo);
 }
 
 header .menu .activeGris {
-	border-bottom: 4px solid #ababac;
-	color: #ababac;
+	border-bottom: 4px solid var(--activo);
+	color: #cc00ff;
 }
 
 header .menu .activeGris:hover {
 	background: none;
 	border-radius: 0px;
-	color: #ababac;
+	color: var(--hover);
 }
 
 
