@@ -54,6 +54,7 @@ const divEnemigos = document.querySelector("#enemigos");
 const divArboles = document.querySelector("#arboles");
 const divAnimales = document.querySelector("#animales");
 const divRocas = document.querySelector("#rocas");
+const divInicio = document.querySelector("#inicio");
 //Enemigos vivos
 let enemigosVivos = 12;
 let posEnemigo = -1;
@@ -265,6 +266,8 @@ function informacion () {
 function starGame () {
     //btnStarGame.remove();
     document.querySelector("#calavera").remove();
+    esconderDivs();
+    divMapa.classList.add("show");
     //contenedorJugadores.classList.remove("invisible");
     //btnMapa.classList.remove("invisible");
     // btnSupMapa.click();
@@ -283,6 +286,7 @@ function esconderDivs () {
     divArboles.classList.remove("show");
     divAnimales.classList.remove("show");
     divRocas.classList.remove("show");
+    divInicio.classList.remove("show");
 }
 function botonActivo (text) {
     btnSupMapa.classList.remove("activeGris");
@@ -505,7 +509,7 @@ function crearMapa () {
 
         for (let z = 0; z < 30; z++) {
             const img = document.createElement("td");
-            img.className = "miFuente icons text-center";
+            img.className = "miFuente celda text-center";
             img.style.background = "white";
             img.style.color = "black";
             img.textContent = String.fromCharCode(i + 65) + (z < 9 ? '0' + (z + 1) : z + 1);
