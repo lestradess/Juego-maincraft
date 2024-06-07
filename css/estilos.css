@@ -46,77 +46,6 @@ header {
 	background: var(--fondo-contenido);
 }
 
-
-
-header .menu a:hover {
-	color: var(--texto);
-	background: var(--input);
-	border-radius: 5px;
-}
-
-header .menu a svg {
-	min-width: 5rem;
-	min-height: 5rem;
-
-}
-
-header .menu .active {
-	border-bottom: 4px solid var(--activo);
-	color: var(--activo);
-}
-
-header .menu .active:hover {
-	background: none;
-	border-radius: 0px;
-	color: var(--hover);
-}
-
-header .menu .activeRojo {
-	border-bottom: 4px solid var(--activo);
-	color: red;
-}
-
-header .menu .activeRojo:hover {
-	background: none;
-	border-radius: 0px;
-	color: var(--hover);
-}
-
-header .menu .activeVerde {
-	border-bottom: 4px solid var(--activo);
-	color: #198754;
-}
-
-header .menu .activeVerde:hover {
-	background: none;
-	border-radius: 0px;
-	color: var(--hover);
-}
-
-header .menu .activeAmarillo {
-	border-bottom: 4px solid var(--activo);;
-	color: #ffc107;
-}
-
-header .menu .activeAmarillo:hover {
-	background: none;
-	border-radius: 0px;
-	color: var(--activo);
-}
-
-header .menu .activeGris {
-	border-bottom: 4px solid var(--activo);
-	color: #cc00ff;
-}
-
-header .menu .activeGris:hover {
-	background: none;
-	border-radius: 0px;
-	color: var(--hover);
-}
-
-
-
 .table {
 	display: flex;
 	flex-direction: column;
@@ -137,10 +66,23 @@ header .menu .activeGris:hover {
 }
 
 .calavera {
-	height: 80vh;
+	height: 65vh;
 
 }
 
-.td {
-	width: 20rem !important;
+.d-none{
+	display: none;
+}
+.d-block{
+	display:block;
+}
+.offcanvas-custom {
+	/* width: 100px !important; */
+	background-color:var(--fondo);
+}
+.icons {
+	border-radius: 0.5rem;
+	width: 40%;
+	margin-bottom: 10px;
+	margin-left: 10px;
 }

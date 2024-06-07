@@ -18,17 +18,14 @@ const menosTe = document.querySelector("#menosTe");
 const levelTex = document.querySelector("#enemyLevel");
 
 // ?Botones****************************************************************************
-const btnPosEnemy = document.querySelector("#btnPosEnemy");
+const btnInicio = document.querySelector("#btnInicio");
+const btnMapa = document.querySelector("#btnMapa");
+const btnEnemigos = document.querySelector("#btnEnemigos");
 const btnArboles = document.querySelector("#btnArboles");
 const btnAnimales = document.querySelector("#btnAnimales");
-const btnRocas = document.querySelector("#btnRocas");
+const btnMinerales = document.querySelector("#btnMinerales");
 const btnSupInicio = document.querySelector("#btnSupInicio");
-const btnMapa = document.querySelector("#btnMapa");
-const btnSupMapa = document.querySelector("#btnSupMapa");
-const btnSupEnemigo = document.querySelector("#btnSupEnemigo");
-const btnSupArbol = document.querySelector("#btnSupArbol");
-const btnSupAnimal = document.querySelector("#btnSupAnimal");
-const btnSupRoca = document.querySelector("#btnSupRoca");
+
 const btnCrearBatalla = document.querySelector("#btnCrearBatalla");
 const btnCamPosi = document.querySelector("#btnCamPosi");
 const btnStarGame = document.querySelector("#btnStarGame");
@@ -49,7 +46,7 @@ const divMapa = document.querySelector("#mapa");
 const divEnemigos = document.querySelector("#enemigos");
 const divArboles = document.querySelector("#arboles");
 const divAnimales = document.querySelector("#animales");
-const divRocas = document.querySelector("#rocas");
+const divMinerales = document.querySelector("#rocas");
 const divInicio = document.querySelector("#inicio");
 const contenedorJugadores = document.querySelector("#contenedorJugadores");
 const mapaDiv = document.querySelector("#contenedorMapa");
@@ -91,10 +88,10 @@ function setupGame () {
     divAnimales.style.display = "none";
     divArboles.style.display = "none";
     divEnemigos.style.display = "none";
-    divRocas.style.display = "none";
+    divMinerales.style.display = "none";
     contenedorJugadores.style.display = "none";
     divMenu.style.display = "none";
-    
+
 }
 // ?Listerners**************************
 // Se asignan todos los eventListeners
@@ -105,8 +102,8 @@ function eventListeners () {
     //     console.log("Entro a evento" + jugadores);
     // });
     //btnContinuar.addEventListener("click", continuar);
-    btnMapa.addEventListener("click", starGame);
-    btnMapa.addEventListener("click", posicionarMapa);
+    btnInicio.addEventListener("click", starGame);
+    btnInicio.addEventListener("click", posicionarMapa);
     main.addEventListener("click", informacion);
     masDa.addEventListener("click", () => {
         let a = ataque.textContent;
@@ -156,61 +153,52 @@ function eventListeners () {
         if (a < 0) a = 0;
         tesoro.textContent = a;
     });
-    btnPosEnemy.addEventListener("click", () => {
-        posicionarElementos("enemigo", "img/skull.svg", "red", "btn-danger", "enemigoTxt", "enemigoTxtDos");
-        btnPosEnemy.remove();
+    btnMapa.addEventListener("click", () => { botonActivo("btnMapa") })
+    btnEnemigos.addEventListener("click", () => {
+        if (btnEnemigos.classList.contains("pos")) {
+            btnEnemigos.classList.remove("pos");
+            posicionarElementos("enemigo", "img/skull.svg", "red", "btn-danger", "enemigoTxt", "enemigoTxtDos");
+            textEnemigos.textContent = "Ver Enemigos";
+            divEnemigos.style.display = "none";
+        } else {
+            botonActivo("btnEnemigos");
+        }
     });
-    // btnPosEnemy2.addEventListener("click", () => {
-    //     posicionarElementos("enemigo", "img/skull.svg", "red", "btn-danger", "enemigoTxt", "enemigoTxtDos");
-    //     btnPosEnemy2.remove();
-    //     btnPosEnemy.remove();
-    // });
+
     btnArboles.addEventListener("click", () => {
-        posicionarElementos("arbol", "img/tree.svg", "#198754", "btn-success", "arbolTxt", "arbolTxtDos");
-        btnArboles.remove();
+        if (btnArboles.classList.contains("pos")) {
+            btnArboles.classList.remove("pos");
+            posicionarElementos("arbol", "img/tree.svg", "#198754", "btn-success", "arbolTxt", "arbolTxtDos");
+            textArboles.textContent = "Ver Arboles";
+            divArboles.style.display = "none";
+        } else {
+            botonActivo("btnArboles");
+        }
     });
-    // btnArboles2.addEventListener("click", () => {
-    //     posicionarElementos("arbol", "img/tree.svg", "#198754", "btn-success", "arbolTxt", "arbolTxtDos");
-    //     btnArboles.remove();
-    //     btnArboles2.remove();
-    // });
+
     btnAnimales.addEventListener("click", () => {
-        posicionarElementos("animal", "img/animal.svg", "#ffc107", "btn-warning", "animalTxt", "animalTxtDos");
-        btnAnimales.remove();
+        if (btnAnimales.classList.contains("pos")) {
+            btnAnimales.classList.remove("pos");
+            posicionarElementos("animal", "img/animal.svg", "#ffc107", "btn-warning", "animalTxt", "animalTxtDos");
+            textAnimales.textContent = "Ver Animales";
+            divAnimales.style.display = "none";
+        } else {
+            botonActivo("btnAnimales");
+        }
     });
-    // btnAnimales2.addEventListener("click", () => {
-    //     posicionarElementos("animal", "img/animal.svg", "#ffc107", "btn-warning", "animalTxt", "animalTxtDos");
-    //     btnAnimales.remove();
-    //     btnAnimales2.remove();
-    // });
-    btnRocas.addEventListener("click", () => {
-        posicionarElementos("roca", "img/stone.svg", "#0d6efd", "btn-primary", "rocaTxt", "rocaTxtDos");
-        btnRocas.remove();
+
+    btnMinerales.addEventListener("click", () => {
+
+        if (btnMinerales.classList.contains("pos")) {
+            btnMinerales.classList.remove("pos");
+            posicionarElementos("roca", "img/stone.svg", "#0d6efd", "btn-primary", "rocaTxt", "rocaTxtDos");
+            textMinerales.textContent = "Ver Minerales";
+            divMinerales.style.display = "none";
+        } else {
+            botonActivo("btnMinerales");
+        }
     });
-    // btnRocas2.addEventListener("click", () => {
-    //     posicionarElementos("roca", "img/stone.svg", "#0d6efd", "btn-primary", "rocaTxt", "rocaTxtDos");
-    //     btnRocas.remove();
-    //     btnRocas2.remove();
-    // });
-    // btnSupInicio.addEventListener("click", () => {
-    //     botonActivo("btnSupInicio");
-    // })
-    btnSupMapa.addEventListener("click", () => {
-        botonActivo("btnSupMapa");
-        console.log("btnSupMapaPulsado")
-    });
-    btnSupEnemigo.addEventListener("click", () => {
-        botonActivo("btnSupEnemigo");
-    });
-    btnSupArbol.addEventListener("click", () => {
-        botonActivo("btnSupArbol");
-    });
-    btnSupAnimal.addEventListener("click", () => {
-        botonActivo("btnSupAnimal");
-    });
-    btnSupRoca.addEventListener("click", () => {
-        botonActivo("btnSupRoca");
-    });
+
     btnCamPosi.addEventListener('click', () => {
         console.log(btnCamPosi);
         if (btnCamPosi.textContent === "Enemigo Escapa") {
@@ -246,9 +234,6 @@ function starGame () {
     //btnStarGame.remove();
     document.querySelector("#calavera").remove();
     divMenu.style.display = "block";
-
-
-
 }
 function informacion () {
 
@@ -314,7 +299,7 @@ function limpiarMapa () {
 }
 //? Posiciona todos los elementos en el mapa, cada vez que se manda llamar la función.
 function posicionarMapa () {
-    btnMapa.style.display = "none";
+    btnInicio.style.display = "none";
     divMapa.style.display = "block";
     limpiarMapa();
     crearMapa();
@@ -349,45 +334,29 @@ function esconderDivs () {
     divEnemigos.style.display = "none";
     divArboles.style.display = "none";
     divAnimales.style.display = "none";
-    divRocas.style.display = "none";
+    divMinerales.style.display = "none";
     divInicio.style.display = "none";
 }
 function botonActivo (text) {
-    btnSupMapa.classList.remove("activeGris");
-    btnSupEnemigo.classList.remove("activeRojo");
-    btnSupArbol.classList.remove("activeVerde");
-    btnSupAnimal.classList.remove("activeAmarillo");
-    btnSupRoca.classList.remove("active");
+    console.log("entra a botonActivo");
     esconderDivs();
-    // btnSupInicio.classList.remove("active");
     switch (text) {
-        // case "btnSupInicio":
-        //     btnSupMapa.classList.add("active");
-        //     break;
-        case "btnSupMapa":
-            btnSupMapa.classList.add("activeGris");
+
+        case "btnMapa":
+            console.log("Entra a mapa");
             divMapa.style.display = "block";
-
             break;
-        case "btnSupEnemigo":
-            btnSupEnemigo.classList.add("activeRojo");
+        case "btnEnemigos":
             divEnemigos.style.display = "block";
-
             break;
-        case "btnSupArbol":
-            btnSupArbol.classList.add("activeVerde");
+        case "btnArboles":
             divArboles.style.display = "block";
-
             break;
-        case "btnSupAnimal":
-            btnSupAnimal.classList.add("activeAmarillo");
+        case "btnAnimales":
             divAnimales.style.display = "block";
-
             break;
-        case "btnSupRoca":
-            btnSupRoca.classList.add("active");
-            divRocas.style.display = "block";
-
+        case "btnMinerales":
+            divMinerales.style.display = "block";
             break;
         default:
             break;
