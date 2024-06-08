@@ -94,7 +94,7 @@ function setupGame () {
 
 }
 // ?Listerners**************************
-// Se asignan todos los eventListeners
+// ?Se asignan todos los eventListeners de los botones
 function eventListeners () {
     console.log("entra en el eventListener");
     // inputJugUno.addEventListener('blur', (e) => {
@@ -153,54 +153,64 @@ function eventListeners () {
         if (a < 0) a = 0;
         tesoro.textContent = a;
     });
+    //? Activa el div del mapa
     btnMapa.addEventListener("click", () => { botonActivo("btnMapa") })
+    //? posiciona enemigos
     btnEnemigos.addEventListener("click", () => {
         if (btnEnemigos.classList.contains("pos")) {
             btnEnemigos.classList.remove("pos");
             posicionarElementos("enemigo", "img/skull.svg", "red", "btn-danger", "enemigoTxt", "enemigoTxtDos");
             textEnemigos.textContent = "Ver Enemigos";
-            divEnemigos.style.display = "none";
+            esconderDivs()
+            divMapa.style.display = "block";
         } else {
             botonActivo("btnEnemigos");
         }
     });
-
+    // ?Activa el div de los arboles
     btnArboles.addEventListener("click", () => {
         if (btnArboles.classList.contains("pos")) {
             btnArboles.classList.remove("pos");
             posicionarElementos("arbol", "img/tree.svg", "#198754", "btn-success", "arbolTxt", "arbolTxtDos");
             textArboles.textContent = "Ver Arboles";
-            divArboles.style.display = "none";
+            //divArboles.style.display = "none";
+            esconderDivs()
+            divMapa.style.display = "block";
         } else {
             botonActivo("btnArboles");
         }
     });
-
+    // ?Activa el dic de los animales
     btnAnimales.addEventListener("click", () => {
         if (btnAnimales.classList.contains("pos")) {
             btnAnimales.classList.remove("pos");
             posicionarElementos("animal", "img/animal.svg", "#ffc107", "btn-warning", "animalTxt", "animalTxtDos");
             textAnimales.textContent = "Ver Animales";
-            divAnimales.style.display = "none";
+            //divAnimales.style.display = "none";
+            esconderDivs()
+            divMapa.style.display = "block";
         } else {
             botonActivo("btnAnimales");
         }
     });
-
+    // ?Activa el div de los minerales
     btnMinerales.addEventListener("click", () => {
 
         if (btnMinerales.classList.contains("pos")) {
             btnMinerales.classList.remove("pos");
             posicionarElementos("roca", "img/stone.svg", "#0d6efd", "btn-primary", "rocaTxt", "rocaTxtDos");
             textMinerales.textContent = "Ver Minerales";
-            divMinerales.style.display = "none";
+            //divMinerales.style.display = "none";
+            esconderDivs()
+            divMapa.style.display = "block";
         } else {
             botonActivo("btnMinerales");
         }
     });
-
+    // ?Cambia la posicion del enemigo
     btnCamPosi.addEventListener('click', () => {
         console.log(btnCamPosi);
+        //Si el enemigo escapa hay que vambiar la posicion
         if (btnCamPosi.textContent === "Enemigo Escapa") {
             btnCamPosi.setAttribute("href", "#card");
             btnCamPosi.textContent = "Cambiar Posición";
@@ -212,8 +222,10 @@ function eventListeners () {
         configurarBotonesEnemigo(true);
         btnCamPosi.classList.remove("precaucion");
         btnCrearBatalla.style.display = "block";
+        divBatalla.style.display = "none";
         eventoElementos(btnCamPosi.value, 'cambiarPosicionEnemigos');
     });
+    // ?Empieza la batalla
     btnCrearBatalla.addEventListener('click', () => {
 
         if (btnCrearBatalla.textContent === "Enemigo Muere") {
@@ -227,14 +239,18 @@ function eventListeners () {
         }
         crearBatalla(btnCrearBatalla.value);
     });
+    // ? cancela la batalla
     btnCancelar.addEventListener('click', cancelar);
 
 }
+// ?FUNCIONES DE PANTALLA
+// ?Se ejecuta despues de dar al boton empezar juego
 function starGame () {
-    //btnStarGame.remove();
     document.querySelector("#calavera").remove();
     divMenu.style.display = "block";
+    divMapa.style.display = "block";
 }
+// ?Informacion de los elementos
 function informacion () {
 
     while (info.firstChild) {
@@ -271,7 +287,7 @@ function informacion () {
 
 }
 // ?Mapa*************************************************************
-//Se crea el mapa por primera vez.
+// ?Se crea el mapa por primera vez.
 function crearMapa () {
     const contenedorMapa = document.querySelector("#contenedorMapa");
     for (let i = 0; i < 20; i++) {
@@ -300,7 +316,7 @@ function limpiarMapa () {
 //? Posiciona todos los elementos en el mapa, cada vez que se manda llamar la función.
 function posicionarMapa () {
     btnInicio.style.display = "none";
-    divMapa.style.display = "block";
+    //divMapa.style.display = "block";
     limpiarMapa();
     crearMapa();
     espaciosOcupadosSiempre.forEach(e => {
@@ -326,9 +342,11 @@ function posicionarMapa () {
     })
 
 }
+// Sin uso aun
 function continuar () {
     console.log("continuar");
 }
+// ?Esconde todos los divs 
 function esconderDivs () {
     divMapa.style.display = "none";
     divEnemigos.style.display = "none";
@@ -337,6 +355,7 @@ function esconderDivs () {
     divMinerales.style.display = "none";
     divInicio.style.display = "none";
 }
+// ?Controla que div mostrar
 function botonActivo (text) {
     console.log("entra a botonActivo");
     esconderDivs();
@@ -363,7 +382,8 @@ function botonActivo (text) {
     }
 }
 //Funciones***********************
-//ENEMIGOS*****************************************************
+//?ENEMIGOS*****************************************************
+// ? Crea la batalla
 function crearBatalla (valor) {
     console.log(`valor crearBatalla ${ valor }`);
     enemigoActual = valor;
@@ -375,12 +395,13 @@ function crearBatalla (valor) {
     console.log(`ariacontrol ${ btnCamPosi }`);
     newEnemy();
 }
-//Creada para el btnCancelar usada para salir de la card de batalla de enemigos.
+// ?Creada para el btnCancelar usada para salir de la card de batalla de enemigos.
 function cancelar () {
     console.log("Entró a cancelar")
+    divBatalla.style.display = "none";
     configurarBotonesEnemigo(true);
 }
-//Crea los skills de un enemigo.
+//? Crea los skills de un enemigo.
 function newEnemy () {
     if (posEnemigo != -1) {
         document.querySelector(`#enemy${ posEnemigo + 1 }`).src = "img/skull.svg";
@@ -389,7 +410,7 @@ function newEnemy () {
     console.log(`ListadoActual ${ enemyList }`);
     markEnemy();
 }
-//Mata un enemigo y lo elimina de las imagenes gracias a killEnemyImg
+//? Mata un enemigo y lo elimina de las imagenes gracias a killEnemyImg
 function killEnemy () {
     enemyList[ posEnemigo ] = 0;
     console.log(`ListadoActual ${ enemyList }`);
@@ -403,15 +424,15 @@ function killEnemy () {
         nuevaPartida();
     }
 }
-//Controla las imágenes de los enemigos.
+// ?Controla las imágenes de los enemigos.
 function killEnemyImg () {
     document.querySelector(`#enemy${ posEnemigo + 1 }`).style.backgroundColor = '#333';
 }
-// Marca el enemigo actual.
+// ?Marca el enemigo actual.
 function markEnemy () {
     document.querySelector(`#enemy${ posEnemigo + 1 }`).src = "img/skull_2.svg";
 }
-//Devuelve el level del enemigo
+//?Devuelve el level del enemigo
 function eligeEnemigo (e) {
     if (e <= 50) return 1;
     if (e <= 70) return 2;
@@ -421,12 +442,12 @@ function eligeEnemigo (e) {
     if (e <= 99) return 6;
     return 7;
 }
-// Creación del enemigo
+// ?Creación del enemigo
 function createEnemy (enemigoLevel) {
     inserProps(selectProps(enemigoVivo(enemigoLevel)));
     levelTex.textContent = `Enemigo Level ${ enemigoLevel }`;
 }
-//imprime las skills del enemigo
+//?imprime las skills del enemigo
 function inserProps (prop) {
     let props = [];
     props = prop;
@@ -435,7 +456,7 @@ function inserProps (prop) {
     vida.textContent = props[ 2 ];
     tesoro.textContent = props[ 3 ];
 }
-//Nos dice si el enemigo elegido está vivo
+//?Nos dice si el enemigo elegido está vivo
 function enemigoVivo (enemigoLevel) {
 
     if (estaVivo(enemigoLevel)) return enemigoLevel;
@@ -454,7 +475,7 @@ function enemigoVivo (enemigoLevel) {
     }
     console.log("Ya no hay enemigos vivos")
 }
-//Nos dice si un enemigo esta vivo (true o false)
+// ?Nos dice si un enemigo esta vivo (true o false)
 function estaVivo (enemigoLevel) {
     //buscamos si en el array hay algun enemigo de ese level 
     // -1 es no, si lo hay nos devuelve la posicion
@@ -466,7 +487,7 @@ function estaVivo (enemigoLevel) {
     console.log(`muerto?  pos: ${ posEnemigo } level: ${ enemigoLevel }`)
     return false;
 }
-// crea una nueva partida
+// ?crea una nueva partida
 function nuevaPartida () {
     createTxt01.textContent = "Partida Terminada";
     createTxt02.textContent = "Pulsa Para Una Nueva";
@@ -475,7 +496,7 @@ function nuevaPartida () {
         location.reload();
     });
 }
-//Retorna las caracteristicas de los enemigos
+//? Retorna las caracteristicas de los enemigos
 function selectProps (enemigoLevel) {
     switch (enemigoLevel) {
         case 1:
@@ -495,7 +516,7 @@ function selectProps (enemigoLevel) {
             return [ aleatorio(20, 30), 20, 20, 25, " Jefe Final" ];
     }
 }
-//Configura los botones de enemigo modo true cuando estan activos false inactivos(cuando aparece el card)
+//?Configura los botones de enemigo modo true cuando estan activos false inactivos(cuando aparece el card)
 function configurarBotonesEnemigo (modo, valor) {
 
     if (modo) {
@@ -531,8 +552,10 @@ function configurarBotonesEnemigo (modo, valor) {
         enemigo.classList.add("btn-warning");
     }
 }
+// ?Abre el div de batalla o cambio de posición
 function crearCardEnemigo (valor, div) {
     console.log(`entró a crearCard ${ div + valor }`);
+    divBatalla.style.display = "block";
     configurarBotonesEnemigo(false, valor);
     //Pasarle los valores a los botones
     btnCamPosi.value = valor;
@@ -552,6 +575,7 @@ function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
         const divBotones = document.createElement("div");
         divBotones.className = "row divBotones p-2";
         for (let i = 1; i < 12 + 1; i++) {
+            //boton
             const divBoton = document.createElement("div");
             divBoton.className = "d-grid col-3 col-lg-2 p-1";
             const boton = document.createElement("a");
@@ -563,6 +587,7 @@ function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
             const img = document.createElement("img");
             img.src = imagen;
             img.className = "icons";
+            //texto posicion anterior
             const celdaOld = document.createElement("h1");
             celdaOld.style.color = "#444";
             celdaOld.style.border = `1px solid #444`;
@@ -570,6 +595,8 @@ function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
             celdaOld.style.textAlign = "center";
             celdaOld.style.borderRadius = "0.5rem";
             celdaOld.setAttribute("id", idA + i);
+            celdaOld.classList.add("posOld");
+            //texto posicion actual
             const celdaDos = document.createElement("h1");
             celdaDos.className = "mt-2";
             celdaDos.style.color = colorA;
@@ -630,6 +657,8 @@ function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
             break;
     }
 }
+// ? Se cambia de posicon los elementos
+// e=   div
 function eventoElementos (e, div) {
     console.log("eventoElementos");
     if (div === "enemigo") {
@@ -641,17 +670,21 @@ function eventoElementos (e, div) {
     const btn = document.querySelector(`#${ div + e }`);
     //Ponemos la posición en el texto superior
     console.log(`buscando #${ div }Txt${ e }`)
-    document.querySelector(`#${ div }Txt${ e }`).textContent = celdaTxtDos.textContent;
+    textoSuperior = document.querySelector(`#${ div }Txt${ e }`);
+    textoSuperior.textContent = celdaTxtDos.textContent;
+    colorTextoSuperior();
+    textoSuperior.style.color = "#FF9C00";
     //Buscamos el valor en las celdas ocupadas para borrarlo
     const celda = celdasOcupadas.findIndex(valor => valor === celdaTxtDos.textContent);
     //Crea valor que no esté presente en array celdasOcupadas.
     const libre = celdaLibre();
+
     switch (div) {
         case "arbol":
             //Elimina el valor en el array de celdas ocupadas
-            celdasOcupadas.splice(celda, 1);
             celdasArboles[ e - 1 ] = libre;
-            document.querySelector(`#${ div }TxtDos${ e }`).textContent = libre;
+            celdaLibre = document.querySelector(`#${ div }TxtDos${ e }`)
+            celdaLibre.textContent = libre;
             posicionarMapa();
             break;
         case "animal":
@@ -678,7 +711,15 @@ function eventoElementos (e, div) {
             break;
     }
 }
-//Utilizado para la primera vez que posicionamos
+
+// ? Se utiliza para cambiar el color de todos los textos superiores 
+function colorTextoSuperior() {
+    const elements = document.querySelectorAll('.posOld');
+    for (const element of elements) {
+        element.style.color = '#444'; // Change to your desired color
+    }
+}
+// ?Utilizado para la primera vez que posicionamos
 function posicionarItemsEnArrays (tipo, cantidad) {
     switch (tipo) {
         case 'enemigo':

@@ -10,19 +10,24 @@
         <title>Lestradamus Juego</title>
     </head>
     <div class="p-3 m-0 border-0" id="menu">
-
-        <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">+</button>
-
-        <div class="offcanvas offcanvas-start offcanvas-custom" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+        <!-- ?BOTON ABRIR *************************************************-->
+        <div class=" d-flex justify-content-end">
+            <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">+</button>
+        </div>
+        <!-- ?CANVAS ****************************************-->
+        <div class="offcanvas offcanvas-end offcanvas-custom" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
             <div class="btnCerrar offcanvas-header">
                 <!-- <button type="button" class="btn btn-primary center" data-bs-dismiss="offcanvas" aria-label="Close">X</button> -->
             </div>
             <div class="offcanvas-body">
                 <div class="container">
+                    <div class=" d-flex justify-content-end">
+                        <button class="btn btn-outline-light ps-3 pe-3 type=" button" data-bs-dismiss="offcanvas" aria-label="Close">-</button>
+                    </div>
                     <div class="botones">
-                        <!-- ?Menu -->
+                        <!-- ?MENU **************************************************************-->
                         <div class="col menu">
-                            <!-- ?btnSupMApa -->
+                            <!-- ?BTNMAPA ************** -->
                             <div class="d-grid">
                                 <button id="btnMapa" type="button" class="btn btn-outline-info d-flex" data-bs-dismiss="offcanvas" aria-label="Close">
                                     <div class="col-auto">
@@ -105,260 +110,227 @@
         </div>
     </div>
 
-    <body class="p-3 m-0 border-0 bd-example ">
-        
-                            <!-- <li>
-                            <button type="button" class="btn btn-danger col" id="btnPosEnemy">
-                                <h3 id="createTxt01">Enemigos</h3>
-                            </button>
-                        </li>
-                        <li>
-                            <button type="button" class="btn btn-success col" id="btnArboles">
-                                <h3>Árboles</h3>
-                            </button>
-                        </li>
-                        <li>
-                            <button type="button" class="btn btn-warning col" id="btnAnimales">
-                                <h3>Animales</h3>
-                            </button>
-                        </li>
-                        <li>
-                            <button type="button" class="btn btn-primary col" id="btnRocas">
-                                <h3>Rocas</h3>
-                            </button>
-                        </li> -->
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
-
-        <body id=" body" class="container-fluid">
-            <div class="contenido-principal row justify-content-center ">
-                <!-- Cuerpo central -->
-                <main class="col-12 p-0" id="main">
-                    <div class="body p-0 m-0">
-                        <!-- ?Botones posicionar enemigos y crear batalla -->
-                        <div style="display: none" id="batalla">
-                            <div class="card">
-                                <div class="card-body d-flex justify-content-between">
-                                    <a href="#card" type="button" class=" btn btn-success btn-lg col-6 me-1" data-bs-toggle="collapse" aria-expanded="false" aria-controls="card" id="btnCamPosi" value="0">Cambiar Posición</a>
-                                    <a href="#batalla" type="button" class="btn btn-danger btn-lg col-6 ms-1" data-bs-toggle="collapse" aria-expanded="false" aria-controls="batalla" id="btnCrearBatalla" value="0">Crear Batalla</a>
+    <body id=" body" class="container-fluid">
+        <div class="">
+            <!-- Cuerpo central -->
+            <main class="col-12 p-0" id="main">
+                <div class="body p-0 m-0">
+                    <!-- ?BATALLA **************************************** -->
+                    <div class="" id="batalla">
+                        <div class="container p-3 mb-3">
+                            <div class="card-body d-flex justify-content-between mb-3">
+                                <a href="#card" type="button" class=" btn btn-success btn-lg col-6" data-bs-toggle="collapse" aria-expanded="false" aria-controls="card" id="btnCamPosi" value="0">Cambiar Posición</a>
+                                <a href="#batalla" type="button" class="btn btn-danger btn-lg col-6 ms-1" data-bs-toggle="collapse" aria-expanded="false" aria-controls="batalla" id="btnCrearBatalla" value="0">Crear Batalla</a>
+                            </div>
+                            <!-- ?Listado enemigos -->
+                            <div class="container-fluid enemigos mb-3">
+                                <div class="container p-0 m-0">
+                                    <div class="row row-cols-6 gap-0 justify-content-between">
+                                        <div class="col">
+                                            <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:greenyellow" id="enemy1">
+                                        </div>
+                                        <div class="col">
+                                            <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:greenyellow" id="enemy2">
+                                        </div>
+                                        <div class=" col">
+                                            <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:greenyellow" id="enemy3">
+                                        </div>
+                                        <div class="col">
+                                            <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:greenyellow" id="enemy4">
+                                        </div>
+                                        <div class="col">
+                                            <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:yellow" id="enemy5">
+                                        </div>
+                                        <div class="col">
+                                            <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:yellow" id="enemy6">
+                                        </div>
+                                        <div class="col">
+                                            <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:orange" id="enemy7">
+                                        </div>
+                                        <div class="col">
+                                            <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:orange" id="enemy8">
+                                        </div>
+                                        <div class="col">
+                                            <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:pink" id="enemy9">
+                                        </div>
+                                        <div class="col">
+                                            <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:violet" id="enemy10">
+                                        </div>
+                                        <div class="col">
+                                            <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:magenta" id="enemy11">
+                                        </div>
+                                        <div class="col">
+                                            <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:red" id="enemy12">
+                                        </div>
+                                    </div>
                                 </div>
-                                <!-- ?Listado enemigos -->
-                                <section class="container enemigos mb-2">
-                                    <div class="container p-0 m-0">
-                                        <div class="row row-cols-6 gap-0 justify-content-between">
-                                            <div class="col">
-                                                <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:greenyellow" id="enemy1">
+                            </div>
+                            <!-- Skills del enemigo -->
+                            <div class="container text-center">
+                                <div class="collapse" id="batalla">
+                                    <div>
+                                        <h2 id="enemyLevel">Enemigo Level 10</h2>
+                                    </div>
+                                    <div class="row ">
+                                        <!-- Ataque -->
+                                        <div class=" g-1 mb-2 col-6 col-xl-3 ">
+                                            <div class="row m-1 bg-primary rounded ">
+                                                <a class="col-12 pt-2 h2">Arma</a>
+                                                <a class="col-12">
+                                                    <img src="img/sword.svg" alt="espada">
+                                                </a>
+                                                <h2 id="menosDa" class="col-3 fw-bolder">-</h2>
+                                                <h3 id="ataque" class="col-6 fw-bolder">000</h3>
+                                                <h2 id="masDa" class="col-3 fw-bolder">+</h2>
                                             </div>
-                                            <div class="col">
-                                                <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:greenyellow" id="enemy2">
+                                        </div>
+                                        <!-- Defensa -->
+                                        <div class="g-1 mb-2 flex-fill col-6 col-xl-3">
+                                            <div class="row m-1 bg-success rounded">
+                                                <a class="pt-2 h2">Escudo</a>
+                                                <a class="">
+                                                    <img src="img/shield-half-filled.svg" alt="escudo">
+                                                </a>
+                                                <h2 id="menosDe" class="col-3 fw-bolder">-</h2>
+                                                <h3 id="defensa" class="col-6 fw-bolder">000</h3>
+                                                <h2 id="masDe" class="col-3 fw-bolder">+</h2>
                                             </div>
-                                            <div class=" col">
-                                                <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:greenyellow" id="enemy3">
+                                        </div>
+                                        <!-- Salud -->
+                                        <div class="g-1 mb-2 flex-fill col-6 col-xl-3">
+                                            <div class="row m-1 bg-danger rounded">
+                                                <a class="pt-2 h2 text-dark fw-bolder">Salud</a>
+                                                <a class="">
+                                                    <img src="img/heart.svg" alt="corazon">
+                                                </a>
+                                                <h2 id="menosVi" class="col-3 text-dark fw-bolder">-</h2>
+                                                <h3 id="vida" class="col-6 text-dark fw-bolder">000</h3>
+                                                <h2 id="masVi" class="col-3 text-dark fw-bolder">+</h2>
                                             </div>
-                                            <div class="col">
-                                                <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:greenyellow" id="enemy4">
-                                            </div>
-                                            <div class="col">
-                                                <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:yellow" id="enemy5">
-                                            </div>
-                                            <div class="col">
-                                                <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:yellow" id="enemy6">
-                                            </div>
-                                            <div class="col">
-                                                <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:orange" id="enemy7">
-                                            </div>
-                                            <div class="col">
-                                                <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:orange" id="enemy8">
-                                            </div>
-                                            <div class="col">
-                                                <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:pink" id="enemy9">
-                                            </div>
-                                            <div class="col">
-                                                <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:violet" id="enemy10">
-                                            </div>
-                                            <div class="col">
-                                                <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:magenta" id="enemy11">
-                                            </div>
-                                            <div class="col">
-                                                <img src="img/skull.svg" alt="Monster" class="icons" style="background-color:red" id="enemy12">
+                                        </div>
+                                        <!-- Tesoro -->
+                                        <div class="g-1 mb-2 flex-fill col-6 col-xl-3">
+                                            <div class="row m-1 bg-warning rounded ">
+                                                <a class="pt-2 h2 text-dark fw-bolder">Tesoro</a>
+                                                <a class="">
+                                                    <img src="img/coin.svg" alt="moneda">
+                                                </a>
+                                                <h2 id="menosTe" class="col-3 text-dark fw-bolder">-</h2>
+                                                <h3 id="tesoro" class="col-6 text-dark fw-bolder">000</h3>
+                                                <h2 id="masTe" class="col-3 text-dark fw-bolder">+</h2>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <!-- Botón cancelar -->
+                            <a href="#card" type="button" class=" btn btn-primary btn-lg col-12 me-1" data-bs-toggle="collapse" aria-expanded="false" aria-controls="card" id="btnCancelar">Cancelar</a>
+                        </div>
+                    </div>
+                    <!-- ?inicio ************************************************-->
+                    <div id="inicio" class="">
+                        <div class="container">
+                            <div class="row">
+                                <button class="btn btn-secondary my-5 " id="btnInicio">El juego empieza presionando aquí</button>
+                            </div>
+                            <div class="row">
+                                <img src="img/skull.svg" alt="calavera" id="calavera" class="calavera">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ?Mapa Posicion*********************************************************-->
+                    <div id="mapa" class="">
+                        <div class="table-responsive">
+                            <div class=" col" id="contenedorMapa">
+                                <!-- Aquí se posicionan los elementos en el mapa -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ?Sección Enemigos *******************************************************-->
+                    <div id="enemigos" class="">
+                        <div class="accordion-body p-0">
+                            <!-- Botón posicionar enemigos -->
+                            <div class="d-grid col-12 gap-0">
+
+                                <section class="p-2 container" id="enemigo">
+                                    <!-- Aquí se posicionan los enemigos -->
                                 </section>
-                                <!-- Skills del enemigo -->
-                                <div class="container text-center">
-                                    <div class="collapse" id="batalla">
-                                        <div>
-                                            <h2 id="enemyLevel">Enemigo Level 10</h2>
-                                        </div>
-                                        <div class="row ">
-                                            <!-- Ataque -->
-                                            <div class=" g-1 mb-2 col-6 col-xl-3 ">
-                                                <div class="row m-1 bg-primary rounded ">
-                                                    <a class="col-12 pt-2 h2">Arma</a>
-                                                    <a class="col-12">
-                                                        <img src="img/sword.svg" alt="espada">
-                                                    </a>
-                                                    <h2 id="menosDa" class="col-3 fw-bolder">-</h2>
-                                                    <h3 id="ataque" class="col-6 fw-bolder">000</h3>
-                                                    <h2 id="masDa" class="col-3 fw-bolder">+</h2>
-                                                </div>
-                                            </div>
-                                            <!-- Defensa -->
-                                            <div class="g-1 mb-2 flex-fill col-6 col-xl-3">
-                                                <div class="row m-1 bg-success rounded">
-                                                    <a class="pt-2 h2">Escudo</a>
-                                                    <a class="">
-                                                        <img src="img/shield-half-filled.svg" alt="escudo">
-                                                    </a>
-                                                    <h2 id="menosDe" class="col-3 fw-bolder">-</h2>
-                                                    <h3 id="defensa" class="col-6 fw-bolder">000</h3>
-                                                    <h2 id="masDe" class="col-3 fw-bolder">+</h2>
-                                                </div>
-                                            </div>
-                                            <!-- Salud -->
-                                            <div class="g-1 mb-2 flex-fill col-6 col-xl-3">
-                                                <div class="row m-1 bg-danger rounded">
-                                                    <a class="pt-2 h2 text-dark fw-bolder">Salud</a>
-                                                    <a class="">
-                                                        <img src="img/heart.svg" alt="corazon">
-                                                    </a>
-                                                    <h2 id="menosVi" class="col-3 text-dark fw-bolder">-</h2>
-                                                    <h3 id="vida" class="col-6 text-dark fw-bolder">000</h3>
-                                                    <h2 id="masVi" class="col-3 text-dark fw-bolder">+</h2>
-                                                </div>
-                                            </div>
-                                            <!-- Tesoro -->
-                                            <div class="g-1 mb-2 flex-fill col-6 col-xl-3">
-                                                <div class="row m-1 bg-warning rounded ">
-                                                    <a class="pt-2 h2 text-dark fw-bolder">Tesoro</a>
-                                                    <a class="">
-                                                        <img src="img/coin.svg" alt="moneda">
-                                                    </a>
-                                                    <h2 id="menosTe" class="col-3 text-dark fw-bolder">-</h2>
-                                                    <h3 id="tesoro" class="col-6 text-dark fw-bolder">000</h3>
-                                                    <h2 id="masTe" class="col-3 text-dark fw-bolder">+</h2>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Botón cancelar -->
-                                <a href="#card" type="button" class=" btn btn-primary btn-lg col-12 me-1" data-bs-toggle="collapse" aria-expanded="false" aria-controls="card" id="btnCancelar">Cancelar</a>
                             </div>
                         </div>
-                        <!-- ?inicio ************************************************-->
-                        <div id="inicio" class="">
-                            <div class="container">
-                                <div class="row">
-                                    <button class="btn btn-secondary my-5 " id="btnInicio">El juego empieza presionando aquí</button>
-                                </div>
-                                <div class="row">
-                                    <img src="img/skull.svg" alt="calavera" id="calavera" class="calavera">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ?Mapa Posicion*********************************************************-->
-                        <div id="mapa" class="">
-                            <div class=" m-0 p-0">
-                                <div class="row align-content-center gap-2">
-
-                                    <!-- Mapa -->
-                                    <div class="table-responsive">
-                                        <div class="table col" id="contenedorMapa">
-                                            <!-- Aquí se posicionan los elementos en el mapa -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ?Sección Enemigos *******************************************************-->
-                        <div id="enemigos" class="">
-                            <div class="accordion-body p-0">
-                                <!-- Botón posicionar enemigos -->
-                                <div class="d-grid col-12 gap-0">
-
-                                    <section class="p-2 container" id="enemigo">
-                                        <!-- Aquí se posicionan los enemigos -->
-                                    </section>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ?Seccion Arboles **************************************************************-->
-                        <div id="arboles" class="">
-                            <div class="accordion-body p-0">
-                                <div class="d-grid col-12 gap-0">
-                                    <!-- Botón posicionar árboles -->
-
-                                    <section class="p-2 container" id="arbol">
-                                        <!-- Aquí se posicionan todos los árboles -->
-                                    </section>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ?Sección Animales *****************************************************************-->
-                        <div id="animales" class="">
-                            <div class="accordion-body p-0">
-                                <div class="d-grid col-12 gap-0">
-                                    <!-- boton de posicion animales -->
-
-                                    <section class="p-2 container" id="animal">
-                                        <!-- Aquí se posicionan todos los animales-->
-                                    </section>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ?Contenedor Rocas *****************************************************************-->
-                        <div id="rocas" class="">
-                            <div class="p-0">
-                                <div class="d-grid col-12 gap-0">
-                                    <!-- boton de posicion rocas -->
-
-                                    <section class="p-2 container" id="roca">
-                                        <!-- Aquí se posicionan todos las rocas-->
-                                    </section>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ?información **********************************************************************************-->
-                        <div id="informacion"></div>
-                        <!-- ?elementos que se van a necesitar pero desactivados -->
-                        <form class="container invisible mt-3" id="contenedorJugadores">
-                            <h3 align="center">Elige el nombre de los jugadores</h3>
-                            <p>Rellena los campos con el nombre de los jugadores, eligiendo así su color, solo jugarán los que contengan un nombre </p>
-                            <div class="row flex-nowrap mt-4">
-                                <a class="btn btn-primary col-2 me-2"><img src="img/person.svg" alt="persona"></a>
-                                <input id="inputJugUno" class="col-10 btn btn-outline-primary text-start" type="text" name="jugadorUno" placeholder="Nombre jugador">
-                            </div>
-                            <div class="row flex-nowrap mt-2">
-                                <a class="btn btn-success col-2 me-2" type="text"><img src="img/person.svg" alt="persona"></a>
-                                <input id="inputJugDos" class="col-10 btn btn-outline-success text-start" type="text" placeholder="Nombre jugador">
-                            </div>
-                            <div class="row flex-nowrap mt-2">
-                                <a class="btn btn-danger col-2 me-2" type="text"><img src="img/person.svg" alt="persona"></a>
-                                <input id="inputJugTres" class="col-10 btn btn-outline-danger text-start" type="text" placeholder="Nombre jugador">
-                            </div>
-                            <div class="row flex-nowrap mt-2">
-                                <a class="btn btn-warning col-2 me-2" type="text"><img src="img/person.svg" alt="persona"></a>
-                                <input id="inputJugCuatro" class="col-10 btn btn-outline-warning text-start" type="text" placeholder="Nombre jugador">
-                            </div>
-                            <div class="row flex-nowrap mt-2">
-                                <a class="btn btn-info col-2 me-2" type="text"><img src="img/person.svg" alt="persona"></a>
-                                <input id="inputJugCinco" class="col-10 btn btn-outline-info text-start" type="text" placeholder="Nombre jugador">
-                            </div>
-                            <div class="row flex-nowrap mt-2">
-                                <a class="btn btn-secondary col-2 me-2" type="text"><img src="img/person.svg" alt="persona"></a>
-                                <input id="inputJugSeis" class="col-10 btn btn-outline-secondary text-start" type="text" placeholder="Nombre jugador">
-                            </div>
-                            <button type="submit" id="btnContinuar" class="btn btn-primary col-12 mt-3">Pulsa para continuar...</button>
-                        </form>
                     </div>
-                </main>
-            </div>
-        </body>
+                    <!-- ?Seccion Arboles **************************************************************-->
+                    <div id="arboles" class="">
+                        <div class="accordion-body p-0">
+                            <div class="d-grid col-12 gap-0">
+                                <!-- Botón posicionar árboles -->
+
+                                <section class="p-2 container" id="arbol">
+                                    <!-- Aquí se posicionan todos los árboles -->
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ?Sección Animales *****************************************************************-->
+                    <div id="animales" class="">
+                        <div class="accordion-body p-0">
+                            <div class="d-grid col-12 gap-0">
+                                <!-- boton de posicion animales -->
+
+                                <section class="p-2 container" id="animal">
+                                    <!-- Aquí se posicionan todos los animales-->
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ?Contenedor Rocas *****************************************************************-->
+                    <div id="rocas" class="">
+                        <div class="p-0">
+                            <div class="d-grid col-12 gap-0">
+                                <!-- boton de posicion rocas -->
+
+                                <section class="p-2 container" id="roca">
+                                    <!-- Aquí se posicionan todos las rocas-->
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ?información **********************************************************************************-->
+                    <div id="informacion"></div>
+                    <!-- ?elementos que se van a necesitar pero desactivados -->
+
+                    <!-- ?JUGADORES -->
+                    <form class="container invisible mt-3" id="contenedorJugadores">
+                        <h3 align="center">Elige el nombre de los jugadores</h3>
+                        <p>Rellena los campos con el nombre de los jugadores, eligiendo así su color, solo jugarán los que contengan un nombre </p>
+                        <div class="row flex-nowrap mt-4">
+                            <a class="btn btn-primary col-2 me-2"><img src="img/person.svg" alt="persona"></a>
+                            <input id="inputJugUno" class="col-10 btn btn-outline-primary text-start" type="text" name="jugadorUno" placeholder="Nombre jugador">
+                        </div>
+                        <div class="row flex-nowrap mt-2">
+                            <a class="btn btn-success col-2 me-2" type="text"><img src="img/person.svg" alt="persona"></a>
+                            <input id="inputJugDos" class="col-10 btn btn-outline-success text-start" type="text" placeholder="Nombre jugador">
+                        </div>
+                        <div class="row flex-nowrap mt-2">
+                            <a class="btn btn-danger col-2 me-2" type="text"><img src="img/person.svg" alt="persona"></a>
+                            <input id="inputJugTres" class="col-10 btn btn-outline-danger text-start" type="text" placeholder="Nombre jugador">
+                        </div>
+                        <div class="row flex-nowrap mt-2">
+                            <a class="btn btn-warning col-2 me-2" type="text"><img src="img/person.svg" alt="persona"></a>
+                            <input id="inputJugCuatro" class="col-10 btn btn-outline-warning text-start" type="text" placeholder="Nombre jugador">
+                        </div>
+                        <div class="row flex-nowrap mt-2">
+                            <a class="btn btn-info col-2 me-2" type="text"><img src="img/person.svg" alt="persona"></a>
+                            <input id="inputJugCinco" class="col-10 btn btn-outline-info text-start" type="text" placeholder="Nombre jugador">
+                        </div>
+                        <div class="row flex-nowrap mt-2">
+                            <a class="btn btn-secondary col-2 me-2" type="text"><img src="img/person.svg" alt="persona"></a>
+                            <input id="inputJugSeis" class="col-10 btn btn-outline-secondary text-start" type="text" placeholder="Nombre jugador">
+                        </div>
+                        <button type="submit" id="btnContinuar" class="btn btn-primary col-12 mt-3">Pulsa para continuar...</button>
+                    </form>
+                </div>
+            </main>
+        </div>
         <script type="text/javascript" src="js/index.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>

@@ -46,13 +46,6 @@ header {
 	background: var(--fondo-contenido);
 }
 
-.table {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 90vh;
-}
 
 .tr {
 	width: 100%;
@@ -82,7 +75,14 @@ header {
 }
 .icons {
 	border-radius: 0.5rem;
-	width: 40%;
+	width: 60%;
 	margin-bottom: 10px;
 	margin-left: 10px;
+}
+button{
+	margin-top: 1rem;
+}
+
+.azul{
+	background-color: #e62dff;
 }
