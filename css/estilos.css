@@ -25,6 +25,7 @@ body {
 
 #inicio {
 	background-color: #2D88FF;
+	height: 100vh;
 }
 
 #mapa {
@@ -85,4 +86,18 @@ button{
 
 .azul{
 	background-color: #e62dff;
+}
+.pergamino{
+	background-color: #D5B59C;
+	padding: 3rem;
+	color: #5c2d01;
+	font-weight: bold;
+}
+#titulo{
+	text-transform: capitalize;
+	text-align: center;
+	padding-bottom: 1rem;
+}
+#texto{
+	text-align: justify;
 }

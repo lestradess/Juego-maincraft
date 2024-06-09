@@ -17,6 +17,7 @@ const masTe = document.querySelector("#masTe");
 const menosTe = document.querySelector("#menosTe");
 const levelTex = document.querySelector("#enemyLevel");
 
+
 // ?Botones****************************************************************************
 const btnInicio = document.querySelector("#btnInicio");
 const btnMapa = document.querySelector("#btnMapa");
@@ -32,7 +33,7 @@ const btnStarGame = document.querySelector("#btnStarGame");
 const btnContinuar = document.querySelector("#btnContinuar");
 const btnCancelar = document.querySelector("#btnCancelar");
 const btnKill = document.querySelector("#btnKill");
-
+const btnSucesos = document.querySelector("#btnSucesos");
 // ? INPUTS *************************************************************************
 const inputJugUno = document.querySelector("#inputJugUno");
 const inputJugDos = document.querySelector("#inputJugDos");
@@ -54,6 +55,7 @@ const cuerpo = document.querySelector("#main");
 const divMenu = document.querySelector("#menu");
 const info = document.querySelector("#informacion");
 const divBatalla = document.querySelector("#batalla");
+const divSucesos = document.querySelector("#sucesos");
 
 // ? VARIABLES GLOBALES
 //Enemigos vivos
@@ -83,15 +85,18 @@ eventListeners();
 setupGame();
 
 function setupGame () {
-    divBatalla.style.display = "none";
-    divMapa.style.display = "none";
-    divAnimales.style.display = "none";
-    divArboles.style.display = "none";
-    divEnemigos.style.display = "none";
-    divMinerales.style.display = "none";
+    esconderDivs()
+    divInicio.style.display = "block";
+    // divBatalla.style.display = "none";
+    // divMapa.style.display = "none";
+    // divAnimales.style.display = "none";
+    // divArboles.style.display = "none";
+    // divEnemigos.style.display = "none";
+    // divMinerales.style.display = "none";
     contenedorJugadores.style.display = "none";
     divMenu.style.display = "none";
 
+    sucesos("agua");
 }
 // ?Listerners**************************
 // ?Se asignan todos los eventListeners de los botones
@@ -199,6 +204,7 @@ function eventListeners () {
         if (btnMinerales.classList.contains("pos")) {
             btnMinerales.classList.remove("pos");
             posicionarElementos("roca", "img/stone.svg", "#0d6efd", "btn-primary", "rocaTxt", "rocaTxtDos");
+            const textMinerales = document.querySelector("#textMinerales");
             textMinerales.textContent = "Ver Minerales";
             //divMinerales.style.display = "none";
             esconderDivs()
@@ -207,6 +213,11 @@ function eventListeners () {
             botonActivo("btnMinerales");
         }
     });
+    // ?activa el div de sucesos
+    btnSucesos.addEventListener("click", () => {
+        esconderDivs();
+        divSucesos.style.display = "block";
+    })
     // ?Cambia la posicion del enemigo
     btnCamPosi.addEventListener('click', () => {
         console.log(btnCamPosi);
@@ -246,6 +257,7 @@ function eventListeners () {
 // ?FUNCIONES DE PANTALLA
 // ?Se ejecuta despues de dar al boton empezar juego
 function starGame () {
+    esconderDivs();
     document.querySelector("#calavera").remove();
     divMenu.style.display = "block";
     divMapa.style.display = "block";
@@ -349,11 +361,13 @@ function continuar () {
 // ?Esconde todos los divs 
 function esconderDivs () {
     divMapa.style.display = "none";
+    divBatalla.style.display = "none";
     divEnemigos.style.display = "none";
     divArboles.style.display = "none";
     divAnimales.style.display = "none";
     divMinerales.style.display = "none";
     divInicio.style.display = "none";
+    divSucesos.style.display = "none";
 }
 // ?Controla que div mostrar
 function botonActivo (text) {
@@ -566,9 +580,9 @@ function crearCardEnemigo (valor, div) {
 
 
 
-//Funciones comunes********************************************************************************
+//? Funciones comunes********************************************************************************
 
-//Posiciona Enemigos, Arboles, Animales y rocas************************************
+//? Posiciona Enemigos, Arboles, Animales y rocas************************************
 function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
     const contenedorTotal = document.querySelector(`#${ div }`);
     for (let z = 0; z < 1; z++) {
@@ -651,7 +665,7 @@ function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
                 document.querySelector(`#rocaTxtDos${ i + 1 }`).textContent = e;
             });
             posicionarMapa();
-            console.log("Posicionar elementos rocas");
+            console.log("Posicionar elementos minerales");
             break;
         default:
             break;
@@ -761,7 +775,7 @@ function posicionarItemsEnArrays (tipo, cantidad) {
             break;
     }
 }
-//Nos da un número aleatorio entre un mínimo y un máximo incluidos
+//? Nos da un número aleatorio entre un mínimo y un máximo incluidos
 function aleatorio (min, max) {
     if (Number.isInteger(min)) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -771,7 +785,7 @@ function aleatorio (min, max) {
     return letra + numero;
 
 }
-//devuelve true si está ocupada
+// ?devuelve true si está ocupada
 function buscaEnCeldas (n) {
     celda = celdasOcupadas.findIndex(e => e === n)
     if (celda > -1) {
@@ -779,7 +793,7 @@ function buscaEnCeldas (n) {
     }
     return false;
 }
-// devuelve una celda aleatoria no ocupada
+// ?devuelve una celda aleatoria no ocupada
 function celdaLibre () {
     let n = aleatorio("a", 30);
     while (buscaEnCeldas(n)) {
@@ -787,7 +801,7 @@ function celdaLibre () {
     }
     return n;
 }
-//Coloca el array en orden se usa solo al principio
+//?Coloca el array en orden se usa solo al principio
 function colocarArray (e) {
     e.sort((a, b) => {
         if (a == b) {
@@ -800,3 +814,22 @@ function colocarArray (e) {
     });
     return e;
 }
+//SUCESOS
+function sucesos (title) {
+    console.log("Entra en sucesos");
+    fetch('/sucesos.json')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            const titleSucesos = document.querySelector("#titulo");
+            const textSucesos = document.querySelector("#texto");
+            titleSucesos.textContent = title;
+            textSucesos.textContent = data[title];
+        })
+        .catch(error => {
+            // Manejo de errores
+            console.error('Error:', error);
+        });
+}
+
+
