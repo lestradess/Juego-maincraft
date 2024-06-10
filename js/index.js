@@ -34,6 +34,7 @@ const btnContinuar = document.querySelector("#btnContinuar");
 const btnCancelar = document.querySelector("#btnCancelar");
 const btnKill = document.querySelector("#btnKill");
 const btnSucesos = document.querySelector("#btnSucesos");
+const btnOtroSuceso = document.querySelector("#btnOtroSuceso");
 // ? INPUTS *************************************************************************
 const inputJugUno = document.querySelector("#inputJugUno");
 const inputJugDos = document.querySelector("#inputJugDos");
@@ -47,7 +48,7 @@ const divMapa = document.querySelector("#mapa");
 const divEnemigos = document.querySelector("#enemigos");
 const divArboles = document.querySelector("#arboles");
 const divAnimales = document.querySelector("#animales");
-const divMinerales = document.querySelector("#rocas");
+const divMinerales = document.querySelector("#minerales");
 const divInicio = document.querySelector("#inicio");
 const contenedorJugadores = document.querySelector("#contenedorJugadores");
 const mapaDiv = document.querySelector("#contenedorMapa");
@@ -75,7 +76,7 @@ let rondaPosEnemy = 0;//no usada
 let enemigosCantidad = 12;
 let celdasArboles = [];
 let celdasAnimales = [];
-let celdasRocas = [];
+let celdasMinerales = [];
 let jugadores = [];
 
 
@@ -96,7 +97,7 @@ function setupGame () {
     contenedorJugadores.style.display = "none";
     divMenu.style.display = "none";
 
-    sucesos("agua");
+
 }
 // ?Listerners**************************
 // ?Se asignan todos los eventListeners de los botones
@@ -203,7 +204,7 @@ function eventListeners () {
 
         if (btnMinerales.classList.contains("pos")) {
             btnMinerales.classList.remove("pos");
-            posicionarElementos("roca", "img/stone.svg", "#0d6efd", "btn-primary", "rocaTxt", "rocaTxtDos");
+            posicionarElementos("mineral", "img/stone.svg", "#0d6efd", "btn-primary", "mineralTxt", "mineralTxtDos");
             const textMinerales = document.querySelector("#textMinerales");
             textMinerales.textContent = "Ver Minerales";
             //divMinerales.style.display = "none";
@@ -217,7 +218,17 @@ function eventListeners () {
     btnSucesos.addEventListener("click", () => {
         esconderDivs();
         divSucesos.style.display = "block";
+        const sucesoTitulo = suceso();
+        sucesos(sucesoTitulo);
     })
+
+    btnOtroSuceso.addEventListener("click", () => {
+        esconderDivs();
+        divSucesos.style.display = "block";
+        const sucesoTitulo = suceso();
+        sucesos(sucesoTitulo);
+    })
+
     // ?Cambia la posicion del enemigo
     btnCamPosi.addEventListener('click', () => {
         console.log(btnCamPosi);
@@ -290,12 +301,12 @@ function informacion () {
         infoCeldasAnimales.textContent += `${ e }, `;
     });
     info.appendChild(infoCeldasAnimales);
-    const infoCeldasRocas = document.createElement("div");
-    infoCeldasRocas.textContent = "Minas: ";
-    celdasRocas.forEach(e => {
-        infoCeldasRocas.textContent += `${ e }, `;
+    const infoceldasMinerales = document.createElement("div");
+    infoceldasMinerales.textContent = "Minas: ";
+    celdasMinerales.forEach(e => {
+        infoceldasMinerales.textContent += `${ e }, `;
     });
-    info.appendChild(infoCeldasRocas);
+    info.appendChild(infoceldasMinerales);
 
 }
 // ?Mapa*************************************************************
@@ -348,7 +359,7 @@ function posicionarMapa () {
         //document.querySelector(`#mapa${ e }`).src = "img/animal.svg";
         document.querySelector(`#mapa${ e }`).style.background = "#ffc107";
     })
-    celdasRocas.forEach(e => {
+    celdasMinerales.forEach(e => {
         //document.querySelector(`#mapa${ e }`).src = "img/stone.svg";
         document.querySelector(`#mapa${ e }`).style.background = "#0d6efd";
     })
@@ -582,7 +593,7 @@ function crearCardEnemigo (valor, div) {
 
 //? Funciones comunes********************************************************************************
 
-//? Posiciona Enemigos, Arboles, Animales y rocas************************************
+//? Posiciona Enemigos, Arboles, Animales y minerales************************************
 function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
     const contenedorTotal = document.querySelector(`#${ div }`);
     for (let z = 0; z < 1; z++) {
@@ -659,10 +670,10 @@ function posicionarElementos (div, imagen, colorA, btnClass, idA, idB) {
             posicionarMapa();
             console.log("Posicionar elementos animales");
             break;
-        case "roca":
-            posicionarItemsEnArrays('roca', 12);
-            celdasRocas.forEach((e, i) => {
-                document.querySelector(`#rocaTxtDos${ i + 1 }`).textContent = e;
+        case "mineral":
+            posicionarItemsEnArrays('mineral', 12);
+            celdasMinerales.forEach((e, i) => {
+                document.querySelector(`#mineralTxtDos${ i + 1 }`).textContent = e;
             });
             posicionarMapa();
             console.log("Posicionar elementos minerales");
@@ -707,9 +718,9 @@ function eventoElementos (e, div) {
             document.querySelector(`#${ div }TxtDos${ e }`).textContent = libre;
             posicionarMapa();
             break;
-        case "roca":
+        case "mineral":
             celdasOcupadas.splice(celda, 1);
-            celdasRocas[ e - 1 ] = libre;
+            celdasMinerales[ e - 1 ] = libre;
             document.querySelector(`#${ div }TxtDos${ e }`).textContent = libre;
             posicionarMapa();
             break;
@@ -727,7 +738,7 @@ function eventoElementos (e, div) {
 }
 
 // ? Se utiliza para cambiar el color de todos los textos superiores 
-function colorTextoSuperior() {
+function colorTextoSuperior () {
     const elements = document.querySelectorAll('.posOld');
     for (const element of elements) {
         element.style.color = '#444'; // Change to your desired color
@@ -762,14 +773,14 @@ function posicionarItemsEnArrays (tipo, cantidad) {
             celdasAnimales = colocarArray(celdasAnimales);
             console.log("PosicionarItemsEnArrays animales");
             break;
-        case 'roca':
+        case 'mineral':
             for (let i = 1; i <= cantidad; i++) {
                 let n = celdaLibre();
-                celdasRocas.push(n);
+                celdasMinerales.push(n);
                 celdasOcupadas.push(n);
             }
-            celdasRocas = colocarArray(celdasRocas);
-            console.log("PosicionarItemsEnArrays rocas");
+            celdasMinerales = colocarArray(celdasMinerales);
+            console.log("PosicionarItemsEnArrays minerales");
             break;
         default:
             break;
@@ -824,12 +835,28 @@ function sucesos (title) {
             const titleSucesos = document.querySelector("#titulo");
             const textSucesos = document.querySelector("#texto");
             titleSucesos.textContent = title;
-            textSucesos.textContent = data[title];
+            textSucesos.innerHTML = data[ title ].replace(/\n/g, "<br>");
         })
         .catch(error => {
             // Manejo de errores
             console.error('Error:', error);
         });
 }
+//? Devuelve el suceso
+function suceso () {
+    const numero = Math.floor(Math.random() * 34);
+    let dato= 0;
+    console.log("numero: " + numero);
+    if (numero >7 & numero < 30) {
+        console.log("entra en mayor de 12: "+numero);
+        dato = numero-8;
+    } else if (numero > 29) {
+        dato = 23;
+    }
+
+    const titulos = [ "Rio","Ladron", "Apuesta", "Tropiezo", "Poción", "Alijo", "Ladronzuelo", "Caravana", "Maleantes", "A casa", "Comerciantes", "Hurto", "Mendigo", "Vegetales", "Animalitos", "Bosque", "Cantera", "Olvido", "Cuero", "Juncos", "Barrizal", "Bandidos", "Restos", "Suerte" ]
+    console.log("titulo suceso: "+dato+" "+titulos[dato],)
+    return titulos[ dato ];
 
 
+}
