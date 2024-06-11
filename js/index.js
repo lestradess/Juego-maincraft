@@ -826,22 +826,23 @@ function colocarArray (e) {
     return e;
 }
 //SUCESOS
-function sucesos (title) {
-    console.log("Entra en sucesos");
-    fetch('https://raw.githubusercontent.com/lestradess/Juego-maincraft/main/data/sucesos.json')
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            const titleSucesos = document.querySelector("#titulo");
-            const textSucesos = document.querySelector("#texto");
-            titleSucesos.textContent = title;
-            textSucesos.innerHTML = data[ title ].replace(/\n/g, "<br>");
-        })
-        .catch(error => {
-            // Manejo de errores
-            console.error('Error:', error);
-        });
-}
+// function sucesos (title) {
+//     console.log("Entra en sucesos");
+//     const data = sucesos;
+//     fetch('https://raw.githubusercontent.com/lestradess/Juego-maincraft/main/data/sucesos.json')
+//         .then(response => response.json())
+//         .then(data => {
+//             console.log(data);
+//             const titleSucesos = document.querySelector("#titulo");
+//             const textSucesos = document.querySelector("#texto");
+//             titleSucesos.textContent = title;
+//             textSucesos.innerHTML = data[ title ].replace(/\n/g, "<br>");
+//         })
+//         .catch(error => {
+//             // Manejo de errores
+//             console.error('Error:', error);
+//         });
+// }
 //? Devuelve el suceso
 function suceso () {
     const numero = Math.floor(Math.random() * 34);

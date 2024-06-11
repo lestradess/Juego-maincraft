@@ -1,4 +1,4 @@
-{
+const sucesosData ={
 "Agua": "Has encontrado una zona de río, puedes pescar para obtener alimento.\n La casilla quedará puesta hasta que otro recurso o enemigo requiera su posición.",
 "Rio":	"Has encontrado una zona de río, puedes pescar para obtener alimento. \n La casilla quedará puesta hasta que otro recurso o enemigo requiera su posición.",
 "Ladron":"Un ladrón te ha quitado 1D6 de tus monedas. En caso de que no las tuvieras, pierdes 3 de vida.",
@@ -24,10 +24,17 @@
 "Bandidos":"Un bandido te ataca por sorpresa y te hace 1D6 de daño.",
 "Restos":"Encuentras en unos restos unos de los siguientes objetos según el valor el dado:\n Tira un 1D6:\n\n 1.-Casco.\n2.-Botas.\n3.-Cuchillo.\n4.-Peto.\n5.-Polainas.\n6.-Escudo.",
 "Suerte": "La suerte te acompaña obtienes una carta de acción.\n\n Si tienes 5 cartas debes elegir y dejar una, para quedarte con 5 como máximo."
-}	
+};	
 	
-	
-	
+function sucesos (title) {
+    console.log("Entra en sucesos");
+    const data = sucesosData;
+    console.log(data);
+    const titleSucesos = document.querySelector("#titulo");
+    const textSucesos = document.querySelector("#texto");
+    titleSucesos.textContent = title;
+    textSucesos.innerHTML = data[ title ].replace(/\n/g, "<br><br>");
+}
 	
 	
 	
