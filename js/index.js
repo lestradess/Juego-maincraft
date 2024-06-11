@@ -828,7 +828,7 @@ function colocarArray (e) {
 //SUCESOS
 function sucesos (title) {
     console.log("Entra en sucesos");
-    fetch('/sucesos.json')
+    fetch('/data/sucesos.json')
         .then(response => response.json())
         .then(data => {
             console.log(data);
