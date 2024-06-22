@@ -1,0 +1,103 @@
+:root {
+	--texto: rgba(255, 255, 255, .7);
+	--blanco: #fff;
+	--input: #3A3B3C;
+	--input-hover: #4b4d4e;
+	--activo: #2D88FF;
+	--gris-claro: #B0B3B8;
+	--fondo-contenido: #242526;
+	--enemigos: red;
+	--arboles: #198754;
+	--animales: #ffc107;
+	--rocas: #ababac;
+	--fondo: #18191A;
+	--hover: #ffae00;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	background: var(--fondo);
+	color: var(--texto);
+}
+
+#inicio {
+	background-color: #2D88FF;
+	height: 100vh;
+}
+
+#mapa {
+	background-color: var(--fondo);
+}
+.miFuente{
+	font-family: 'Monaco';
+}
+
+a {
+	color: var(--texto);
+	text-decoration: none;
+}
+
+/* ------------------ */
+/* ----- HEADER ----- */
+/* ------------------ */
+header {
+	background: var(--fondo-contenido);
+}
+
+
+.tr {
+	width: 100%;
+}
+
+.celda {
+	width: 100px;
+	height: 20px;
+	border-radius: 0.5rem;
+	/* margin-bottom: 10px; */
+}
+
+.calavera {
+	height: 65vh;
+
+}
+
+.d-none{
+	display: none;
+}
+.d-block{
+	display:block;
+}
+.offcanvas-custom {
+	/* width: 100px !important; */
+	background-color:var(--fondo);
+}
+.icons {
+	border-radius: 0.5rem;
+	width: 60%;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+button{
+	margin-top: 1rem;
+}
+
+.azul{
+	background-color: #e62dff;
+}
+.pergamino{
+	background-color: #D5B59C;
+	padding: 3rem;
+	color: #5c2d01;
+	font-weight: bold;
+}
+#titulo{
+	text-transform: capitalize;
+	text-align: center;
+	padding-bottom: 1rem;
+}
+#texto{
+	text-align: center;
+}
