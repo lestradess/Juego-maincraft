@@ -6,7 +6,7 @@ const sucesosData ={
 "Tropiezo":"Has tropezado con una piedra, te has caído y te has dado un golpe en la cabeza pierdes 1D6 de vida.",
 "Poción":"Consigues una poción que te cura 1D6 de vida.\n Puedes usarla o guardarla cogiendo el token o quitarselo a quien lo tenga.",
 "Alijo":"Encuentras un alijo y consigues uno de los siguientes útiles según puntuación del dado:\n\n Tira 1D6\n\n 1.-Pico.\n2.-Hacha.\n3.-Lazo.\n4.-Arco.\n5.-Caña.\n6.-Cuchillo.",
-"Ladronzuelo":"Un ladronzuelo intenta robarte uno de tus útiles que coincide con el la puntuación del dado:\n Tira un 1D6 y si tienes el útil lo pierdes.\n\n 1.-Pico.\n2.-Hacha.\n3.-Lazo.\n4.-Arco.\n5.-Caña.\n6.-Cuchillo.",
+"Ladronzuelo":"Un ladronzuelo intenta robarte uno de tus útiles que coincide con la puntuación del dado:\n Tira un 1D6 y si tienes el útil lo pierdes.\n\n 1.-Pico.\n2.-Hacha.\n3.-Lazo.\n4.-Arco.\n5.-Caña.\n6.-Cuchillo.",
 "Caravana":"Una caravana te ofrece llevarte a donde quieras, puedes guardar la carta para usarla cuando quieras incluso para huir de una pelea.\n Coge el token de Caravana o quitaselo a quien lo tenga",
 "Maleantes":"Te golpean y te llevan a la taberna más cercana.\nPierdes dos recursos, los que tú quieras.",
 "A casa":"Esta carta te lleva a casa estés donde estés, incluso te permite huir de una pelea.\n Coge el token de ir a casa o quitaselo a quien lo tenga.",
